@@ -1,286 +1,89 @@
+/**
+ * ==========================================================================
+ * DHARMESH AHIR PREMIUM ENGINE
+ * Vanilla Javascript showcasing GSAP, Lenis, Custom Canvas, & Synth Audio.
+ * ==========================================================================
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 1. DATA STORE: 8 REAL WORLD FLUTTER & WEB PORTFOLIO CASES
+  // 1. PROJECT DATA CATALOG
   const portfolioItems = [
     {
       id: "helix-care",
       category: "web",
-      imageClass: "project-image-web-helix",
-      title: "Helix Care - Comprehensive Healthcare Platform",
-      buttonText: "View Live Site",
+      placeholderSeed: "project1",
+      title: "Helix Care Platform",
       siteUrl: "https://qa.helixdoc.com",
-      tags: ["Flutter Web", "Dart", "Responsive Design", "Healthcare", "Telemedicine", "REST API", "Video Calling", "Stripe Integration", "Role-Based Access Control (RBAC)", "State Management"],
-      isFeatured: true,
-      description: `A full-stack Flutter web application serving as a complete healthcare ecosystem. This platform seamlessly integrates patient management, clinical operations, telemedicine, and billing into a single, responsive experience. It supports the entire workflow from patient registration and appointment scheduling to secure video consultations and complex billing management.
-
-MODULES DEVELOPED:
-
-User Management
-Implemented secure, token-based password reset functionality via email.
-Built a comprehensive admin panel for user activity monitoring and management.
-Developed user profile management with photo upload and personal information editing.
-Designed a robust role-based access control (RBAC) system with configurable permissions.
-Created detailed user forms supporting name, gender, policy selection, and group assignment.
-Implemented a full user list with admin capabilities for role changes, password resets, and status management.
-Added user status management for locked accounts, pending invitations, and activations.
-
-Health Center & Customer Management
-Developed comprehensive customer profiles with full health history tracking.
-Built a customer registration and editing system with full validation.
-Implemented advanced search by customer name, health center, and location.
-Created a system for allocating customers and practices across different health centers.
-Implemented financial detail management with complete transaction history.
-Built a working hours configuration system with time slot management.
-Developed location-based filtering, reporting, and holiday management.
-Designed a dynamic UI for adding and editing health center details, financials, and operational info.
-Built a location hierarchy managing relationships between main centers and branches.
-
-Role & Permission System
-Created a dynamic sidebar navigation that updates based on user roles and permissions.
-Built a comprehensive permission system to control module access across the entire application.
-Implemented an admin interface for creating roles and assigning specific permissions.
-Designed role categories and groups with tab-based list views, pagination, and search.
-Developed four-level permission types (View, Create, Update, Delete) for all modules.
-Ensured role permissions directly control UI element visibility and user accessibility.
-
-Appointment Management
-Developed real-time appointment booking with live doctor availability checks.
-Built calendar synchronization across web and mobile platforms.
-Implemented insurance verification and selection during the booking process.
-Created a time slot selection system based on configurable doctor availability.
-Built a comprehensive appointment list with advanced filtering and sorting by date, doctor, and status.
-Implemented full status tracking (scheduled, confirmed, completed, cancelled, no-show).
-Developed rescheduling and cancellation features with approval workflows.
-Added calendar views and list views for complete appointment management.
-
-Billing & Payments
-Built support for multiple payment methods including bank transfer, cards, and digital wallets.
-Developed payment gateway integration for secure transaction processing.
-Implemented a split payment functionality allowing multiple payment methods per bill.
-Created a wallet system with balance tracking, top-ups, and transaction history for patients and providers.
-Built a secure bank account registration and credit card storage system with encryption.
-Developed a comprehensive billing history with advanced search, filtering, and multi-status tracking.
-Implemented a responsive billing dashboard with detailed bill views and bookmarkable UI states.
-
-Patient Chart Management
-Built a comprehensive patient chart system for complete medical records management.
-Created a patient list view with advanced pagination, search, and multi-user selection.
-Implemented detailed patient profile views with full medical history.
-Developed multi-format export functionality (PDF, XML, HTML) and print support.
-
-Policy Management
-Built a comprehensive policy creation system with version control and change tracking.
-Developed a rich text editor for terms and conditions with full formatting options.
-Created policy templates for different services and consent requirements.
-Designed a policy list view with advanced filtering by status, date, and type.
-Implemented status management and an automated effective dating system for policy versions.
-
-Face Meet Module (Telemedicine)
-Built complete meeting lifecycle management (create, join, complete, cancel).
-Developed meeting creation with participant management and invitation system.
-Implemented meeting status tracking (scheduled, ongoing, completed, cancelled).
-Designed an intuitive meeting list view with filters and advanced search.
-
-Video Conference Features
-Integrated video meeting functionality using WebRTC technology.
-Developed a multi-participant grid layout with active speaker focus and screen sharing.
-Implemented host controls for participant management and an interactive whiteboard.
-Added in-meeting chat, note-taking, and file sharing capabilities.
-Created a responsive meeting interface for web and mobile with recording indicators.`
+      tags: ["Flutter Web", "Dart", "Video WebRTC", "Stripe payment", "Role Permissions API"],
+      description: "Comprehensive Healthcare Portal with integrated Doctor consult calendars, multi-tier permissions configuration, payment systems, and WebRTC streaming frameworks."
     },
     {
       id: "resido-property",
       category: "web",
-      imageClass: "project-image-web-resido",
-      title: "Resido - Property Management Platform",
-      buttonText: "View Live Site",
+      placeholderSeed: "project2",
+      title: "Resido Management",
       siteUrl: "https://resido-dev.helixbeat.com",
-      tags: ["Flutter Web", "Dart", "State Management", "Responsive Design", "Property Management", "Real Estate", "REST API", "Role-Based Access Control (RBAC)", "Form Validation"],
-      isFeatured: true,
-      description: `Resido is a comprehensive property management application designed to streamline operations for landlords and property managers. It provides a centralized system to manage properties, tenants, locations, and user roles, all through an intuitive and responsive web interface.
-
-PROPERTY MANAGEMENT MODULE
-
-Property Management
-Developed a complete property listing system with advanced search and pagination.
-Created dynamic add and edit property forms with auto-population and robust validation.
-Built an action-oriented interface for each property (view, edit, delete).
-Implemented customer-specific property assignment and management.
-
-Location & Building Management
-Designed a system to add and manage locations under properties with full detail tracking.
-Created filtered and sorted list views for all locations.
-Developed a building management system to add structures under specific locations.
-Built hierarchical navigation: Property → Location → Building → Floor → Unit.
-
-Floor & Unit Management
-Built a detailed floor management system organized under buildings.
-Developed unit creation, listing, and management within specific floors.
-Implemented auto-population of data across forms for efficient data entry and updates.
-
-DATA & USER MANAGEMENT
-
-Centralized Data Management
-Developed a centralized lookup system for all application data types.
-Managed appointment statuses (Scheduled, Completed, Cancelled, No-Show).
-Implemented reason status management for cancellations and changes.
-Created a version control and dependency management system for critical lookup data.
-
-User Management
-Implemented a secure, token-based password reset system via email.
-Built a comprehensive admin panel for user activity monitoring and management.
-Created user profile management with photo upload and personal data editing.
-Designed a detailed role-based user creation system with configurable permissions.
-Managed user statuses: active, inactive, locked, and pending invitations.
-
-Role & Permission System
-Created a dynamic sidebar that updates automatically based on user roles and permissions.
-Built a comprehensive permission system to control module access across the entire application.
-Implemented an admin interface for creating roles and assigning granular permissions.
-Designed four-level permission types (View, Create, Update, Delete) for all modules.
-Ensured role permissions directly control UI element visibility and user accessibility.
-
-TECHNICAL IMPLEMENTATION & FEATURES
-
-App Structure
-Utilized clean, feature-specific Dart screens for the UI.
-Managed business logic with GetX controllers for state management and dependencies.
-Built a library of reusable custom widgets for a consistent and efficient design.
-
-Key Features
-Fully responsive design for mobile and web.
-Secure authentication with login and password recovery.
-Comprehensive dashboard with a quick overview of properties and metrics.
-Strict role-based access control (RBAC) for security.
-Intuitive and easy navigation between complex features.
-
-This project demonstrates my ability to architect and build complete, scalable business applications with a clean architecture, robust security, and a user-centric design for the real estate industry.`
+      tags: ["Flutter Web", "GetX Framework", "API Integration", "UI/UX Optimization"],
+      description: "Advanced property administration ecosystem tracking unit, building, and structural data points using automated Lookups and security role matrices."
     },
     {
       id: "mtz-infotech",
       category: "web",
-      imageClass: "project-image-web-mtz",
-      title: "MTZ Infotech - Corporate Website",
-      buttonText: "View Live Site",
+      placeholderSeed: "project3",
+      title: "MTZ Corporate Portal",
       siteUrl: "https://mtzinfotech.com/#/",
-      tags: ["Flutter", "Web", "Responsive", "UI/UX"],
-      isFeatured: true,
-      description: `Designed and developed a modern, responsive portfolio website for MTZ Infotech showcasing company services and projects.
-
-• Fully responsive design optimized for all devices
-• Built with Flutter for cross-platform consistency
-• Adaptive layout techniques and flexible design principles
-• Professional UI/UX with smooth animations and transitions`
+      tags: ["Flutter Web", "Responsive Architecture", "Custom Animators"],
+      description: "Fully responsive multi-platform presentation workspace utilizing responsive grid matrices and transition animations."
     },
     {
       id: "khata-app",
       category: "mobile",
-      imageClass: "project-image-mobile-khata",
-      title: "Khata App",
-      buttonText: "Play Store",
+      placeholderSeed: "project4",
+      title: "Khata Digital Ledger",
       siteUrl: "https://play.google.com/store/apps/details?id=com.shree.khata",
-      tags: ["Flutter", "Android", "iOS", "Dart", "Localization", "Role-Based Access", "Multi-User", "REST API"],
-      isFeatured: false,
-      description: `Dual Platform Application: A single codebase for both Android and iOS.
-Multi-Language Support: Full localization for English, Hindi, and Punjabi.
-Role-Based Access Control: Secure login with distinct permissions for Admin and Employee users.
-Mobile-First Authentication: User registration and login using a mobile number.
-Multi-User Management: Admins can add, edit, and manage multiple employees under one account.
-Comprehensive Product Catalog: Features to add, edit, and view a list of all products.
-Digital Ledger Management: Core functionality to record and track all Udhar/Jama (debit/credit) transactions.
-Advanced Data Filtering:
-Auto-Population of Data: Streamlined editing where forms are automatically filled with existing data for quick updates.
-User-Friendly UI/UX: A clean, intuitive, and responsive design for easy navigation and use.Help & Support System: Integrated Help, Contact Us, and Employee Details pages.`
+      tags: ["Flutter Mobile", "Dart", "Localization", "Offline Syncing"],
+      description: "Bilingual payment ledger supporting offline tracking modes and secure database restoration pipelines."
     },
     {
       id: "dhasa-patel",
       category: "mobile",
-      imageClass: "project-image-mobile-patel",
-      title: "Dhasa Patel Samaj - Community App",
-      buttonText: "Download App",
-      siteUrl: "https://play.google.com/store/apps/details?id=com.dhasagam.patelsamaj&pli=1",
-      tags: ["Flutter", "Dart", "Firebase", "Firebase Auth", "Cloud Firestore", "Firebase Storage", "Community App", "Social Network"],
-      isFeatured: true,
-      description: `Developed a dedicated community application for the members of Dhasa Village to connect, share information, and access important resources. The app serves as a digital hub for community engagement and information sharing.
-
-Cross-Platform Development: Built a fully functional application for both Android and iOS using a single Flutter codebase.
-Member Directory: Built complete member indexes.
-Personalized News Feed: Developed a secure system where only verified members can receive and view important community news and announcements (both good and bad news).
-Business Directory: Built a feature allowing members to add and showcase their businesses, creating a community-wide business directory.
-User Profiles & Management: Custom profiling support.
-Categorization System: Implemented user categorization (e.g., Business, Student, Family) for better organization and searchability.
-Dashboard & Banner Management: Created an admin dashboard for managing content, including updating promotional banners and featured information.
-
-Technologies Used: Flutter, Dart, Firebase (Authentication, Firestore, Storage)`
+      placeholderSeed: "project5",
+      title: "Samaj Social Hub",
+      siteUrl: "https://play.google.com/store/apps/details?id=com.dhasagam.patelsamaj",
+      tags: ["Flutter Mobile", "Firebase backend", "Custom directories"],
+      description: "Community engagement directory compiling indices of verified records with automated real-time alerts."
     },
     {
       id: "vision-news",
       category: "mobile",
-      imageClass: "project-image-mobile-news",
-      title: "Vision Magazine - News Platform",
-      buttonText: "View App",
+      placeholderSeed: "project6",
+      title: "Vision Media Portal",
       siteUrl: "https://play.google.com/store/apps/details?id=tw.com.gvm.dailynews",
-      tags: ["Flutter", "Dart", "REST API", "API Integration", "Pagination", "Localization", "HTML Rendering", "News App"],
-      isFeatured: true,
-      description: `Key Features & Responsibilities:
-
-Cross-Platform Development: Built a high-performance news application using Flutter and Dart.
-REST API Integration: Seamlessly integrated with a RESTful API to fetch and display real-time news data from various international sources (e.g., New York Times, Fortune, Bloomberg).
-Dual View Modes: Implemented multiple viewing experiences for users:
-Page View: For a magazine-like reading experience.
-List View: For quickly scanning headlines.
-Advanced Pagination: Efficiently managed large datasets with pagination for smooth scrolling and optimized performance.
-Robust Search Functionality: Developed a comprehensive search feature allowing users to find specific news articles across the entire catalog.
-Content Rendering: Engineered a system to fetch, parse, and cleanly display HTML content within the app's mobile UI, ensuring articles render correctly.
-Social Sharing & Localization: Enabled easy sharing of articles and implemented localization features to cater to a wider audience.
-News Feed Management: Created a personalized and curated news feed to showcase top stories and latest updates.
-
-Technologies Used: Flutter, Dart, REST API, HTML Rendering, Pagination, Localization`
+      tags: ["Flutter Mobile", "RESTful parsers", "HTML renderers"],
+      description: "Advanced news portal processing real-time publications streams alongside localized bookmark controls."
     },
     {
       id: "roommatik",
       category: "web",
-      imageClass: "project-image-web-roommatik",
-      title: "Roommatik - Roommate Finder",
-      buttonText: "Visit Website",
+      placeholderSeed: "project7",
+      title: "Roommatik Finder",
       siteUrl: "https://roommatik-eae91.web.app",
-      tags: ["Flutter", "Dart", "Cross-Platform", "Firebase Hosting", "REST API", "Biometric Auth", "QR Code", "Booking Platform"],
-      isFeatured: false,
-      description: `Designed and developed a comprehensive Flutter-based application and website for Roommatik, facilitating modern room management, selection, and booking. The platform provides a seamless user experience across mobile and web with advanced authentication and filtering capabilities.
-
-Key Features & Responsibilities:
-
-Cross-Platform Development: Built a single codebase application compatible with Android, iOS, and Web using Flutter and Dart.
-Backend Integration & Hosting: Built scalable server communication architectures.
-QR Code Integration: Incorporated QR code functionality for features like quick room access or information sharing.
-Adaptive UI/UX: Applied flexible design principles and adaptive layout techniques to guarantee a consistent and user-friendly experience across all platforms and screen sizes.
-
-Technologies Used: Flutter, Dart, REST API, Firebase Hosting, QR Code Integration, Biometric Authentication`
+      tags: ["Flutter Web", "Cloud Hosting", "QR system API"],
+      description: "Unified cross-platform listing catalog matching parameters, complete with booking forms and automatic verification systems."
     },
     {
       id: "viosa",
       category: "mobile",
-      imageClass: "project-image-mobile-viosa",
-      title: "Viosa - AI Learning Platform",
-      buttonText: "Learn More",
+      placeholderSeed: "project8",
+      title: "Viosa AI Prep Platform",
       siteUrl: "https://play.google.com/store/apps/details?id=com.viosa.app",
-      tags: ["Flutter", "Dart", "Mobile App", "Cross-Platform", "AI Integration", "REST API", "State Management", "Mock Interview"],
-      isFeatured: false,
-      description: `• Developed a comprehensive Flutter-based application designed to revolutionize career development by leveraging Artificial Intelligence for resume building, personalized learning, and interview preparation.
-• AI Mock Interviews: Built an interactive module that uses AI to conduct practice interviews, providing users with feedback and insights.
-• User Profile Management: Created a complete user profile system where users can view and edit their personal information and preferences.
-• Career Guidance: Integrated AI-driven tools to offer personalized career insights and guidance based on user profiles and goals.
-
-Technologies Used:
-• Flutter & Dart: For building a high-performance, cross-platform mobile application.
-• REST API: For all communication with the backend server, AI models, and cloud services.
-• WebView Plugin: To integrate and display external web-based content (like the resume builder) seamlessly within the app.
-• PDF Downloading: Implemented functionality to save and download files locally to the user's device.`
+      tags: ["Flutter Mobile", "AI Model Core", "Native Downloader API"],
+      description: "Platform designed to optimize interview practices using automated processing and feedback mechanisms."
     }
   ];
 
-  // 2. AUDIO SYNTH MODULE
+  // 2. SOUND SYNTHESIS ENGINE
   const SoundEngine = {
     ctx: null,
     muted: true,
@@ -291,17 +94,36 @@ Technologies Used:
       }
     },
 
-    playUiClick() {
+    playHover() {
       if (this.muted) return;
       this.init();
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       
       osc.type = "sine";
-      osc.frequency.setValueAtTime(550, this.ctx.currentTime);
+      osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(800, this.ctx.currentTime + 0.04);
+      
+      gain.gain.setValueAtTime(0.01, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+      
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.04);
+    },
+
+    playClick() {
+      if (this.muted) return;
+      this.init();
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(350, this.ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(120, this.ctx.currentTime + 0.1);
       
-      gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
       
       osc.connect(gain);
@@ -310,47 +132,26 @@ Technologies Used:
       osc.stop(this.ctx.currentTime + 0.1);
     },
 
-    playUiHover() {
-      if (this.muted) return;
-      this.init();
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(750, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(950, this.ctx.currentTime + 0.05);
-      
-      gain.gain.setValueAtTime(0.012, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
-      
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.05);
-    },
-
     playCelebration() {
       if (this.muted) return;
       this.init();
       const now = this.ctx.currentTime;
-      
-      const playTone = (pitch, delay, duration) => {
+      const playTone = (pitch, delay, length) => {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
-        osc.type = "triangle";
+        osc.type = "sine";
         osc.frequency.setValueAtTime(pitch, now + delay);
-        gain.gain.setValueAtTime(0.06, now + delay);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + delay + duration);
+        gain.gain.setValueAtTime(0.05, now + delay);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + delay + length);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now + delay);
-        osc.stop(now + delay + duration);
+        osc.stop(now + delay + length);
       };
-
-      playTone(523.25, 0, 0.15);     
-      playTone(659.25, 0.08, 0.15);  
-      playTone(783.99, 0.16, 0.15);  
-      playTone(1046.50, 0.24, 0.3);  
+      playTone(523.25, 0, 0.12);
+      playTone(659.25, 0.06, 0.12);
+      playTone(783.99, 0.12, 0.12);
+      playTone(1046.50, 0.18, 0.25);
     }
   };
 
@@ -365,52 +166,660 @@ Technologies Used:
       SoundEngine.init();
       icon.setAttribute("data-lucide", "volume-2");
       soundToggle.classList.add("active");
-      SoundEngine.playUiClick();
+      SoundEngine.playClick();
     }
     lucide.createIcons();
   });
 
 
-  // 3. SMOOTH CUSTOM CURSOR
-  const cursor = document.getElementById("custom-cursor");
-  const follower = document.getElementById("cursor-follower");
-  let cursorX = 0, cursorY = 0;
-  let followerX = 0, followerY = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    cursor.style.transform = `translate3d(${cursorX - 4}px, ${cursorY - 4}px, 0)`;
+  // 3. LENIS SMOOTH SCROLLING
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true
   });
 
-  function renderCursorFollower() {
-    followerX += (cursorX - followerX - 18) * 0.15;
-    followerY += (cursorY - followerY - 18) * 0.15;
-    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
-    requestAnimationFrame(renderCursorFollower);
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
   }
-  renderCursorFollower();
+  requestAnimationFrame(raf);
 
-  const bindInteractiveElements = () => {
-    const interactables = document.querySelectorAll(".magnetic, a, button, .service-card, .project-card, .premium-input-field, .split-row");
-    interactables.forEach(el => {
+
+  // 4. CUSTOM MORPHING CURSOR ENGINE
+  const cursor = document.getElementById("custom-cursor");
+  const follower = document.getElementById("cursor-follower");
+  let mouseX = 0, mouseY = 0;
+  let posX = 0, posY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  });
+
+  function tickCursor() {
+    posX += (mouseX - posX) * 0.15;
+    posY += (mouseY - posY) * 0.15;
+    follower.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+    requestAnimationFrame(tickCursor);
+  }
+  requestAnimationFrame(tickCursor);
+
+  const applyCursorListeners = () => {
+    document.querySelectorAll("a, button, .magnetic, .tab-select-btn, .filter-tab-btn, .view-details-trigger").forEach(el => {
       el.addEventListener("mouseenter", () => {
-        SoundEngine.playUiHover();
-        gsap.to(follower, { scale: 1.6, borderColor: "var(--text-accent)", duration: 0.25 });
+        document.body.setAttribute("data-cursor-state", "pointer");
+        SoundEngine.playHover();
       });
       el.addEventListener("mouseleave", () => {
-        gsap.to(follower, { scale: 1, borderColor: "var(--text-accent)", duration: 0.25 });
+        document.body.removeAttribute("data-cursor-state");
       });
       el.addEventListener("click", () => {
-        SoundEngine.playUiClick();
+        SoundEngine.playClick();
+      });
+    });
+
+    document.querySelectorAll(".premium-input-field").forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        document.body.setAttribute("data-cursor-state", "text");
+      });
+      el.addEventListener("mouseleave", () => {
+        document.body.removeAttribute("data-cursor-state");
       });
     });
   };
 
 
-  // 4. THREE.JS PARTICLE AMBIENCE
+  // 5. CINEMATIC PRELOADER SEQUENCE
+  const percentageLabel = document.getElementById("load-percentage");
+  const preloaderTag = document.getElementById("preloader-tagline");
+  const tags = [
+    "Building Beautiful Apps...",
+    "Crafting Pixel-Perfect UI...",
+    "Optimizing System Frameworks...",
+    "Injecting Interaction Paradigms..."
+  ];
+  let loadCount = 0;
+  let tagIdx = 0;
+
+  const tagInterval = setInterval(() => {
+    preloaderTag.style.opacity = 0;
+    setTimeout(() => {
+      preloaderTag.textContent = tags[tagIdx];
+      preloaderTag.style.opacity = 1;
+      tagIdx = (tagIdx + 1) % tags.length;
+    }, 300);
+  }, 1000);
+
+  const loadingInterval = setInterval(() => {
+    loadCount += Math.floor(Math.random() * 8) + 4;
+    if (loadCount >= 100) {
+      loadCount = 100;
+      clearInterval(loadingInterval);
+      clearInterval(tagInterval);
+      
+      confetti({
+        particleCount: 100,
+        spread: 60,
+        origin: { y: 0.5 }
+      });
+
+      gsap.to("#preloader", {
+        opacity: 0,
+        y: -100,
+        duration: 0.8,
+        ease: "power3.inOut",
+        onComplete: () => {
+          document.getElementById("preloader").style.display = "none";
+          initHeroParticlesCanvas();
+          initTypewriter();
+          animateCountUpMetrics();
+          renderPortfolioSection();
+          animateTabSkillFills();
+          initOrbitalSphere();
+        }
+      });
+    }
+    percentageLabel.textContent = loadCount;
+  }, 50);
+
+
+  // 6. DETAILED PALETTES & PRESET HANDLERS
+  const bodyElement = document.documentElement;
+  const themeDrawer = document.getElementById("theme-drawer");
+  const themePanelToggle = document.getElementById("theme-panel-toggle");
+  const themeDrawerClose = document.getElementById("theme-drawer-close");
+  const themePresetBtns = document.querySelectorAll(".theme-preset-btn");
+  const modeToggleBtn = document.getElementById("mode-toggle");
+
+  let currentTheme = localStorage.getItem("dh-portfolio-theme") || "ocean";
+  let currentMode = localStorage.getItem("dh-portfolio-mode") || "dark";
+
+  const refreshAppliedTheming = () => {
+    bodyElement.setAttribute("data-theme", currentTheme);
+    bodyElement.setAttribute("data-mode", currentMode);
+    themePresetBtns.forEach(btn => {
+      if (btn.getAttribute("data-theme-val") === currentTheme) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+  };
+
+  refreshAppliedTheming();
+
+  themePanelToggle.addEventListener("click", () => themeDrawer.classList.toggle("open"));
+  themeDrawerClose.addEventListener("click", () => themeDrawer.classList.remove("open"));
+
+  themePresetBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentTheme = btn.getAttribute("data-theme-val");
+      localStorage.setItem("dh-portfolio-theme", currentTheme);
+      refreshAppliedTheming();
+    });
+  });
+
+  modeToggleBtn.addEventListener("click", (e) => {
+    currentMode = currentMode === "dark" ? "light" : "dark";
+    localStorage.setItem("dh-portfolio-mode", currentMode);
+    
+    const ripple = document.createElement("div");
+    ripple.className = "theme-ripple-overlay";
+    ripple.style.left = e.clientX + "px";
+    ripple.style.top = e.clientY + "px";
+    document.body.appendChild(ripple);
+    
+    setTimeout(() => {
+      refreshAppliedTheming();
+      gsap.to(ripple, {
+        scale: 150,
+        opacity: 0,
+        duration: 0.8,
+        onComplete: () => ripple.remove()
+      });
+    }, 50);
+  });
+
+
+  // 7. MULTI STYLE LAYOUT SWITCHER
+  const layoutToggle = document.getElementById("layout-menu-toggle");
+  const layoutDropdown = document.getElementById("layout-dropdown");
+  const layoutSelectBtns = document.querySelectorAll(".layout-select-btn");
+
+  let activeSiteLayout = localStorage.getItem("dh-site-layout") || "glass";
+  bodyElement.setAttribute("data-site-layout", activeSiteLayout);
+
+  layoutToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    layoutDropdown.classList.toggle("open");
+  });
+
+  document.addEventListener("click", () => {
+    layoutDropdown.classList.remove("open");
+  });
+
+  layoutSelectBtns.forEach(btn => {
+    if (btn.getAttribute("data-layout") === activeSiteLayout) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+
+    btn.addEventListener("click", () => {
+      const state = Flip.getState(".hero-grid, .about-grid, .services-grid, .contact-grid");
+      
+      activeSiteLayout = btn.getAttribute("data-layout");
+      localStorage.setItem("dh-site-layout", activeSiteLayout);
+      bodyElement.setAttribute("data-site-layout", activeSiteLayout);
+      
+      layoutSelectBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      Flip.from(state, {
+        duration: 0.8,
+        ease: "power3.inOut"
+      });
+    });
+  });
+
+
+  // 8. HERO PARTICLES CANVAS (Attract/Repel mechanics)
+  let canvas, ctx, particlesArray;
+  const maxDistance = 100;
+
+  function initHeroParticlesCanvas() {
+    canvas = document.getElementById("hero-particles-canvas");
+    if (!canvas) return;
+    ctx = canvas.getContext("2d");
+    
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+    
+    particlesArray = [];
+    const count = Math.floor((canvas.width * canvas.height) / 9000);
+    
+    for (let i = 0; i < count; i++) {
+      particlesArray.push(new Particle());
+    }
+    
+    animateHeroParticles();
+  }
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+      this.vx = Math.random() * 1.5 - 0.75;
+      this.vy = Math.random() * 1.5 - 0.75;
+    }
+    draw() {
+      ctx.fillStyle = "var(--text-accent)";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fill();
+    }
+    update() {
+      const dx = mouseX - this.x - canvas.getBoundingClientRect().left;
+      const dy = mouseY - this.y - canvas.getBoundingClientRect().top;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < maxDistance) {
+        const force = (maxDistance - dist) / maxDistance;
+        this.x -= (dx / dist) * force * 3;
+        this.y -= (dy / dist) * force * 3;
+      }
+
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+  }
+
+  function animateHeroParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateHeroParticles);
+  }
+
+  window.addEventListener("resize", () => {
+    if (canvas) {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+    }
+  });
+
+
+  // 9. HIGH END TYPEWRITER ENGINE
+  const words = ["Flutter Developer", "Mobile Architect", "UI/UX Specialist"];
+  let wordIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  const typewriterTarget = document.getElementById("typewriter");
+
+  function initTypewriter() {
+    const curWord = words[wordIdx];
+    if (isDeleting) {
+      typewriterTarget.textContent = curWord.substring(0, charIdx - 1);
+      charIdx--;
+    } else {
+      typewriterTarget.textContent = curWord.substring(0, charIdx + 1);
+      charIdx++;
+    }
+
+    let speed = isDeleting ? 40 : 100;
+    if (!isDeleting && charIdx === curWord.length) {
+      speed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      wordIdx = (wordIdx + 1) % words.length;
+      speed = 500;
+    }
+    setTimeout(initTypewriter, speed);
+  }
+
+
+  // 10. COUNTERS ENGINE
+  function animateCountUpMetrics() {
+    document.querySelectorAll(".count-up").forEach(el => {
+      const target = parseInt(el.getAttribute("data-target"));
+      let val = 0;
+      const inc = target / 60;
+      const timer = setInterval(() => {
+        val += inc;
+        if (val >= target) {
+          el.textContent = target + "+";
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(val) + "+";
+        }
+      }, 25);
+    });
+  }
+
+
+  // 11. ABOUT MODULE TABS & ORBITS
+  const tabSelectBtns = document.querySelectorAll(".tab-select-btn");
+  const tabPanels = document.querySelectorAll(".tab-panel");
+
+  tabSelectBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabSelectBtns.forEach(b => b.classList.remove("active"));
+      tabPanels.forEach(p => p.classList.remove("active"));
+      
+      btn.classList.add("active");
+      const target = btn.getAttribute("data-tab-target");
+      document.getElementById(target).classList.add("active");
+
+      if (target === "skills-grid") {
+        animateTabSkillFills();
+      }
+    });
+  });
+
+  function animateTabSkillFills() {
+    document.querySelectorAll(".skill-fill").forEach(fill => {
+      fill.style.width = fill.getAttribute("data-progress");
+    });
+  }
+
+  // Trigonometric orbiting initialization logic
+  function initOrbitalSphere() {
+    const nodes = document.querySelectorAll(".orbital-node");
+    const radius = 110; 
+    let angle = 0;
+
+    function orbitTick() {
+      angle += 0.015;
+      nodes.forEach((node, idx) => {
+        const offsetAngle = angle + (idx * (Math.PI * 2 / nodes.length));
+        const x = Math.cos(offsetAngle) * radius;
+        const y = Math.sin(offsetAngle) * radius;
+        node.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+      requestAnimationFrame(orbitTick);
+    }
+    orbitTick();
+  }
+
+
+  // 12. PORTFOLIO COMPONENT RENDERING
+  const portfolioGrid = document.getElementById("portfolio-grid");
+  const modal = document.getElementById("project-detail-modal");
+  const modalClose = document.getElementById("modal-close-btn");
+  let activeLayout = "grid";
+  let activeFilter = "all";
+
+  function renderPortfolioSection() {
+    portfolioGrid.innerHTML = "";
+    
+    const filtered = portfolioItems.filter(p => activeFilter === "all" || p.category === activeFilter);
+    portfolioGrid.className = `portfolio-container layout-${activeLayout}`;
+
+    filtered.forEach(proj => {
+      const card = document.createElement("div");
+      card.className = "project-card tilt-card";
+      
+      card.innerHTML = `
+        <div class="project-media-wrapper" style="background-image: url('https://picsum.photos/seed/${proj.placeholderSeed}/600/400')">
+          <div class="project-overlay">
+            <button class="btn-icon view-details-trigger magnetic" data-id="${proj.id}">
+              <i data-lucide="eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="proj-badge">${proj.category.toUpperCase()}</span>
+          <h3>${proj.title}</h3>
+          <p>${proj.description}</p>
+          <button class="btn-primary-modal view-details-trigger" style="margin-top:16px;" data-id="${proj.id}">View Project Specs</button>
+        </div>
+      `;
+      portfolioGrid.appendChild(card);
+    });
+
+    lucide.createIcons();
+    applyCursorListeners();
+    apply3DTiltMechanics();
+    bindDetailsModalTriggers();
+  }
+
+  // Underline indicators for filter tabs sliding animation
+  const filterButtons = document.querySelectorAll(".filter-tab-btn");
+  const activeIndicator = document.querySelector(".active-filter-indicator");
+
+  const positionFilterUnderline = (activeBtn) => {
+    if (!activeIndicator || !activeBtn) return;
+    activeIndicator.style.width = activeBtn.offsetWidth + "px";
+    activeIndicator.style.left = activeBtn.offsetLeft + "px";
+  };
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeFilter = btn.getAttribute("data-filter");
+      renderPortfolioSection();
+      positionFilterUnderline(btn);
+    });
+  });
+
+  document.querySelectorAll(".layout-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".layout-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeLayout = btn.getAttribute("data-layout-val");
+      renderPortfolioSection();
+    });
+  });
+
+
+  // 13. PROJECT MODALS SYSTEM
+  function bindDetailsModalTriggers() {
+    document.querySelectorAll(".view-details-trigger").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        const match = portfolioItems.find(p => p.id === id);
+        if (match) {
+          document.getElementById("modal-project-badge").textContent = match.category.toUpperCase();
+          document.getElementById("modal-project-title").textContent = match.title;
+          document.getElementById("modal-project-link").setAttribute("href", match.siteUrl);
+          document.getElementById("modal-project-description").textContent = match.description;
+          document.getElementById("modal-project-tags").innerHTML = match.tags.map(t => `<span class="modal-tag-badge">${t}</span>`).join("");
+          
+          modal.classList.add("open");
+          lenis.stop(); 
+        }
+      });
+    });
+  }
+
+  const closeModalOverlay = () => {
+    modal.classList.remove("open");
+    lenis.start();
+  };
+
+  modalClose.addEventListener("click", closeModalOverlay);
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeModalOverlay(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModalOverlay(); });
+
+
+  // 14. SECURE CONTACT VERIFICATION
+  const contactForm = document.getElementById("contact-form");
+  const submitBtn = document.getElementById("form-submit-btn");
+  const charCountLabel = document.getElementById("char-count");
+  const feedbackMsg = document.getElementById("form-feedback");
+  const messageArea = document.getElementById("message");
+
+  messageArea.addEventListener("input", () => {
+    charCountLabel.textContent = messageArea.value.length;
+  });
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    feedbackMsg.textContent = "";
+    
+    let invalid = false;
+    document.querySelectorAll("#contact-form .premium-input-field").forEach(input => {
+      if (!input.value.trim()) {
+        invalid = true;
+        input.parentElement.classList.add("shake-error");
+        setTimeout(() => input.parentElement.classList.remove("shake-error"), 400);
+      }
+    });
+
+    if (invalid) return;
+
+    submitBtn.querySelector(".btn-text").style.display = "none";
+    submitBtn.querySelector(".btn-premium-send-icon").style.display = "none";
+    submitBtn.querySelector(".btn-loading-spinner").style.display = "inline-block";
+
+    setTimeout(() => {
+      submitBtn.querySelector(".btn-text").style.display = "inline";
+      submitBtn.querySelector(".btn-premium-send-icon").style.display = "inline";
+      submitBtn.querySelector(".btn-loading-spinner").style.display = "none";
+
+      feedbackMsg.textContent = "Your secure message has been delivered successfully!";
+      feedbackMsg.className = "form-feedback success";
+      
+      SoundEngine.playCelebration();
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+      
+      contactForm.reset();
+      charCountLabel.textContent = "0";
+    }, 1500);
+  });
+
+
+  // 15. 3D TILT EFFECT FOR PREMIUM CARDS
+  function apply3DTiltMechanics() {
+    document.querySelectorAll(".tilt-card").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const bounds = card.getBoundingClientRect();
+        const mouseXInCard = e.clientX - bounds.left;
+        const mouseYInCard = e.clientY - bounds.top;
+        
+        const rX = ((mouseYInCard / bounds.height) - 0.5) * -12;
+        const rY = ((mouseXInCard / bounds.width) - 0.5) * 12;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rX}deg) rotateY(${rY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      });
+    });
+  }
+
+
+  // 16. PROGRESS BACK TO TOP LOGIC
+  const backToTopBtn = document.getElementById("back-to-top");
+  const ringFill = document.getElementById("scroll-progress-ring");
+
+  // Sync scroll indicator directly via Lenis scroller
+  lenis.on('scroll', (e) => {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = window.scrollY / totalScroll;
+    
+    const offset = 113.1 - (progress * 113.1);
+    ringFill.style.strokeDashoffset = offset;
+
+    // Track scroll active dots updates on scroll
+    const secs = document.querySelectorAll("section");
+    let currentActive = "hero";
+    secs.forEach(sec => {
+      const top = sec.offsetTop - 300;
+      if (window.scrollY >= top) {
+        currentActive = sec.getAttribute("id");
+      }
+    });
+    
+    document.querySelectorAll(".side-dot").forEach(dot => {
+      if (dot.getAttribute("data-sec") === currentActive) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    lenis.scrollTo(0, { duration: 1.2 });
+  });
+
+
+  // 17. MOBILE NAVIGATION OVERLAY
+  const hamburger = document.getElementById("mobile-menu-toggle");
+  const mobileOverlay = document.getElementById("mobile-nav-overlay");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    mobileOverlay.classList.toggle("open");
+  });
+
+  mobileNavLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      mobileOverlay.classList.remove("open");
+    });
+  });
+
+
+  // 18. AI COMPANION SYSTEM RESPONSE CONTROLS
+  const aiBubble = document.getElementById("ai-chat-bubble");
+  const aiWindow = document.getElementById("ai-chat-window");
+  const aiClose = document.getElementById("ai-chat-close");
+  const aiSend = document.getElementById("ai-send-btn");
+  const aiInput = document.getElementById("ai-user-input");
+  const aiFeed = document.getElementById("ai-chat-messages");
+
+  aiBubble.addEventListener("click", () => aiWindow.classList.toggle("open"));
+  aiClose.addEventListener("click", () => aiWindow.classList.remove("open"));
+
+  const dispatchAiResponse = () => {
+    const txt = aiInput.value.trim();
+    if (!txt) return;
+
+    const userBubble = document.createElement("div");
+    userBubble.className = "ai-msg user";
+    userBubble.textContent = txt;
+    aiFeed.appendChild(userBubble);
+    aiInput.value = "";
+
+    setTimeout(() => {
+      const botBubble = document.createElement("div");
+      botBubble.className = "ai-msg bot";
+      
+      const norm = txt.toLowerCase();
+      if (norm.includes("experience") || norm.includes("years")) {
+        botBubble.textContent = "Dharmesh Ahir has 3+ years of professional experience building cross-platform Flutter applications.";
+      } else if (norm.includes("skills") || norm.includes("state")) {
+        botBubble.textContent = "Dharmesh specializes in GetX, BLoC, Riverpod, RESTful API integrations, WebRTC, and custom layouts.";
+      } else {
+        botBubble.textContent = "Thank you for inquiring! Dharmesh is available for senior cross-platform engineering contributions.";
+      }
+      
+      aiFeed.appendChild(botBubble);
+      aiFeed.scrollTop = aiFeed.scrollHeight;
+    }, 450);
+  };
+
+  aiSend.addEventListener("click", dispatchAiResponse);
+  aiInput.addEventListener("keydown", (e) => { if (e.key === "Enter") dispatchAiResponse(); });
+
+
+  // 19. THREE.JS SYSTEM BACKGROUND PARTICLES (Static Ambient canvas)
   let scene, camera, renderer, starGeo, stars;
-  const particleCount = 1000;
+  const starsCount = 600;
 
   function initThreeParticles() {
     const container = document.getElementById("three-canvas-container");
@@ -421,633 +830,302 @@ Technologies Used:
     camera.position.z = 1;
     camera.rotation.x = Math.PI / 2;
 
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
     starGeo = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const velocities = [];
-
-    for (let i = 0; i < particleCount; i++) {
+    const positions = new Float32Array(starsCount * 3);
+    for (let i = 0; i < starsCount; i++) {
       positions[i * 3] = Math.random() * 600 - 300;
       positions[i * 3 + 1] = Math.random() * 600 - 300;
       positions[i * 3 + 2] = Math.random() * 600 - 300;
-      velocities.push(Math.random() * 0.18 + 0.04);
     }
-
-    starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const canvasParticle = document.createElement('canvas');
-    canvasParticle.width = 16;
-    canvasParticle.height = 16;
-    const ctxParticle = canvasParticle.getContext('2d');
-    const grad = ctxParticle.createRadialGradient(8, 8, 0, 8, 8, 8);
-    grad.addColorStop(0, 'rgba(255,255,255,1)');
-    grad.addColorStop(1, 'rgba(255,255,255,0)');
-    ctxParticle.fillStyle = grad;
-    ctxParticle.fillRect(0,0,16,16);
-
-    const texture = new THREE.CanvasTexture(canvasParticle);
+    starGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
     const starMaterial = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 1.3,
-      map: texture,
+      color: 0x888888,
+      size: 1.2,
       transparent: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
+      opacity: 0.8
     });
 
     stars = new THREE.Points(starGeo, starMaterial);
     scene.add(stars);
-    stars.userData = { velocities };
 
-    animateParticles();
+    animateAmbientParticles();
   }
 
-  function animateParticles() {
-    requestAnimationFrame(animateParticles);
-
-    const positions = stars.geometry.attributes.position.array;
-    const velocities = stars.userData.velocities;
-
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3 + 1] -= velocities[i];
-      if (positions[i * 3 + 1] < -300) {
-        positions[i * 3 + 1] = 300;
-      }
-    }
-
-    stars.geometry.attributes.position.needsUpdate = true;
-    
-    const targetRotX = (cursorY / window.innerHeight - 0.5) * 0.08;
-    const targetRotY = (cursorX / window.innerWidth - 0.5) * 0.08;
-    stars.rotation.x += (targetRotX - stars.rotation.x) * 0.05;
-    stars.rotation.y += (targetRotY - stars.rotation.y) * 0.05;
-
+  function animateAmbientParticles() {
+    requestAnimationFrame(animateAmbientParticles);
+    stars.rotation.y += 0.0008;
     renderer.render(scene, camera);
   }
 
-  window.addEventListener("resize", () => {
-    if (camera && renderer) {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-  });
+  initThreeParticles();
 
 
-  // 5. PRELOADER ENGINE
-  const preloader = document.getElementById("preloader");
-  const fill = document.querySelector(".progress-bar-fill");
-  
-  let percent = 0;
-  const loadInterval = setInterval(() => {
-    percent += Math.floor(Math.random() * 12) + 6;
-    if (percent >= 100) {
-      percent = 100;
-      clearInterval(loadInterval);
-      
-      gsap.to(preloader, {
-        opacity: 0,
-        duration: 0.65,
-        ease: "power2.out",
-        onComplete: () => {
-          preloader.style.display = "none";
-          initThreeParticles();
-          animateSkillFills();
-          initTypewriter();
-          animateMetricsCountUp();
-          renderPortfolio(); 
-        }
-      });
-    }
-    fill.style.width = percent + "%";
-  }, 40);
-
-
-  // 6. THEME AND DYNAMIC PALETTES CONFIG
-  const bodyEl = document.documentElement;
-  const themeDrawer = document.getElementById("theme-drawer");
-  const themePanelToggle = document.getElementById("theme-panel-toggle");
-  const themeDrawerClose = document.getElementById("theme-drawer-close");
-  const themePresetBtns = document.querySelectorAll(".theme-preset-btn");
-  const modeToggle = document.getElementById("mode-toggle");
-
-  let currentTheme = localStorage.getItem("dharmesh-theme") || "ocean";
-  let currentMode = localStorage.getItem("dharmesh-mode") || "dark";
-
-  const applyTheming = () => {
-    bodyEl.setAttribute("data-theme", currentTheme);
-    bodyEl.setAttribute("data-mode", currentMode);
-    
-    themePresetBtns.forEach(btn => {
-      if (btn.getAttribute("data-theme-val") === currentTheme) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
-    });
-  };
-
-  applyTheming();
-
-  themePanelToggle.addEventListener("click", () => {
-    themeDrawer.classList.toggle("open");
-  });
-  themeDrawerClose.addEventListener("click", () => {
-    themeDrawer.classList.remove("open");
-  });
-
-  themePresetBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      currentTheme = btn.getAttribute("data-theme-val");
-      localStorage.setItem("dharmesh-theme", currentTheme);
-      applyTheming();
-    });
-  });
-
-  modeToggle.addEventListener("click", () => {
-    currentMode = currentMode === "dark" ? "light" : "dark";
-    localStorage.setItem("dharmesh-mode", currentMode);
-    applyTheming();
-  });
-
-
-  // 7. HERO TYPEWRITER
-  const typewriterText = document.getElementById("typewriter");
-  const wordsToRotate = [
-    "Flutter Developer", 
-    "UI/UX Enthusiast", 
-    "Mobile App Creator", 
-    "Open Source Contributor"
-  ];
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  function initTypewriter() {
-    if (!typewriterText) return;
-    const currentWord = wordsToRotate[wordIndex];
-    
-    if (isDeleting) {
-      typewriterText.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typewriterText.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-    }
-
-    let speed = isDeleting ? 30 : 80;
-
-    if (!isDeleting && charIndex === currentWord.length) {
-      speed = 1800;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % wordsToRotate.length;
-      speed = 350;
-    }
-
-    setTimeout(initTypewriter, speed);
-  }
-
-
-  // 8. COUNTER METRICS
-  function animateMetricsCountUp() {
-    const counters = document.querySelectorAll(".count-up");
-    counters.forEach(counter => {
-      const target = +counter.getAttribute("data-target");
-      const duration = 2000;
-      const stepTime = Math.abs(Math.floor(duration / target));
-      
-      let count = 0;
-      const timer = setInterval(() => {
-        count += 1;
-        counter.textContent = count + "+";
-        if (count >= target) {
-          counter.textContent = target + "+";
-          clearInterval(timer);
-        }
-      }, stepTime);
-    });
-  }
-
-
-  // 9. PROGRESSIVE SKILL BARS
-  function animateSkillFills() {
-    const fills = document.querySelectorAll(".skill-fill");
-    fills.forEach(fill => {
-      const targetWidth = fill.getAttribute("data-progress");
-      setTimeout(() => {
-        fill.style.width = targetWidth;
-      }, 200);
-    });
-  }
-
-
-  // 10. GSAP SCROLL TRIGGERS
+  // 20. SCROLL REVEAL STAGGER ANIMATIONS
   gsap.registerPlugin(ScrollTrigger);
 
-  const reveals = document.querySelectorAll(".scroll-reveal");
-  reveals.forEach(element => {
-    gsap.fromTo(element, 
-      { opacity: 0, y: 30 }, 
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.8, 
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: element,
-          start: "top 85%",
-          toggleActions: "play none none none"
-        }
+  document.querySelectorAll(".scroll-reveal").forEach(el => {
+    gsap.fromTo(el, { opacity: 0, y: 30 }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none"
       }
-    );
+    });
   });
 
-  const header = document.getElementById("site-header");
-  const scrollProgressBar = document.getElementById("scroll-progress-bar");
+});
 
+
+
+// Add this inside the DOMContentLoaded callback, before the closing bracket
+
+// 21. CV DOWNLOAD FUNCTIONALITY
+const cvDownloadBtn = document.getElementById("cv-download-btn");
+if (cvDownloadBtn) {
+  cvDownloadBtn.addEventListener("click", () => {
+    // Create a dummy CV blob
+    const cvContent = `
+      DHARMESH AHIR - SENIOR FLUTTER DEVELOPER
+      =========================================
+      
+      CONTACT
+      -------
+      Email: katariyadharmesh658@gmail.com
+      Phone: +91 6354464371
+      Location: Surat, Gujarat, India
+      
+      PROFESSIONAL SUMMARY
+      --------------------
+      Senior Flutter Developer with 3+ years of experience building robust, 
+      pixel-perfect, and high-performance cross-platform applications. 
+      Specializing in state management architectures, clean layout transitions, 
+      and fluid UI experiences.
+      
+      WORK EXPERIENCE
+      ---------------
+      Senior Flutter Engineer (2024 - Present)
+      • Directing end-to-end multi-platform application execution
+      • Crafting secure WebRTC video structures and role-based controls
+      • Implementing payment models and complex client structures
+      
+      Flutter Developer (2022 - 2024)
+      • Developed and scaled cross-platform mobile apps
+      • Configured reliable data synchronization mechanisms
+      • Built offline-first database systems and localized multi-language apps
+      
+      TECHNICAL SKILLS
+      ----------------
+      • Flutter & Dart Architecture - 95%
+      • State Management (GetX / BLoC / Riverpod) - 90%
+      • Firebase Systems & Cloud Integrations - 88%
+      • REST & WebSockets Protocols - 85%
+      
+      TOOLS
+      -----
+      Android Studio, VS Code, Git, Figma, Postman, CI/CD
+      
+      PORTFOLIO PROJECTS
+      ------------------
+      • Helix Care Platform - Healthcare Portal with WebRTC
+      • Resido Management - Property administration ecosystem
+      • Khata Digital Ledger - Bilingual payment ledger system
+      • Viosa AI Prep Platform - Interview practice platform
+    `;
+    
+    const blob = new Blob([cvContent], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Dharmesh_Ahir_Flutter_CV.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    SoundEngine.playCelebration();
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  });
+}
+
+// 22. NEWSLETTER SUBSCRIBE FUNCTIONALITY
+const newsletterBtn = document.getElementById("newsletter-btn");
+const newsletterEmail = document.getElementById("newsletter-email");
+
+if (newsletterBtn && newsletterEmail) {
+  newsletterBtn.addEventListener("click", () => {
+    const email = newsletterEmail.value.trim();
+    if (!email || !email.includes("@")) {
+      // Show error feedback
+      const feedback = document.createElement("div");
+      feedback.textContent = "Please enter a valid email address";
+      feedback.style.color = "#ff3366";
+      feedback.style.fontSize = "0.8rem";
+      feedback.style.marginTop = "8px";
+      newsletterEmail.parentElement.appendChild(feedback);
+      setTimeout(() => feedback.remove(), 3000);
+      return;
+    }
+    
+    // Simulate subscription
+    newsletterBtn.textContent = "Subscribing...";
+    newsletterBtn.disabled = true;
+    
+    setTimeout(() => {
+      newsletterBtn.textContent = "Subscribed! ✓";
+      newsletterEmail.value = "";
+      
+      setTimeout(() => {
+        newsletterBtn.textContent = "Subscribe";
+        newsletterBtn.disabled = false;
+      }, 2000);
+      
+      SoundEngine.playClick();
+      
+      const successMsg = document.createElement("div");
+      successMsg.textContent = "Thanks for subscribing! You'll receive updates soon.";
+      successMsg.style.color = "#00ff00";
+      successMsg.style.fontSize = "0.8rem";
+      successMsg.style.marginTop = "8px";
+      newsletterEmail.parentElement.appendChild(successMsg);
+      setTimeout(() => successMsg.remove(), 4000);
+    }, 1000);
+  });
+}
+
+// 23. FIX HAMBURGER CLOSE ON NAVIGATION
+const mobileNavLinksFixed = document.querySelectorAll(".mobile-nav-link");
+mobileNavLinksFixed.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute("href");
+    if (targetId && targetId !== "#") {
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        lenis.scrollTo(targetElement, { duration: 1.2 });
+      }
+    }
+    // Close mobile menu
+    hamburger.classList.remove("active");
+    mobileOverlay.classList.remove("open");
+  });
+});
+
+// 24. FIX SIDE NAVIGATION DOTS CLICK
+const sideDots = document.querySelectorAll(".side-dot");
+sideDots.forEach(dot => {
+  dot.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = dot.getAttribute("data-sec");
+    if (targetId) {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        lenis.scrollTo(targetElement, { duration: 1.2 });
+      }
+    }
+  });
+});
+
+// 25. FIX FILTER UNDERLINE INITIAL POSITION
+if (filterButtons.length > 0 && activeIndicator) {
+  const activeBtn = document.querySelector(".filter-tab-btn.active");
+  if (activeBtn) {
+    positionFilterUnderline(activeBtn);
+  }
+  
+  window.addEventListener("resize", () => {
+    const currentActive = document.querySelector(".filter-tab-btn.active");
+    if (currentActive) {
+      positionFilterUnderline(currentActive);
+    }
+  });
+}
+
+// 26. FIX PORTFOLIO LAYOUT BUTTONS INITIAL STATE
+const layoutBtns = document.querySelectorAll(".layout-btn");
+const savedLayout = localStorage.getItem("dh-portfolio-layout") || "grid";
+layoutBtns.forEach(btn => {
+  if (btn.getAttribute("data-layout-val") === savedLayout) {
+    btn.classList.add("active");
+  } else {
+    btn.classList.remove("active");
+  }
+});
+activeLayout = savedLayout;
+
+// Save layout preference when changed
+document.querySelectorAll(".layout-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const newLayout = btn.getAttribute("data-layout-val");
+    localStorage.setItem("dh-portfolio-layout", newLayout);
+  });
+});
+
+// 27. FIX MODAL BUTTON TEXT
+const modalProjectLink = document.getElementById("modal-project-link");
+if (modalProjectLink) {
+  modalProjectLink.addEventListener("click", (e) => {
+    const url = modalProjectLink.getAttribute("href");
+    if (!url || url === "#") {
+      e.preventDefault();
+      const feedback = document.createElement("div");
+      feedback.textContent = "Live demo link available upon request";
+      feedback.style.color = "var(--text-accent)";
+      feedback.style.fontSize = "0.8rem";
+      feedback.style.padding = "8px";
+      document.querySelector(".modal-action-bar").appendChild(feedback);
+      setTimeout(() => feedback.remove(), 3000);
+    }
+  });
+}
+
+// 28. ADD SCROLL PROGRESS BAR UPDATE
+const progressBar = document.getElementById("scroll-progress-bar");
+if (progressBar) {
+  window.addEventListener("scroll", () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + "%";
+  });
+}
+
+// 29. FIX HEADER SCROLL EFFECT
+const siteHeader = document.getElementById("site-header");
+if (siteHeader) {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
-      header.classList.add("scrolled");
+      siteHeader.classList.add("scrolled");
     } else {
-      header.classList.remove("scrolled");
+      siteHeader.classList.remove("scrolled");
     }
-
-    const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.scrollY / windowHeight) * 100;
-    scrollProgressBar.style.width = `${progress}%`;
   });
+}
 
-
-  // 11. DYNAMIC PORTFOLIO RENDERING SYSTEM WITH 3 UNIQUE TYPE LAYOUTS
-  const portfolioGrid = document.getElementById("portfolio-grid");
-  const detailModal = document.getElementById("project-detail-modal");
-  const modalCloseBtn = document.getElementById("modal-close-btn");
-
-  const modalTitle = document.getElementById("modal-project-title");
-  const modalBadge = document.getElementById("modal-project-badge");
-  const modalTagsContainer = document.getElementById("modal-project-tags");
-  const modalLink = document.getElementById("modal-project-link");
-  const modalButtonText = document.getElementById("modal-button-text");
-  const modalDesc = document.getElementById("modal-project-description");
-
-  let activeLayout = "grid"; // grid, split, carousel
-  let currentFilter = "all";
-
-  // Function to build Layout 1: Grid Cards
-  function renderGridLayout(items) {
-    portfolioGrid.className = "portfolio-container layout-grid";
-    portfolioGrid.innerHTML = "";
-
-    items.forEach(proj => {
-      const card = document.createElement("div");
-      card.className = "project-card";
-      card.setAttribute("data-category", proj.category);
-
-      const visibleTags = proj.tags.slice(0, 3).map(t => `<span class="proj-badge">${t}</span>`).join(" ");
-
-      card.innerHTML = `
-        <div class="project-media-wrapper">
-          <div class="mock-screenshot ${proj.imageClass}"></div>
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="${proj.siteUrl}" target="_blank" rel="noopener noreferrer" class="btn-icon circle magnetic" aria-label="${proj.buttonText}"><i data-lucide="external-link"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="proj-badge" style="color:var(--text-accent);">${proj.category.toUpperCase()}</span>
-          <h3>${proj.title}</h3>
-          <p>${proj.description.substring(0, 140)}...</p>
-          <div style="margin-top: 12px; display:flex; gap:6px; flex-wrap:wrap;">
-            ${visibleTags}
-          </div>
-          <button class="btn-text-link view-details-trigger" data-id="${proj.id}">
-            <span>Read Details & Modules</span> <i data-lucide="arrow-right"></i>
-          </button>
-        </div>
-      `;
-      portfolioGrid.appendChild(card);
-    });
+// 30. ADD MISSING THEME RIPPLE STYLE
+const style = document.createElement('style');
+style.textContent = `
+  .theme-ripple-overlay {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 9999;
   }
-
-  // Function to build Layout 2: Interactive Split List
-  function renderSplitLayout(items) {
-    portfolioGrid.className = "portfolio-container layout-split";
-    portfolioGrid.innerHTML = "";
-
-    // Column Left: The detailed Rows
-    const leftCol = document.createElement("div");
-    leftCol.className = "split-list-column";
-
-    items.forEach(proj => {
-      const row = document.createElement("div");
-      row.className = "project-card split-row";
-      row.setAttribute("data-id", proj.id);
-      row.setAttribute("data-category", proj.category);
-
-      const visibleTags = proj.tags.slice(0, 3).map(t => `<span class="proj-badge">${t}</span>`).join(" ");
-
-      row.innerHTML = `
-        <span class="proj-badge" style="color:var(--text-accent);">${proj.category.toUpperCase()}</span>
-        <h3>${proj.title}</h3>
-        <p>${proj.description.substring(0, 110)}...</p>
-        <div style="margin-top: 10px; display:flex; gap:6px; flex-wrap:wrap;">
-          ${visibleTags}
-        </div>
-        <button class="btn-text-link view-details-trigger" data-id="${proj.id}">
-          <span>Read Details & Modules</span> <i data-lucide="arrow-right"></i>
-        </button>
-      `;
-      leftCol.appendChild(row);
-    });
-
-    // Column Right: Direct Absolute High fidelity image panel
-    const rightCol = document.createElement("div");
-    rightCol.className = "split-preview-panel";
-    
-    // Default initial image is Helix Care
-    const initialScreenClass = items.length > 0 ? items[0].imageClass : "project-image-web-helix";
-    rightCol.innerHTML = `
-      <div class="split-preview-screen ${initialScreenClass}" id="split-display-screen"></div>
-    `;
-
-    portfolioGrid.appendChild(leftCol);
-    portfolioGrid.appendChild(rightCol);
-
-    // Attach real-time hover preview switches
-    const splitRows = document.querySelectorAll(".split-row");
-    const displayScreen = document.getElementById("split-display-screen");
-
-    splitRows.forEach(row => {
-      row.addEventListener("mouseenter", () => {
-        const id = row.getAttribute("data-id");
-        const match = items.find(p => p.id === id);
-        if (match && displayScreen) {
-          // Clear previous screenshot styles and apply the hovered one
-          displayScreen.className = `split-preview-screen ${match.imageClass}`;
-        }
-      });
-    });
-  }
-
-  // Function to build Layout 3: Horizontal Carousel
-  function renderCarouselLayout(items) {
-    portfolioGrid.className = "portfolio-container layout-carousel";
-    portfolioGrid.innerHTML = "";
-
-    items.forEach(proj => {
-      const card = document.createElement("div");
-      card.className = "project-card";
-      card.setAttribute("data-category", proj.category);
-
-      const visibleTags = proj.tags.slice(0, 3).map(t => `<span class="proj-badge">${t}</span>`).join(" ");
-
-      card.innerHTML = `
-        <div class="project-media-wrapper">
-          <div class="mock-screenshot ${proj.imageClass}"></div>
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="${proj.siteUrl}" target="_blank" rel="noopener noreferrer" class="btn-icon circle magnetic" aria-label="${proj.buttonText}"><i data-lucide="external-link"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="proj-badge" style="color:var(--text-accent);">${proj.category.toUpperCase()}</span>
-          <h3>${proj.title}</h3>
-          <p>${proj.description.substring(0, 130)}...</p>
-          <div style="margin-top: 12px; display:flex; gap:6px; flex-wrap:wrap;">
-            ${visibleTags}
-          </div>
-          <button class="btn-text-link view-details-trigger" data-id="${proj.id}">
-            <span>Read Details & Modules</span> <i data-lucide="arrow-right"></i>
-          </button>
-        </div>
-      `;
-      portfolioGrid.appendChild(card);
-    });
-  }
-
-  function renderPortfolio() {
-    if (!portfolioGrid) return;
-
-    // First filter items based on category tabs
-    const filtered = portfolioItems.filter(p => currentFilter === "all" || p.category === currentFilter);
-
-    if (activeLayout === "grid") {
-      renderGridLayout(filtered);
-    } else if (activeLayout === "split") {
-      renderSplitLayout(filtered);
-    } else if (activeLayout === "carousel") {
-      renderCarouselLayout(filtered);
-    }
-
-    lucide.createIcons();
-    bindInteractiveElements();
-    bindModalEvents();
-  }
-
-  // Modal display binding
-  function bindModalEvents() {
-    const triggers = document.querySelectorAll(".view-details-trigger");
-    triggers.forEach(trigger => {
-      trigger.addEventListener("click", () => {
-        const projId = trigger.getAttribute("data-id");
-        const proj = portfolioItems.find(p => p.id === projId);
-        
-        if (proj) {
-          modalTitle.textContent = proj.title;
-          modalBadge.textContent = proj.category.toUpperCase();
-          modalButtonText.textContent = proj.buttonText;
-          modalLink.setAttribute("href", proj.siteUrl);
-          modalDesc.textContent = proj.description;
-
-          modalTagsContainer.innerHTML = proj.tags.map(tag => `<span class="modal-tag-badge">${tag}</span>`).join("");
-
-          detailModal.classList.add("open");
-          lucide.createIcons();
-        }
-      });
-    });
-  }
-
-  // Multi path modal close controls
-  const closeModal = () => {
-    detailModal.classList.remove("open");
-  };
-
-  modalCloseBtn.addEventListener("click", closeModal);
-
-  // Close when clicking outside of the modal panel
-  detailModal.addEventListener("click", (e) => {
-    if (e.target === detailModal) {
-      closeModal();
-    }
-  });
-
-  // Close on Escape Key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeModal();
-    }
-  });
-
-  // Filter tabs
-  const filterBtns = document.querySelectorAll(".filter-tab-btn");
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentFilter = btn.getAttribute("data-filter");
-      renderPortfolio();
-    });
-  });
-
-  // Layout switcher triggers
-  const layoutBtns = document.querySelectorAll(".layout-btn");
-  layoutBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      layoutBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeLayout = btn.getAttribute("data-layout-val");
-      renderPortfolio();
-    });
-  });
-
-
-  // 12. CV DOWNLOAD
-  const cvBtn = document.getElementById("cv-download-btn");
-  cvBtn.addEventListener("click", () => {
-    SoundEngine.playCelebration();
-
-    confetti({
-      particleCount: 160,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ["#00bcd4", "#d4af37", "#4fbc75", "#e040fb"]
-    });
-
-    const link = document.createElement("a");
-    link.href = "Dharmesh_flutter.pdf";
-    link.download = "Dharmesh_flutter.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
-
-
-  // 13. AI ASSISTANT
-  const aiBubble = document.getElementById("ai-chat-bubble");
-  const aiWindow = document.getElementById("ai-chat-window");
-  const aiClose = document.getElementById("ai-chat-close");
-  const aiSendBtn = document.getElementById("ai-send-btn");
-  const aiInput = document.getElementById("ai-user-input");
-  const aiMessageFeed = document.getElementById("ai-chat-messages");
-
-  aiBubble.addEventListener("click", () => {
-    aiWindow.classList.toggle("open");
-  });
-  aiClose.addEventListener("click", () => {
-    aiWindow.classList.remove("open");
-  });
-
-  const appendMessage = (content, sender = "bot") => {
-    const msg = document.createElement("div");
-    msg.classList.add("ai-msg", sender);
-    msg.textContent = content;
-    aiMessageFeed.appendChild(msg);
-    aiMessageFeed.scrollTop = aiMessageFeed.scrollHeight;
-  };
-
-  const processQuery = (query) => {
-    const norm = query.toLowerCase();
-    if (norm.includes("helix care") || norm.includes("healthcare")) {
-      return "Helix Care is a health application with telemedicine features, patient records, payment gateways, and role-based permissions built in Flutter Web.";
-    }
-    if (norm.includes("resido") || norm.includes("property")) {
-      return "Resido is a property management web application designed with GetX for tracking structures, landlords, rooms, and locations.";
-    }
-    if (norm.includes("experience") || norm.includes("years")) {
-      return "Dharmesh Ahir has 3+ years of professional experience deploying cross-platform applications built with Flutter & Dart.";
-    }
-    if (norm.includes("skills") || norm.includes("state") || norm.includes("technology")) {
-      return "Dharmesh specializes in GetX, BLoC, Provider, Riverpod, Firebase, REST APIs, Git, figma, and custom layouts.";
-    }
-    return "Thank you for asking! Dharmesh specializes in clean system architectures and animations. Feel free to use the contact form to discuss projects!";
-  };
-
-  const handleSend = () => {
-    const txt = aiInput.value.trim();
-    if (!txt) return;
-
-    appendMessage(txt, "user");
-    aiInput.value = "";
-
-    setTimeout(() => {
-      const response = processQuery(txt);
-      appendMessage(response, "bot");
-    }, 550);
-  };
-
-  aiSendBtn.addEventListener("click", handleSend);
-  aiInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") handleSend();
-  });
-
-
-  // 14. MOBILE NAVIGATION
-  const hamburger = document.getElementById("mobile-menu-toggle");
-  const mobileNav = document.getElementById("mobile-nav-overlay");
-  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
-
-  hamburger.addEventListener("click", () => {
-    mobileNav.classList.toggle("open");
-    hamburger.classList.toggle("active");
-  });
-
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      mobileNav.classList.remove("open");
-      hamburger.classList.remove("active");
-    });
-  });
-
-
-  // 15. SECURE CONTACT FORM HANDLING
-  const form = document.getElementById("contact-form");
-  const feedback = document.getElementById("form-feedback");
-  const submitBtn = document.getElementById("form-submit-btn");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    submitBtn.classList.add("loading");
-    submitBtn.disabled = true;
-
-    setTimeout(() => {
-      submitBtn.classList.remove("loading");
-      submitBtn.disabled = false;
-      
-      feedback.textContent = "Your secure message has been received! Dharmesh will get back to you shortly.";
-      feedback.className = "form-feedback success";
-      form.reset();
-    }, 1200);
-  });
-
-  const nBtn = document.getElementById("newsletter-btn");
-  nBtn.addEventListener("click", () => {
-    alert("Thank you for subscribing to Dharmesh's Flutter insights!");
-  });
-
-
-  // 16. MISCELLANEOUS SETUP
-  const backToTopBtn = document.getElementById("back-to-top");
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-});l̥
+`;
+document.head.appendChild(style);

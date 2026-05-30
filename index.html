@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="ocean" data-mode="dark">
+<html lang="en" data-theme="ocean" data-mode="dark" data-site-layout="glass">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dharmesh Ahir | Flutter Developer Portfolio</title>
+  <title>Dharmesh Ahir | Senior Flutter Developer Portfolio</title>
   
   <!-- SEO & Open Graph -->
-  <meta name="description" content="Portfolio of Dharmesh Ahir, Senior Flutter Developer with 3+ years of experience building cross-platform Android, iOS, and Web solutions. Based in Surat, India.">
+  <meta name="description" content="Portfolio of Dharmesh Ahir, Senior Flutter Developer with 3+ years of experience building premium cross-platform Android, iOS, and Web solutions.">
   <meta property="og:title" content="Dharmesh Ahir | Flutter Portfolio">
-  <meta property="og:description" content="Explore cross-platform applications, high-performance state architectures, and animations built by Dharmesh Ahir.">
+  <meta property="og:description" content="Explore beautiful cross-platform applications, high-performance architecture, and interactions built by Dharmesh Ahir.">
   <meta property="og:type" content="website">
   
   <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#030f1e">
 
-  <!-- Typography: Poppins -->
+  <!-- Typography: Poppins for default/modern + Playfair Display for Editorial -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
   
-  <!-- Separated, Maintainable Modular Stylesheets -->
+  <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/themes.css">
   <link rel="stylesheet" href="css/components.css">
@@ -31,13 +31,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 </head>
-<body>
+<body class="lenis-scrolling">
 
-  <!-- Custom Cursor Elements -->
+  <!-- Custom Morphing Cursor Elements -->
   <div id="custom-cursor" class="custom-cursor"></div>
   <div id="cursor-follower" class="cursor-follower"></div>
+
+  <!-- Ambient Light Effect Blobs (Backdrop) -->
+  <div class="ambient-glow-blobs">
+    <div class="glow-blob glow-1"></div>
+    <div class="glow-blob glow-2"></div>
+    <div class="glow-blob glow-3"></div>
+  </div>
 
   <!-- Audio Controls -->
   <div class="audio-panel">
@@ -46,15 +55,26 @@
     </button>
   </div>
 
-  <!-- Custom Preloader -->
+  <!-- Page Scroll/Reading Progress Tracker -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Cinematic Preloader -->
   <div id="preloader">
     <div class="preloader-content">
-      <div class="logo-animation">
-        <span>F</span><span>L</span><span>U</span><span>T</span><span>T</span><span>E</span><span>R</span>
+      <div class="svg-loader-wrap">
+        <!-- Self-drawing Flutter bird logo -->
+        <svg class="flutter-logo-drawing" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="draw-path p1" d="M 64.26,3 L 34.33,33 L 49.3,47.96 L 79.23,18.03 Z" stroke="var(--accent-color)" stroke-width="2" fill="none" />
+          <path class="draw-path p2" d="M 79.23,47.96 L 49.3,77.9 L 34.33,62.93 L 64.26,33 Z" stroke="var(--text-accent)" stroke-width="2" fill="none" />
+          <path class="draw-path p3" d="M 49.3,77.9 L 34.33,92.86 L 4.4,62.93 L 19.36,47.96 Z" stroke="var(--accent-color)" stroke-width="2" fill="none" />
+        </svg>
       </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar-fill"></div>
+      <div class="preloader-counter">
+        <span id="load-percentage">0</span>%
       </div>
+      <div id="preloader-tagline" class="preloader-tagline">Initializing Assets...</div>
     </div>
   </div>
 
@@ -72,22 +92,49 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- Palette Switch Drawer Trigger -->
-        <button id="theme-panel-toggle" class="btn-icon magnetic" aria-label="Change Color Theme">
+        <!-- Dynamic Layout Switcher Button -->
+        <div class="layout-toggle-wrapper">
+          <button id="layout-menu-toggle" class="btn-icon magnetic" aria-label="Switch Portfolio Layout Model">
+            <i data-lucide="layout"></i>
+          </button>
+          <div class="layout-dropdown-panel" id="layout-dropdown">
+            <button class="layout-select-btn" data-layout="minimal">
+              <i data-lucide="minus"></i> <span>Minimal Modern</span>
+            </button>
+            <button class="layout-select-btn" data-layout="creative">
+              <i data-lucide="sparkles"></i> <span>Creative Agency</span>
+            </button>
+            <button class="layout-select-btn active" data-layout="glass">
+              <i data-lucide="layers"></i> <span>Glassmorphism Tech</span>
+            </button>
+            <button class="layout-select-btn" data-layout="editorial">
+              <i data-lucide="book-open"></i> <span>Editorial Magazine</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Color Palette Picker Toggle -->
+        <button id="theme-panel-toggle" class="btn-icon magnetic" aria-label="Change Palette Color Scheme">
           <i data-lucide="palette"></i>
         </button>
-        <!-- Dark/Light Mode Switch -->
-        <button id="mode-toggle" class="btn-icon magnetic" aria-label="Toggle Dark/Light Mode">
-          <i data-lucide="sun" class="sun-icon"></i>
-          <i data-lucide="moon" class="moon-icon"></i>
+
+        <!-- Premium Dark/Light Mode Switch -->
+        <button id="mode-toggle" class="btn-icon magnetic" aria-label="Toggle Dark/Light mode">
+          <div class="icon-morph-container">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </div>
         </button>
-        <!-- CV Trigger -->
+
+        <!-- Dynamic CV Download Button with celebrations -->
         <button id="cv-download-btn" class="btn-primary magnetic">
-          <span>Download CV</span>
+          <span>Get CV</span>
           <i data-lucide="download"></i>
         </button>
+
         <!-- Mobile Toggle -->
-        <button id="mobile-menu-toggle" class="hamburger magnetic" aria-label="Toggle Mobile Menu">
+        <button id="mobile-menu-toggle" class="hamburger magnetic" aria-label="Toggle Navigation Options Menu">
+          <span></span>
           <span></span>
           <span></span>
         </button>
@@ -106,11 +153,11 @@
     </nav>
   </div>
 
-  <!-- Color Palette Configurator -->
+  <!-- Color Palette Switcher Drawer -->
   <div id="theme-drawer" class="theme-drawer">
     <div class="drawer-header">
-      <h3>Choose Theme Color</h3>
-      <button id="theme-drawer-close" class="btn-icon" aria-label="Close Theme Drawer"><i data-lucide="x"></i></button>
+      <h3>Theme Presets</h3>
+      <button id="theme-drawer-close" class="btn-icon" aria-label="Close Customization Settings Theme Panel"><i data-lucide="x"></i></button>
     </div>
     <div class="theme-presets">
       <button class="theme-preset-btn active" data-theme-val="ocean" style="--btn-color: #00bcd4">Ocean Blue (Default)</button>
@@ -122,19 +169,26 @@
     </div>
   </div>
 
-  <!-- WebGL Background -->
+  <!-- WebGL/Three.js Background Interactive Particle System Container -->
   <div id="three-canvas-container"></div>
 
-  <!-- Page Scroll Progress Tracker -->
-  <div id="scroll-progress-container">
-    <div id="scroll-progress-bar"></div>
+  <!-- Side Navigation Dots (Scroll Section Indicator) -->
+  <div class="side-navigation-indicator">
+    <a href="#hero" class="side-dot active" data-sec="hero" aria-label="Scroll back to top hero home block"></a>
+    <a href="#about" class="side-dot" data-sec="about" aria-label="Scroll to experience skill profile segment"></a>
+    <a href="#services" class="side-dot" data-sec="services" aria-label="Scroll to development architectural workflow analysis block"></a>
+    <a href="#portfolio" class="side-dot" data-sec="portfolio" aria-label="Scroll to portfolio engineering works showcase area"></a>
+    <a href="#contact" class="side-dot" data-sec="contact" aria-label="Scroll to secure email details dispatch workspace block"></a>
   </div>
 
-  <!-- Scroll Container -->
+  <!-- Core Page Scroll Wrapper -->
   <main id="scroll-container">
 
     <!-- 1. HERO SECTION -->
     <section id="hero" class="hero-section">
+      <!-- Mouse Responsive Canvas Overlay -->
+      <canvas id="hero-particles-canvas"></canvas>
+
       <div class="hero-grid">
         <div class="hero-text-area">
           <div class="badge-animated">Surat, Gujarat, India</div>
@@ -144,111 +198,215 @@
               <span id="typewriter" class="text-accent"></span><span class="cursor-blink">|</span>
             </span>
           </h1>
-          <p class="hero-lead">Professional Flutter Developer with 3+ Years of Experience building high-performance cross-platform applications for Android, iOS, and Web. I specialize in state management, Firebase integrations, and custom responsive UI/UX architecture.</p>
+          <p class="hero-lead">Senior Flutter Developer with 3+ Years of Experience building robust, pixel-perfect, and high-performance cross-platform applications. I specialize in state management architectures, clean layout transitions, and fluid UI experiences [2].</p>
+          
           <div class="hero-ctas">
             <a href="#portfolio" class="btn-primary large magnetic"><span>Explore Work</span> <i data-lucide="arrow-right"></i></a>
-            <a href="#contact" class="btn-outline large magnetic">Let's Create Something Awesome!</a>
+            <a href="#contact" class="btn-outline large magnetic">Let's Create Together</a>
           </div>
-          <div class="social-links-row">
-            <!-- Dynamic Social Media Icon Buttons targeting absolute links -->
-            <a href="https://github.com/katariyadharmesh" target="_blank" rel="noopener noreferrer" class="social-btn-premium magnetic" aria-label="GitHub Profile">
+
+          <!-- Luxury Social Media Buttons with Tooltips and Custom Glow Effects -->
+          <div class="social-links-row" id="luxury-social-row">
+            <a href="https://github.com/katariyadharmesh" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-github magnetic" aria-label="GitHub Developer Profile">
               <i data-lucide="github"></i>
-              <span>GitHub</span>
+              <span class="social-tooltip">GitHub</span>
             </a>
-            <a href="https://linkedin.com/in/dharmesh-ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium magnetic" aria-label="LinkedIn Profile">
+            <a href="https://linkedin.com/in/dharmesh-ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-linkedin magnetic" aria-label="LinkedIn Developer Profile">
               <i data-lucide="linkedin"></i>
-              <span>LinkedIn</span>
+              <span class="social-tooltip">LinkedIn</span>
             </a>
-            <a href="https://instagram.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium magnetic" aria-label="Instagram Profile">
+            <a href="https://twitter.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-twitter magnetic" aria-label="Twitter X Platform Account">
+              <svg viewBox="0 0 24 24" class="svg-icon-twitter" fill="currentColor" style="width:20px;height:20px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <span class="social-tooltip">Twitter / X</span>
+            </a>
+            <a href="https://instagram.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-instagram magnetic" aria-label="Instagram Creator Social Profile">
               <i data-lucide="instagram"></i>
-              <span>Instagram</span>
-            </a>
-            <a href="https://twitter.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium magnetic" aria-label="Twitter Profile">
-              <i data-lucide="twitter"></i>
-              <span>Twitter</span>
+              <span class="social-tooltip">Instagram</span>
             </a>
           </div>
         </div>
         
         <div class="hero-visual-area">
-          <div class="profile-card-glow">
-            <div class="profile-image-container">
-              <!-- Target image is portrait.jpg with a robust, visual SVG mesh fallback -->
-              <img src="portrait.jpg" alt="Dharmesh Ahir" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="profile-portrait-img">
-              <div class="profile-inner-mesh" style="display: none;">
-                <svg class="flutter-svg-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M50 0 L100 50 L75 75 L25 25 Z" fill="url(#blue-grad)" opacity="0.8"/>
-                  <path d="M100 50 L50 100 L25 75 L75 25 Z" fill="url(#accent-grad)"/>
-                  <defs>
-                    <linearGradient id="blue-grad" x1="25" y1="25" x2="100" y2="50">
-                      <stop offset="0%" stop-color="var(--primary-color)"/>
-                      <stop offset="100%" stop-color="var(--accent-color)"/>
-                    </linearGradient>
-                    <linearGradient id="accent-grad" x1="25" y1="75" x2="100" y2="50">
-                      <stop offset="0%" stop-color="var(--accent-color)"/>
-                      <stop offset="100%" stop-color="var(--text-accent)"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+          <div class="profile-card-glow-wrap">
+            <!-- Rotating code-snippet cards floating behind the image -->
+            <div class="code-snippet-card cs-1">
+              <pre><code><span class="keyword">class</span> <span class="class">Dharmesh</span> <span class="keyword">extends</span> <span class="class">Developer</span> {
+  <span class="type">String</span> role = <span class="string">'Flutter Senior'</span>;
+}</code></pre>
+            </div>
+            <div class="code-snippet-card cs-2">
+              <pre><code><span class="keyword">void</span> <span class="function">main</span>() {
+  <span class="function">runApp</span>(<span class="class">AwesomeWidget</span>());
+}</code></pre>
+            </div>
+
+            <!-- Profile Frame with animated gradient border (rotating hue) -->
+            <div class="profile-card-glow">
+              <div class="profile-image-container">
+                <!-- Portrait image using fallback element if missing -->
+                <img src="portrait.jpg" alt="Dharmesh Ahir Profile Portrait" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="profile-portrait-img">
+                <div class="profile-inner-mesh" style="display: none;">
+                  <svg class="flutter-svg-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0 L100 50 L75 75 L25 25 Z" fill="url(#blue-grad)" opacity="0.8"/>
+                    <path d="M100 50 L50 100 L25 75 L75 25 Z" fill="url(#accent-grad)"/>
+                    <defs>
+                      <linearGradient id="blue-grad" x1="25" y1="25" x2="100" y2="50">
+                        <stop offset="0%" stop-color="var(--primary-color)"/>
+                        <stop offset="100%" stop-color="var(--accent-color)"/>
+                      </linearGradient>
+                      <linearGradient id="accent-grad" x1="25" y1="75" x2="100" y2="50">
+                        <stop offset="0%" stop-color="var(--accent-color)"/>
+                        <stop offset="100%" stop-color="var(--text-accent)"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
               </div>
-            </div>
-            <!-- Metrics Overlay -->
-            <div class="metrics-overlay-card">
-              <span class="metric-num count-up" data-target="3">0</span>
-              <span class="metric-lbl">Years Experience</span>
-            </div>
-            <div class="metrics-overlay-card bottom-right-metric">
-              <span class="metric-num count-up" data-target="25">0</span>
-              <span class="metric-lbl">Projects Completed</span>
+              
+              <!-- Real-time metrics overlays -->
+              <div class="metrics-overlay-card">
+                <i data-lucide="award"></i>
+                <div class="metric-text-wrap">
+                  <span class="metric-num count-up" data-target="3">0</span>
+                  <span class="metric-lbl">Years Exp</span>
+                </div>
+              </div>
+              <div class="metrics-overlay-card bottom-right-metric">
+                <i data-lucide="briefcase"></i>
+                <div class="metric-text-wrap">
+                  <span class="metric-num count-up" data-target="25">0</span>
+                  <span class="metric-lbl">Projects</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Animated Scroll-Down Indicator with Pulse Glow -->
+      <a href="#about" class="scroll-down-indicator-wrapper" aria-label="Scroll down to details segment section">
+        <div class="mouse-glow-scroll">
+          <div class="wheel-scroller"></div>
+        </div>
+        <span class="scroll-ind-text">Scroll Down</span>
+      </a>
     </section>
 
     <!-- 2. ABOUT ME SECTION -->
     <section id="about" class="about-section scroll-reveal">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-grid">
-        <div class="about-content">
-          <p class="about-p-main">Flutter Developer with 3+ years experience building cross-platform applications for Android, iOS and Web. Based in Surat, India, I specialize in state management, Firebase integration, REST APIs, and custom UI development. Passionate about creating pixel-perfect, high-performance apps with clean code architecture.</p>
-          <p>I focus heavily on clean architecture splits, ensuring robust database performance, structural decoupling, and smooth layout transitions at 60fps.</p>
-          
-          <h3 class="subsection-title">Core Expertise:</h3>
-          <ul class="expertise-bullets-list">
-            <li><i data-lucide="check-circle-2"></i> Production-ready Flutter apps (3+ years experience)</li>
-            <li><i data-lucide="check-circle-2"></i> State management (GetX, BLoC, Provider, Riverpod)</li>
-            <li><i data-lucide="check-circle-2"></i> Firebase services (Auth, Firestore, Cloud Functions)</li>
-            <li><i data-lucide="check-circle-2"></i> REST APIs & clean architecture implementation</li>
-            <li><i data-lucide="check-circle-2"></i> Custom responsive UI/UX development</li>
-            <li><i data-lucide="check-circle-2"></i> Performance optimization & debugging</li>
-            <li><i data-lucide="check-circle-2"></i> CI/CD pipeline setup</li>
-          </ul>
+      <div class="about-section-header">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-quote-container">
+          <span class="pull-quote-mark">“</span>
+          <p class="about-quote-text">Clean code architecture isn't about writing less; it is about organizing logic so your future self doesn't want to rewrite the entire system [2].</p>
         </div>
-        
-        <div class="skills-showcase">
-          <h3 class="subsection-title">Technical Skills:</h3>
-          <div class="skills-wrapper">
-            <div class="skill-item">
-              <div class="skill-info"><span>Flutter & Dart Ecosystem</span><span class="skill-val">95%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-progress="95%"></div></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-left-side">
+          <!-- Dynamic Skill Tab Switchers -->
+          <div class="about-tab-buttons-row">
+            <button class="tab-select-btn active" data-tab-target="exp-timeline">Experience</button>
+            <button class="tab-select-btn" data-tab-target="edu-timeline">Education</button>
+            <button class="tab-select-btn" data-tab-target="skills-grid">Skills</button>
+            <button class="tab-select-btn" data-tab-target="tools-grid">Tools</button>
+          </div>
+
+          <!-- Tab Content Sections -->
+          <div class="about-tab-panels">
+            
+            <!-- Tab 1: Experience Interactive Timeline -->
+            <div class="tab-panel active" id="exp-timeline">
+              <div class="vertical-timeline-container">
+                <div class="timeline-line-filler"></div>
+                
+                <div class="timeline-node-card scroll-reveal">
+                  <div class="node-bullet"></div>
+                  <div class="node-meta">
+                    <span class="node-date">2024 - Present</span>
+                    <h4 class="node-title">Senior Flutter Engineer</h4>
+                    <span class="node-sub">Surat, Gujarat, India [2]</span>
+                  </div>
+                  <p class="node-desc">Directing end-to-end multi-platform application execution, crafting secure WebRTC video structures, role-based controls, payment models, and complex client structures [2].</p>
+                </div>
+
+                <div class="timeline-node-card scroll-reveal">
+                  <div class="node-bullet"></div>
+                  <div class="node-meta">
+                    <span class="node-date">2022 - 2024</span>
+                    <h4 class="node-title">Flutter Developer</h4>
+                    <span class="node-sub">Remote / Local Teams [2]</span>
+                  </div>
+                  <p class="node-desc">Developed and scaled cross-platform mobile apps. Configured reliable data synchronization mechanisms via offline-first database systems and localized multi-language apps [2].</p>
+                </div>
+              </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>State Management (GetX / BLoC / Riverpod)</span><span class="skill-val">90%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-progress="90%"></div></div>
+
+            <!-- Tab 2: Education Interactive Timeline -->
+            <div class="tab-panel" id="edu-timeline">
+              <div class="vertical-timeline-container">
+                <div class="timeline-line-filler"></div>
+
+                <div class="timeline-node-card">
+                  <div class="node-bullet"></div>
+                  <div class="node-meta">
+                    <span class="node-date">2019 - 2022</span>
+                    <h4 class="node-title">Bachelor of Science in Information Technology</h4>
+                    <span class="node-sub">Gujarat University [2]</span>
+                  </div>
+                  <p class="node-desc">Core coursework in algorithms, system designs, OOP languages, database structures, and mobile web configurations.</p>
+                </div>
+              </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Firebase Core & Firebase Services</span><span class="skill-val">88%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-progress="88%"></div></div>
+
+            <!-- Tab 3: Detailed Technical Skills Progress -->
+            <div class="tab-panel" id="skills-grid">
+              <div class="skills-bars-container">
+                <div class="skill-item">
+                  <div class="skill-info"><span>Flutter & Dart Architecture</span><span class="skill-val">95%</span></div>
+                  <div class="skill-track"><div class="skill-fill" data-progress="95%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info"><span>State Management (GetX / BLoC / Riverpod)</span><span class="skill-val">90%</span></div>
+                  <div class="skill-track"><div class="skill-fill" data-progress="90%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info"><span>Firebase Systems & Cloud Integrations</span><span class="skill-val">88%</span></div>
+                  <div class="skill-track"><div class="skill-fill" data-progress="88%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info"><span>REST & WebSockets Protocols</span><span class="skill-val">85%</span></div>
+                  <div class="skill-track"><div class="skill-fill" data-progress="85%"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>REST API Integration & Retrofit</span><span class="skill-val">85%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-progress="85%"></div></div>
+
+            <!-- Tab 4: Developer Tools Grid -->
+            <div class="tab-panel" id="tools-grid">
+              <div class="tools-showcase-grid">
+                <div class="tool-chip"><i data-lucide="terminal"></i> Android Studio</div>
+                <div class="tool-chip"><i data-lucide="code-2"></i> VS Code</div>
+                <div class="tool-chip"><i data-lucide="git-fork"></i> Git Version Control</div>
+                <div class="tool-chip"><i data-lucide="figma"></i> Figma Integration</div>
+                <div class="tool-chip"><i data-lucide="cpu"></i> Postman & APIs</div>
+              </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Custom UI Custom Drawing / Layouts</span><span class="skill-val">92%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-progress="92%"></div></div>
+
+          </div>
+        </div>
+
+        <div class="about-right-side">
+          <!-- slow orbiting tech stack layout -->
+          <div class="orbital-sphere-wrapper">
+            <div class="center-core-bird">
+              <i data-lucide="layers" class="orbital-core-icon"></i>
             </div>
+            <!-- Orbiting Nodes (Coordinates calculated dynamically in app.js) -->
+            <div class="orbital-node node-flutter" data-index="0"><span class="orb-lbl">Flutter</span></div>
+            <div class="orbital-node node-dart" data-index="1"><span class="orb-lbl">Dart</span></div>
+            <div class="orbital-node node-firebase" data-index="2"><span class="orb-lbl">Firebase</span></div>
+            <div class="orbital-node node-bloc" data-index="3"><span class="orb-lbl">BLoC</span></div>
+            <div class="orbital-node node-getx" data-index="4"><span class="orb-lbl">GetX</span></div>
           </div>
         </div>
       </div>
@@ -257,128 +415,143 @@
     <!-- 3. DEVELOPMENT PROCESS SECTION -->
     <section id="services" class="services-section scroll-reveal">
       <div class="text-center-wrapper">
-        <h2 class="section-title text-center">My Development Process</h2>
-        <p class="section-subtitle">A streamlined approach to deliver high-quality, pixel-perfect Flutter applications.</p>
+        <h2 class="section-title">Development Workflow</h2>
+        <p class="section-subtitle">Architectural standards and structures applied to deliver high-performance applications.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card tilt-card">
-          <div class="service-icon-box"><i data-lucide="compass"></i></div>
+        <div class="service-card tilt-card magnetic">
+          <div class="service-icon-box"><i data-lucide="drafting-compass"></i></div>
           <h3>1. Planning & Analysis</h3>
-          <p>We collaborate to define clear objectives and create a roadmap that aligns with your business goals, ensuring every step moves you closer to success.</p>
+          <p>Collaboratively structuring core requirements, validating API blueprints, and mapping precise state management strategies for standard layout operations [2].</p>
         </div>
-        <div class="service-card tilt-card">
-          <div class="service-icon-box"><i data-lucide="layers"></i></div>
-          <h3>2. Development & Implementation</h3>
-          <p>Building your solution with cutting-edge Flutter technology, maintaining transparent communication throughout the process to deliver exactly what you need.</p>
+        <div class="service-card tilt-card magnetic">
+          <div class="service-icon-box"><i data-lucide="binary"></i></div>
+          <h3>2. Core Implementation</h3>
+          <p>Writing responsive Dart logic with clean separations. We decouple business parameters from view layers, ensuring maintainable code bases [2].</p>
         </div>
-        <div class="service-card tilt-card">
-          <div class="service-icon-box"><i data-lucide="rocket"></i></div>
-          <h3>3. Testing & Launch</h3>
-          <p>Thorough testing and optimization to ensure your app is ready to deliver real results from day one, with ongoing support available.</p>
+        <div class="service-card tilt-card magnetic">
+          <div class="service-icon-box"><i data-lucide="test-tube-2"></i></div>
+          <h3>3. Optimize & Launch</h3>
+          <p>Performing extensive unit testing, frame-rate profiling up to 60fps, debugging render delays, and orchestrating deployment cycles to App Stores [2].</p>
         </div>
       </div>
     </section>
 
-    <!-- 4. PORTFOLIO SHOWCASE SECTION WITH LIVE LAYOUT CHANGER -->
+    <!-- 4. PORTFOLIO SHOWCASE SECTION WITH BENTO & MASONRY OPTIONS -->
     <section id="portfolio" class="portfolio-section scroll-reveal">
       <div class="portfolio-header">
         <div>
-          <h2 class="section-title">Case Studies & Projects</h2>
-          <p class="portfolio-subtitle">Explore my latest cross-platform implementations.</p>
+          <h2 class="section-title">Case Studies</h2>
+          <p class="portfolio-subtitle">Modern cross-platform installations and systems.</p>
         </div>
         
         <div class="portfolio-controls">
-          <!-- 3 Type Layout Switchers -->
           <div class="layout-selector-wrap">
-            <span class="layout-lbl text-accent">Layout:</span>
+            <span class="layout-lbl text-accent">Grid Style:</span>
             <div class="layout-btn-group">
-              <button class="layout-btn active magnetic" data-layout-val="grid" aria-label="Modern Card Grid Layout"><i data-lucide="grid"></i></button>
-              <button class="layout-btn magnetic" data-layout-val="split" aria-label="Interactive Split List Layout"><i data-lucide="columns"></i></button>
-              <button class="layout-btn magnetic" data-layout-val="carousel" aria-label="Horizontal Strip Carousel Layout"><i data-lucide="sliders-horizontal"></i></button>
+              <button class="layout-btn active magnetic" data-layout-val="grid" aria-label="Modern Card Grid View Mode"><i data-lucide="grid"></i></button>
+              <button class="layout-btn magnetic" data-layout-val="split" aria-label="Split List Interactive Row View Mode"><i data-lucide="columns"></i></button>
+              <button class="layout-btn magnetic" data-layout-val="carousel" aria-label="Horizontal Strip Scroller Carousel View Mode"><i data-lucide="sliders-horizontal"></i></button>
             </div>
           </div>
           
-          <div class="filter-tabs">
-            <button class="filter-tab-btn active" data-filter="all">All</button>
-            <button class="filter-tab-btn" data-filter="web">Web Apps</button>
-            <button class="filter-tab-btn" data-filter="mobile">Mobile Apps</button>
+          <div class="filter-tabs-container">
+            <div class="filter-tabs">
+              <button class="filter-tab-btn active" data-filter="all">All Projects</button>
+              <button class="filter-tab-btn" data-filter="web">Web Services</button>
+              <button class="filter-tab-btn" data-filter="mobile">Mobile Apps</button>
+            </div>
+            <!-- Sliding underline marker -->
+            <div class="active-filter-indicator"></div>
           </div>
         </div>
       </div>
 
-      <!-- Portfolio Core Shell: class managed programmatically by app.js -->
+      <!-- Core Portfolio Container -->
       <div class="portfolio-container layout-grid" id="portfolio-grid"></div>
     </section>
 
     <!-- 5. CONTACT SECTION -->
     <section id="contact" class="contact-section scroll-reveal">
       <div class="text-center-wrapper">
-        <h2 class="section-title text-center">Ready to start your project?</h2>
-        <p class="section-subtitle">Need Answers? Need help? Just email me or get in touch below.</p>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's discuss your product design requirements and build something solid together.</p>
       </div>
       
       <div class="contact-grid">
-        <form id="contact-form" class="contact-form-premium">
-          <div class="form-group-row">
+        <div class="contact-form-container tilt-card">
+          <form id="contact-form" class="contact-form-premium" novalidate>
+            <div class="form-group-row">
+              <div class="form-group-premium">
+                <span class="premium-field-label">Full Name</span>
+                <div class="input-wrapper">
+                  <span class="premium-field-icon"><i data-lucide="user"></i></span>
+                  <input type="text" id="name" class="premium-input-field" required placeholder="Full Name">
+                </div>
+                <div class="premium-glow-track"></div>
+              </div>
+              
+              <div class="form-group-premium">
+                <span class="premium-field-label">Email Address</span>
+                <div class="input-wrapper">
+                  <span class="premium-field-icon"><i data-lucide="mail"></i></span>
+                  <input type="email" id="email" class="premium-input-field" required placeholder="Email Address">
+                </div>
+                <div class="premium-glow-track"></div>
+              </div>
+            </div>
+
             <div class="form-group-premium">
-              <span class="premium-field-icon"><i data-lucide="user"></i></span>
-              <input type="text" id="name" class="premium-input-field" required placeholder=" ">
-              <label for="name" class="premium-field-label">Full Name</label>
+              <span class="premium-field-label">Subject</span>
+              <div class="input-wrapper">
+                <span class="premium-field-icon"><i data-lucide="briefcase"></i></span>
+                <input type="text" id="subject" class="premium-input-field" required placeholder="Subject">
+              </div>
               <div class="premium-glow-track"></div>
             </div>
-            
-            <div class="form-group-premium">
-              <span class="premium-field-icon"><i data-lucide="mail"></i></span>
-              <input type="email" id="email" class="premium-input-field" required placeholder=" ">
-              <label for="email" class="premium-field-label">Email Address</label>
+
+            <div class="form-group-premium textarea-premium">
+              <span class="premium-field-label">Project Details</span>
+              <div class="input-wrapper">
+                <span class="premium-field-icon"><i data-lucide="message-square"></i></span>
+                <textarea id="message" class="premium-input-field premium-textarea" maxlength="1000" required placeholder="Project Details..."></textarea>
+              </div>
               <div class="premium-glow-track"></div>
+              <div class="char-counter-text"><span id="char-count">0</span>/1000</div>
             </div>
-          </div>
 
-          <div class="form-group-premium">
-            <span class="premium-field-icon"><i data-lucide="message-square-more"></i></span>
-            <input type="text" id="subject" class="premium-input-field" required placeholder=" ">
-            <label for="subject" class="premium-field-label">Project Type / Subject</label>
-            <div class="premium-glow-track"></div>
-          </div>
-
-          <div class="form-group-premium textarea-premium">
-            <span class="premium-field-icon"><i data-lucide="text-quote"></i></span>
-            <textarea id="message" class="premium-input-field premium-textarea" required placeholder=" "></textarea>
-            <label for="message" class="premium-field-label">Your Project Concept Details</label>
-            <div class="premium-glow-track"></div>
-          </div>
-
-          <button type="submit" id="form-submit-btn" class="btn-primary-premium magnetic block">
-            <span>Send Secure Message</span>
-            <i data-lucide="send" class="btn-premium-send-icon"></i>
-          </button>
-          <div id="form-feedback" class="form-feedback"></div>
-        </form>
+            <button type="submit" id="form-submit-btn" class="btn-primary-premium magnetic block">
+              <span class="btn-text">Send Secure Message</span>
+              <div class="btn-loading-spinner"></div>
+              <i data-lucide="send" class="btn-premium-send-icon"></i>
+            </button>
+            <div id="form-feedback" class="form-feedback"></div>
+          </form>
+        </div>
 
         <div class="contact-info-cards">
-          <div class="info-card">
+          <div class="info-card tilt-card">
             <i data-lucide="mail"></i>
             <div>
-              <p class="card-title">Email Direct Connection</p>
-              <a href="mailto:katariyadharmesh658@gmail.com" class="card-val card-link">katariyadharmesh658@gmail.com</a>
+              <p class="card-title">Email Connection</p>
+              <a href="mailto:katariyadharmesh658@gmail.com" class="card-val card-link">katariyadharmesh658@gmail.com [2]</a>
             </div>
           </div>
-          <div class="info-card">
+          <div class="info-card tilt-card">
             <i data-lucide="phone"></i>
             <div>
-              <p class="card-title">Mobile Contact Number</p>
-              <a href="tel:+916354464371" class="card-val card-link">+91 6354464371</a>
+              <p class="card-title">Mobile Direct</p>
+              <a href="tel:+916354464371" class="card-val card-link">+91 6354464371 [2]</a>
             </div>
           </div>
-          <div class="info-card">
+          <div class="info-card tilt-card">
             <i data-lucide="map-pin"></i>
             <div>
-              <p class="card-title">Address & Studio Base</p>
+              <p class="card-title">Address Studio</p>
               <p class="card-val address-multiline">
                 419, 4th Floor, Nilkanth Plaza,<br>
-                Yogi Chowk Ground, Chikuwadi,<br>
-                Nana Varachha, Surat, Gujarat 395010
+                Yogi Chowk, Chikuwadi,<br>
+                Nana Varachha, Surat, Gujarat 395010 [2]
               </p>
             </div>
           </div>
@@ -391,45 +564,52 @@
       <div class="footer-top">
         <div class="footer-brand">
           <h3 class="footer-logo">Dharmesh Ahir</h3>
-          <p class="footer-description">Transforming abstract concepts into performant cross-platform Flutter applications. Let's build something amazing together!</p>
+          <p class="footer-description">Designing modular application ecosystems and clean responsive frameworks [2]. Let's start the dialogue.</p>
         </div>
         <div class="footer-newsletter">
-          <h4>Newsletter Subscription</h4>
-          <p>Subscribe for the latest updates and clean code patterns in Dart & Flutter.</p>
+          <h4>Developer updates</h4>
+          <p>Get insights into modular design structures and clean code structures built in Flutter [2].</p>
           <div class="newsletter-input-wrap">
-            <input type="email" placeholder="Your Email Address" aria-label="Email address for newsletter">
+            <input type="email" id="newsletter-email" placeholder="Email Address" aria-label="Email Address subscription registration">
             <button class="btn-primary magnetic" id="newsletter-btn">Subscribe</button>
           </div>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; 2025 Dharmesh Ahir. All rights reserved. Designed by Dharmesh Ahir</p>
-        <button id="back-to-top" class="btn-icon magnetic" aria-label="Scroll Back to Top"><i data-lucide="arrow-up"></i></button>
+        <p>&copy; 2026 Dharmesh Ahir. All rights reserved. Designed and Developed with care [2].</p>
+        <!-- Back To Top button with progress loading ring circle -->
+        <button id="back-to-top" class="btn-icon back-to-top-progress-wrap magnetic" aria-label="Scroll Back to Top of Page">
+          <svg class="progress-circle" width="44" height="44" viewBox="0 0 44 44">
+            <circle class="progress-circle-bg" cx="22" cy="22" r="18"></circle>
+            <circle class="progress-circle-fill" id="scroll-progress-ring" cx="22" cy="22" r="18"></circle>
+          </svg>
+          <i data-lucide="arrow-up" class="top-arrow-icon"></i>
+        </button>
       </div>
     </footer>
 
   </main>
 
-  <!-- AI COMPANION SYSTEM -->
+  <!-- AI ASSISTANT SYSTEM -->
   <div id="ai-chat-bubble" class="ai-bubble magnetic">
     <i data-lucide="sparkles"></i>
   </div>
   <div id="ai-chat-window" class="ai-chat-window">
     <div class="ai-chat-header">
-      <h4><i data-lucide="sparkles"></i> Dharmesh's Assistant</h4>
-      <button id="ai-chat-close" class="btn-icon" aria-label="Close Assistant"><i data-lucide="x"></i></button>
+      <h4><i data-lucide="sparkles"></i> Synthesized AI Assistant</h4>
+      <button id="ai-chat-close" class="btn-icon" aria-label="Close Assistant Panel Overlay"><i data-lucide="x"></i></button>
     </div>
     <div id="ai-chat-messages" class="ai-chat-messages">
-      <div class="ai-msg bot">Hello, I'm Dharmesh's synthetic model. Ask me anything regarding his Flutter skillsets, developer experience, or availability!</div>
+      <div class="ai-msg bot">Hello, I'm Dharmesh's synthetic assistant. Ask me details regarding his Flutter credentials, experience history, or app portfolio catalog [2].</div>
     </div>
     <div class="ai-chat-input-area">
-      <input type="text" id="ai-user-input" placeholder="Ask about state management...">
-      <button id="ai-send-btn" class="btn-icon" aria-label="Send query"><i data-lucide="chevron-right"></i></button>
+      <input type="text" id="ai-user-input" placeholder="Ask about state architecture...">
+      <button id="ai-send-btn" class="btn-icon" aria-label="Send query info request"><i data-lucide="chevron-right"></i></button>
     </div>
   </div>
 
-  <!-- UPGRADED SLIDING GLASS PORTFOLIO MODAL (With robust escape/outside-close triggers) -->
+  <!-- SLIDING GLASS PORTFOLIO MODAL (With Outside triggers & Escape binds) -->
   <div id="project-detail-modal" class="project-modal-overlay">
     <div class="project-modal-content">
       <div class="modal-fixed-header">
@@ -437,7 +617,7 @@
           <span class="modal-badge" id="modal-project-badge">Category</span>
           <h2 class="modal-title" id="modal-project-title">Project Title</h2>
         </div>
-        <button id="modal-close-btn" class="btn-icon modal-close-btn" aria-label="Close Detail Modal">
+        <button id="modal-close-btn" class="btn-icon modal-close-btn" aria-label="Close Case Detail Overlay Modal">
           <i data-lucide="x"></i>
         </button>
       </div>
@@ -445,7 +625,7 @@
         <div class="modal-tag-row" id="modal-project-tags"></div>
         <div class="modal-action-bar">
           <a href="#" target="_blank" id="modal-project-link" class="btn-primary-modal">
-            <span id="modal-button-text">Visit Project</span>
+            <span id="modal-button-text">Visit Live Project</span>
             <i data-lucide="external-link"></i>
           </a>
         </div>
@@ -460,7 +640,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').catch(err => {
-          console.log("Service Worker Registration Fault", err);
+          console.warn("Service Worker registration bypassed or omitted.", err);
         });
       });
     }

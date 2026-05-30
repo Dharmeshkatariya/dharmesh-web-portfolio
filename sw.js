@@ -1,4 +1,3 @@
-
 const CACHE_NAME = 'dharmesh-portfolio-cache-v2';
 const ASSETS = [
   '/',
@@ -8,8 +7,7 @@ const ASSETS = [
   '/css/components.css',
   '/css/layouts.css',
   '/js/app.js',
-  '/manifest.json',
-  '/Dharmesh_flutter.pdf'
+  '/manifest.json'
 ];
 
 self.addEventListener('install', (e) => {

@@ -1,171 +1,171 @@
 /* ==========================================================================
-   DYNAMIC PALETTES AND MODE OVERRIDES
+   COLOR PALETTES CONFIGURATORS (LIGHT/DARK PRESET MATRIX)
    ========================================================================== */
 
-/* default configuration preset: Ocean Blue */
+/* 1. Default Setup: Ocean Blue Theme */
 [data-theme="ocean"][data-mode="dark"] {
   --primary-color: #030f1e;
-  --secondary-color: #0d2644;
+  --secondary-color: #0c2340;
   --accent-color: #00e5ff;
-  --text-primary: #f0f7ff;
-  --text-secondary: #90a5be;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b9eb5;
   --text-accent: #00e5ff;
-  --bg-gradient: linear-gradient(135deg, #010811 0%, #0a1c31 100%);
-  --card-bg: rgba(13, 38, 68, 0.2);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #06152a 0%, #020914 100%);
+  --card-bg: rgba(12, 35, 64, 0.35);
   --card-border: rgba(0, 229, 255, 0.15);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(13, 38, 68, 0.15);
+  --form-input-bg: rgba(6, 21, 42, 0.5);
+  --shadow-color: rgba(0, 229, 255, 0.1);
 }
 [data-theme="ocean"][data-mode="light"] {
-  --primary-color: #f0f7ff;
+  --primary-color: #f4f8fc;
   --secondary-color: #0288d1;
   --accent-color: #00b0ff;
-  --text-primary: #012a4a;
-  --text-secondary: #4a607a;
+  --text-primary: #0a1e36;
+  --text-secondary: #5a6e85;
   --text-accent: #0288d1;
-  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #e1f5fe 100%);
-  --card-bg: rgba(225, 245, 254, 0.6);
-  --card-border: rgba(2, 136, 209, 0.15);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(255, 255, 255, 0.85);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #e1f5fe 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(2, 136, 209, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(2, 136, 209, 0.08);
 }
 
-/* Forest Green */
+/* 2. Forest Green Theme */
 [data-theme="forest"][data-mode="dark"] {
-  --primary-color: #061109;
-  --secondary-color: #1a4d2e;
-  --accent-color: #4fbc75;
-  --text-primary: #f0fbf4;
-  --text-secondary: #9cbca4;
-  --text-accent: #d4af37; /* Gold Details */
-  --bg-gradient: linear-gradient(135deg, #030a05 0%, #0c1c11 100%);
-  --card-bg: rgba(26, 77, 46, 0.15);
-  --card-border: rgba(79, 188, 117, 0.18);
-  --input-focus-border: var(--text-accent);
-  --form-input-bg: rgba(26, 77, 46, 0.1);
+  --primary-color: #051208;
+  --secondary-color: #11361c;
+  --accent-color: #00e676;
+  --text-primary: #eefbee;
+  --text-secondary: #8da493;
+  --text-accent: #ffd700; /* Rich Gold */
+  --bg-gradient: radial-gradient(circle at 50% 50%, #0d2a16 0%, #020703 100%);
+  --card-bg: rgba(17, 54, 28, 0.35);
+  --card-border: rgba(0, 230, 118, 0.15);
+  --form-input-bg: rgba(8, 26, 13, 0.5);
+  --shadow-color: rgba(0, 230, 118, 0.1);
 }
 [data-theme="forest"][data-mode="light"] {
-  --primary-color: #f1f8f3;
+  --primary-color: #f3f9f4;
   --secondary-color: #2e7d32;
   --accent-color: #1b5e20;
-  --text-primary: #112d15;
-  --text-secondary: #4a6650;
+  --text-primary: #081c0c;
+  --text-secondary: #586d5e;
   --text-accent: #b58d10;
-  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
-  --card-bg: rgba(232, 245, 233, 0.6);
-  --card-border: rgba(46, 125, 50, 0.15);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(255, 255, 255, 0.85);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #e8f5e9 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(46, 125, 50, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(46, 125, 50, 0.08);
 }
 
-/* Sunset Orange */
+/* 3. Sunset Orange Theme */
 [data-theme="sunset"][data-mode="dark"] {
-  --primary-color: #1a0a03;
-  --secondary-color: #4e1a05;
+  --primary-color: #170702;
+  --secondary-color: #3e1204;
   --accent-color: #ff5722;
   --text-primary: #fff2ed;
-  --text-secondary: #cbaea4;
+  --text-secondary: #bc9f95;
   --text-accent: #ffb74d;
-  --bg-gradient: linear-gradient(135deg, #0a0300 0%, #290e03 100%);
-  --card-bg: rgba(78, 26, 5, 0.15);
-  --card-border: rgba(255, 87, 34, 0.18);
-  --input-focus-border: var(--text-accent);
-  --form-input-bg: rgba(78, 26, 5, 0.1);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #290d03 0%, #080200 100%);
+  --card-bg: rgba(62, 18, 4, 0.35);
+  --card-border: rgba(255, 87, 34, 0.15);
+  --form-input-bg: rgba(25, 8, 2, 0.5);
+  --shadow-color: rgba(255, 87, 34, 0.1);
 }
 [data-theme="sunset"][data-mode="light"] {
-  --primary-color: #fff9f6;
+  --primary-color: #fffaf7;
   --secondary-color: #f4511e;
   --accent-color: #e64a19;
-  --text-primary: #5d2510;
-  --text-secondary: #8c6a5d;
+  --text-primary: #3a1306;
+  --text-secondary: #8c7166;
   --text-accent: #e64a19;
-  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #fbe9e7 100%);
-  --card-bg: rgba(253, 242, 240, 0.6);
-  --card-border: rgba(230, 74, 25, 0.15);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(255, 255, 255, 0.85);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #fbe9e7 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(244, 81, 30, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(244, 81, 30, 0.08);
 }
 
-/* Royal Purple */
+/* 4. Royal Purple Theme */
 [data-theme="purple"][data-mode="dark"] {
-  --primary-color: #12031c;
-  --secondary-color: #310a4a;
+  --primary-color: #11021c;
+  --secondary-color: #30064d;
   --accent-color: #e040fb;
-  --text-primary: #fcf5ff;
-  --text-secondary: #b69ebd;
-  --text-accent: #e040fb;
-  --bg-gradient: linear-gradient(135deg, #08010d 0%, #210433 100%);
-  --card-bg: rgba(49, 10, 74, 0.15);
-  --card-border: rgba(224, 64, 251, 0.18);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(49, 10, 74, 0.1);
+  --text-primary: #faf2ff;
+  --text-secondary: #b69ebe;
+  --text-accent: #00e5ff;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #210435 0%, #050108 100%);
+  --card-bg: rgba(48, 6, 77, 0.35);
+  --card-border: rgba(224, 64, 251, 0.15);
+  --form-input-bg: rgba(20, 2, 33, 0.5);
+  --shadow-color: rgba(224, 64, 251, 0.1);
 }
 [data-theme="purple"][data-mode="light"] {
   --primary-color: #faf5fc;
   --secondary-color: #8e24aa;
   --accent-color: #7b1fa2;
-  --text-primary: #3c094d;
-  --text-secondary: #745b7d;
+  --text-primary: #2d003b;
+  --text-secondary: #7b5f85;
   --text-accent: #8e24aa;
-  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
-  --card-bg: rgba(243, 229, 245, 0.6);
-  --card-border: rgba(123, 31, 162, 0.15);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(255, 255, 255, 0.85);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #f3e5f5 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(142, 36, 170, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(142, 36, 170, 0.08);
 }
 
-/* Cyberpunk Neon */
+/* 5. Cyberpunk Neon Theme */
 [data-theme="cyberpunk"][data-mode="dark"] {
-  --primary-color: #07000c;
+  --primary-color: #0a000f;
   --secondary-color: #21002e;
   --accent-color: #ff007f;
   --text-primary: #fff2f8;
-  --text-secondary: #b293a5;
+  --text-secondary: #af92a3;
   --text-accent: #00ffff;
-  --bg-gradient: linear-gradient(135deg, #030006 0%, #170020 100%);
-  --card-bg: rgba(33, 0, 46, 0.25);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #1a0026 0%, #030005 100%);
+  --card-bg: rgba(33, 0, 46, 0.45);
   --card-border: rgba(255, 0, 127, 0.25);
-  --input-focus-border: var(--text-accent);
-  --form-input-bg: rgba(33, 0, 46, 0.15);
+  --form-input-bg: rgba(15, 0, 21, 0.6);
+  --shadow-color: rgba(255, 0, 127, 0.15);
 }
 [data-theme="cyberpunk"][data-mode="light"] {
   --primary-color: #fff0f6;
   --secondary-color: #d81b60;
-  --accent-color: #00838f;
-  --text-primary: #4a001f;
-  --text-secondary: #7e5c6d;
+  --accent-color: #00a4b4;
+  --text-primary: #380017;
+  --text-secondary: #7f6071;
   --text-accent: #d81b60;
-  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #fce4ec 100%);
-  --card-bg: rgba(252, 228, 236, 0.6);
-  --card-border: rgba(216, 27, 96, 0.15);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(255, 255, 255, 0.85);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #fce4ec 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(216, 27, 96, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(216, 27, 96, 0.08);
 }
 
-/* Minimalist Mono */
+/* 6. Minimalist Mono Theme */
 [data-theme="mono"][data-mode="dark"] {
-  --primary-color: #0f0f0f;
+  --primary-color: #0e0e0e;
   --secondary-color: #242424;
-  --accent-color: #888888;
+  --accent-color: #777777;
   --text-primary: #f5f5f5;
-  --text-secondary: #9c9c9c;
+  --text-secondary: #909090;
   --text-accent: #ffffff;
-  --bg-gradient: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
-  --card-bg: rgba(36, 36, 36, 0.2);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+  --card-bg: rgba(36, 36, 36, 0.35);
   --card-border: rgba(255, 255, 255, 0.1);
-  --input-focus-border: var(--text-accent);
-  --form-input-bg: rgba(36, 36, 36, 0.1);
+  --form-input-bg: rgba(18, 18, 18, 0.5);
+  --shadow-color: rgba(255, 255, 255, 0.05);
 }
 [data-theme="mono"][data-mode="light"] {
-  --primary-color: #fafafa;
+  --primary-color: #f7f7f7;
   --secondary-color: #424242;
   --accent-color: #616161;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
+  --text-primary: #121212;
+  --text-secondary: #6c6c6c;
   --text-accent: #000000;
-  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-  --card-bg: rgba(245, 245, 245, 0.8);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --input-focus-border: var(--accent-color);
-  --form-input-bg: rgba(255, 255, 255, 0.85);
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #eaeaea 100%);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(0, 0, 0, 0.12);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(0, 0, 0, 0.04);
 }

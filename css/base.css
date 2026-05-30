@@ -1,26 +1,50 @@
 /* ==========================================================================
-   MANDATORY VARIABLES, FONTS, GLOBAL RESETS, AND SCROLL CONTROLS
+   GLOBAL VARIABLES, SCROLLBARS, RESETS AND BASE LAYOUT STRUCTURES
    ========================================================================== */
 :root {
   --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
-  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  --glass-blur: 16px;
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-quick: 0.25s ease;
+  
+  --glass-blur: 18px;
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
-  --border-radius-lg: 28px;
+  --border-radius-lg: 32px;
+  
+  --github-glow: rgba(240, 246, 252, 0.25);
+  --linkedin-glow: rgba(10, 102, 194, 0.45);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.45);
+  --stackoverflow-glow: rgba(244, 128, 36, 0.45);
+  --medium-glow: rgba(0, 171, 108, 0.45);
+  
+  --gradient-rainbow: linear-gradient(90deg, #00f0ff, #ff007f, #9d00ff, #00f0ff);
+}
+
+/* Lenis smooth scrolling configuration styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  user-select: none;
+  outline: none;
 }
 
 html {
-  scroll-behavior: smooth;
-  font-size: 16px;
   overflow-x: hidden;
+  background: var(--primary-color);
+  font-size: 16px;
 }
 
 body {
@@ -29,12 +53,12 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   position: relative;
-  transition: background var(--transition-smooth);
-  cursor: none;
+  transition: background var(--transition-smooth), color var(--transition-smooth);
+  overflow-x: hidden;
 }
 
-/* Custom Cursor Elements */
-.custom-cursor {
+/* Custom Morphing Cursor Elements */
+#custom-cursor {
   width: 8px;
   height: 8px;
   background-color: var(--text-accent);
@@ -42,36 +66,112 @@ body {
   position: fixed;
   pointer-events: none;
   z-index: 10000;
-  transition: transform 0.1s ease-out;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
 }
-.cursor-follower {
-  width: 36px;
-  height: 36px;
+#cursor-follower {
+  width: 32px;
+  height: 32px;
   border: 1.5px solid var(--text-accent);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
-  opacity: 0.65;
-}
-body:hover .custom-cursor,
-body:hover .cursor-follower {
-  opacity: 1;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Scrollbars & Run progress */
+/* Morphing States dynamically bound in JS */
+body[data-cursor-state="pointer"] #custom-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+}
+body[data-cursor-state="pointer"] #cursor-follower {
+  width: 48px;
+  height: 48px;
+  border-color: var(--text-accent);
+  background-color: rgba(0, 229, 255, 0.08);
+}
+body[data-cursor-state="text"] #custom-cursor {
+  width: 2px;
+  height: 24px;
+  border-radius: 0;
+}
+body[data-cursor-state="text"] #cursor-follower {
+  width: 0px;
+  height: 0px;
+  border-color: transparent;
+}
+
+/* Ambient glow blobs */
+.ambient-glow-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  transition: background-color var(--transition-smooth);
+}
+.glow-1 {
+  top: 10%;
+  left: 15%;
+  width: 400px;
+  height: 400px;
+  background: var(--accent-color);
+  animation: floatBlob1 15s infinite alternate ease-in-out;
+}
+.glow-2 {
+  bottom: 20%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: var(--secondary-color);
+  animation: floatBlob2 18s infinite alternate ease-in-out;
+}
+.glow-3 {
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 350px;
+  background: var(--text-accent);
+  animation: floatBlob1 22s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatBlob1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(120px, -80px) scale(1.15); }
+}
+@keyframes floatBlob2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-100px, 90px) scale(0.9); }
+}
+
+/* Webwebkit custom scrollbar definitions */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.15);
 }
 ::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: var(--border-radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
-  border-radius: 10px;
 }
 
+/* Scroll reading progress bar tracking layer */
 #scroll-progress-container {
   position: fixed;
   top: 0;
@@ -79,81 +179,62 @@ body:hover .cursor-follower {
   width: 100%;
   height: 4px;
   background: rgba(255, 255, 255, 0.04);
-  z-index: 1000;
+  z-index: 1001;
 }
 #scroll-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent-color), var(--text-accent));
+  background: var(--gradient-rainbow);
+  background-size: 400% 100%;
+  animation: shimmerGlow 8s linear infinite;
 }
 
+@keyframes shimmerGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* Three.js interactive canvas overlay container */
 #three-canvas-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -3;
   pointer-events: none;
 }
 
-/* Preloader styles */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #030f1e;
-  z-index: 10000;
+/* Basic structural parameters of page sections */
+section {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 48px;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
-.preloader-content {
-  text-align: center;
-}
-.logo-animation {
-  font-size: 2.5rem;
-  font-weight: 800;
-  letter-spacing: 4px;
-  color: #00e5ff;
-  margin-bottom: 24px;
-}
-.logo-animation span {
-  display: inline-block;
-  animation: bounceLetter 1.2s infinite ease-in-out;
-}
-.logo-animation span:nth-child(2) { animation-delay: 0.1s; }
-.logo-animation span:nth-child(3) { animation-delay: 0.2s; }
-.logo-animation span:nth-child(4) { animation-delay: 0.3s; }
-.logo-animation span:nth-child(5) { animation-delay: 0.4s; }
-.logo-animation span:nth-child(6) { animation-delay: 0.5s; }
-.logo-animation span:nth-child(7) { animation-delay: 0.6s; }
 
-@keyframes bounceLetter {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+/* Keyboard Accessibility indicator fallback defaults */
+*:focus-visible {
+  outline: 2px dashed var(--text-accent);
+  outline-offset: 4px;
 }
 
-.progress-bar-container {
-  width: 200px;
-  height: 4px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 2px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.progress-bar-fill {
-  width: 0%;
-  height: 100%;
-  background: #00e5ff;
-}
-
-/* Audio toggle */
-.audio-panel {
-  position: fixed;
-  bottom: 32px;
-  left: 32px;
-  z-index: 1000;
+/* Reduced animation styles */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: scroll !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  #custom-cursor, #cursor-follower {
+    display: none !important;
+  }
 }
