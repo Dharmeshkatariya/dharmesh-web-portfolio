@@ -1,25 +1,50 @@
+/* ==========================================================================
+   FIX: CONSTANT HORIZONTAL PADDING & SECTION STABILIZATION
+   ========================================================================== */
+section {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: clamp(80px, 8vw, 140px) clamp(24px, 5vw, 64px) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
 
-/* 1. SECTIONS HEADER LOGIC */
+.hero-grid, .about-grid, .services-grid, .contact-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Adjust Section Titles & Subtitles Alignment */
 .section-title {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 32px;
-  letter-spacing: -1.5px;
-  text-align: left;
+  font-size: clamp(2rem, 5vw, 3rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 16px !important;
+  text-align: left !important;
 }
+
 .section-subtitle {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  max-width: 600px;
-  text-align: left;
-  margin-top: -12px;
-  margin-bottom: 32px;
+  font-size: clamp(0.95rem, 2vw, 1.1rem) !important;
+  color: var(--text-secondary) !important;
+  text-align: left !important;
+  margin-bottom: 40px !important;
+  max-width: 650px !important;
 }
+
+.text-center-wrapper {
+  text-align: center !important;
+  width: 100% !important;
+}
+
 .text-center-wrapper .section-title,
 .text-center-wrapper .section-subtitle {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Header standard navigation setup */

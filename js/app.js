@@ -552,6 +552,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeLayout = "grid";
   let activeFilter = "all";
 
+ // 12. PORTFOLIO COMPONENT RENDERING
   function renderPortfolioSection() {
     portfolioGrid.innerHTML = "";
     
@@ -562,19 +563,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "project-card tilt-card";
       
+      const badgeList = proj.tags.slice(0, 3).map(t => `<span class="proj-badge">${t}</span>`).join("");
+
       card.innerHTML = `
-        <div class="project-media-wrapper" style="background-image: url('https://picsum.photos/seed/${proj.placeholderSeed}/600/400')">
+        <div class="project-media-wrapper">
+          <!-- Actual image element fallback to placeholder if error -->
+          <img class="mock-screenshot" 
+               src="https://picsum.photos/seed/${proj.placeholderSeed}/600/400" 
+               alt="${proj.title}"
+               loading="lazy"
+               onerror="this.style.display='none';">
           <div class="project-overlay">
-            <button class="btn-icon view-details-trigger magnetic" data-id="${proj.id}">
+            <button class="btn-icon view-details-trigger magnetic" data-id="${proj.id}" aria-label="Quick View details for ${proj.title}">
               <i data-lucide="eye"></i>
             </button>
           </div>
         </div>
         <div class="project-info">
-          <span class="proj-badge">${proj.category.toUpperCase()}</span>
+          <span class="proj-badge" style="width: fit-content; color: var(--text-accent); background: none; border: none; padding: 0;">${proj.category.toUpperCase()}</span>
           <h3>${proj.title}</h3>
           <p>${proj.description}</p>
-          <button class="btn-primary-modal view-details-trigger" style="margin-top:16px;" data-id="${proj.id}">View Project Specs</button>
+          <div class="proj-badge-row">
+            ${badgeList}
+          </div>
+          <button class="btn-primary-modal view-details-trigger" style="margin-top: 16px; width: fit-content;" data-id="${proj.id}">
+            <span>View Specs</span> <i data-lucide="arrow-right"></i>
+          </button>
         </div>
       `;
       portfolioGrid.appendChild(card);
