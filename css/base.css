@@ -1,0 +1,159 @@
+/* ==========================================================================
+   MANDATORY VARIABLES, FONTS, GLOBAL RESETS, AND SCROLL CONTROLS
+   ========================================================================== */
+:root {
+  --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --glass-blur: 16px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 28px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  transition: background var(--transition-smooth);
+  cursor: none;
+}
+
+/* Custom Cursor Elements */
+.custom-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.1s ease-out;
+}
+.cursor-follower {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--text-accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0.65;
+}
+body:hover .custom-cursor,
+body:hover .cursor-follower {
+  opacity: 1;
+}
+
+/* Scrollbars & Run progress */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.15);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  z-index: 1000;
+}
+#scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-color), var(--text-accent));
+}
+
+#three-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Preloader styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #030f1e;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preloader-content {
+  text-align: center;
+}
+.logo-animation {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #00e5ff;
+  margin-bottom: 24px;
+}
+.logo-animation span {
+  display: inline-block;
+  animation: bounceLetter 1.2s infinite ease-in-out;
+}
+.logo-animation span:nth-child(2) { animation-delay: 0.1s; }
+.logo-animation span:nth-child(3) { animation-delay: 0.2s; }
+.logo-animation span:nth-child(4) { animation-delay: 0.3s; }
+.logo-animation span:nth-child(5) { animation-delay: 0.4s; }
+.logo-animation span:nth-child(6) { animation-delay: 0.5s; }
+.logo-animation span:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes bounceLetter {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.progress-bar-container {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #00e5ff;
+}
+
+/* Audio toggle */
+.audio-panel {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 1000;
+}

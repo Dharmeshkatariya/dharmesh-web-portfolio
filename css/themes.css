@@ -1,0 +1,171 @@
+/* ==========================================================================
+   DYNAMIC PALETTES AND MODE OVERRIDES
+   ========================================================================== */
+
+/* default configuration preset: Ocean Blue */
+[data-theme="ocean"][data-mode="dark"] {
+  --primary-color: #030f1e;
+  --secondary-color: #0d2644;
+  --accent-color: #00e5ff;
+  --text-primary: #f0f7ff;
+  --text-secondary: #90a5be;
+  --text-accent: #00e5ff;
+  --bg-gradient: linear-gradient(135deg, #010811 0%, #0a1c31 100%);
+  --card-bg: rgba(13, 38, 68, 0.2);
+  --card-border: rgba(0, 229, 255, 0.15);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(13, 38, 68, 0.15);
+}
+[data-theme="ocean"][data-mode="light"] {
+  --primary-color: #f0f7ff;
+  --secondary-color: #0288d1;
+  --accent-color: #00b0ff;
+  --text-primary: #012a4a;
+  --text-secondary: #4a607a;
+  --text-accent: #0288d1;
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #e1f5fe 100%);
+  --card-bg: rgba(225, 245, 254, 0.6);
+  --card-border: rgba(2, 136, 209, 0.15);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Forest Green */
+[data-theme="forest"][data-mode="dark"] {
+  --primary-color: #061109;
+  --secondary-color: #1a4d2e;
+  --accent-color: #4fbc75;
+  --text-primary: #f0fbf4;
+  --text-secondary: #9cbca4;
+  --text-accent: #d4af37; /* Gold Details */
+  --bg-gradient: linear-gradient(135deg, #030a05 0%, #0c1c11 100%);
+  --card-bg: rgba(26, 77, 46, 0.15);
+  --card-border: rgba(79, 188, 117, 0.18);
+  --input-focus-border: var(--text-accent);
+  --form-input-bg: rgba(26, 77, 46, 0.1);
+}
+[data-theme="forest"][data-mode="light"] {
+  --primary-color: #f1f8f3;
+  --secondary-color: #2e7d32;
+  --accent-color: #1b5e20;
+  --text-primary: #112d15;
+  --text-secondary: #4a6650;
+  --text-accent: #b58d10;
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
+  --card-bg: rgba(232, 245, 233, 0.6);
+  --card-border: rgba(46, 125, 50, 0.15);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Sunset Orange */
+[data-theme="sunset"][data-mode="dark"] {
+  --primary-color: #1a0a03;
+  --secondary-color: #4e1a05;
+  --accent-color: #ff5722;
+  --text-primary: #fff2ed;
+  --text-secondary: #cbaea4;
+  --text-accent: #ffb74d;
+  --bg-gradient: linear-gradient(135deg, #0a0300 0%, #290e03 100%);
+  --card-bg: rgba(78, 26, 5, 0.15);
+  --card-border: rgba(255, 87, 34, 0.18);
+  --input-focus-border: var(--text-accent);
+  --form-input-bg: rgba(78, 26, 5, 0.1);
+}
+[data-theme="sunset"][data-mode="light"] {
+  --primary-color: #fff9f6;
+  --secondary-color: #f4511e;
+  --accent-color: #e64a19;
+  --text-primary: #5d2510;
+  --text-secondary: #8c6a5d;
+  --text-accent: #e64a19;
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #fbe9e7 100%);
+  --card-bg: rgba(253, 242, 240, 0.6);
+  --card-border: rgba(230, 74, 25, 0.15);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Royal Purple */
+[data-theme="purple"][data-mode="dark"] {
+  --primary-color: #12031c;
+  --secondary-color: #310a4a;
+  --accent-color: #e040fb;
+  --text-primary: #fcf5ff;
+  --text-secondary: #b69ebd;
+  --text-accent: #e040fb;
+  --bg-gradient: linear-gradient(135deg, #08010d 0%, #210433 100%);
+  --card-bg: rgba(49, 10, 74, 0.15);
+  --card-border: rgba(224, 64, 251, 0.18);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(49, 10, 74, 0.1);
+}
+[data-theme="purple"][data-mode="light"] {
+  --primary-color: #faf5fc;
+  --secondary-color: #8e24aa;
+  --accent-color: #7b1fa2;
+  --text-primary: #3c094d;
+  --text-secondary: #745b7d;
+  --text-accent: #8e24aa;
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
+  --card-bg: rgba(243, 229, 245, 0.6);
+  --card-border: rgba(123, 31, 162, 0.15);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Cyberpunk Neon */
+[data-theme="cyberpunk"][data-mode="dark"] {
+  --primary-color: #07000c;
+  --secondary-color: #21002e;
+  --accent-color: #ff007f;
+  --text-primary: #fff2f8;
+  --text-secondary: #b293a5;
+  --text-accent: #00ffff;
+  --bg-gradient: linear-gradient(135deg, #030006 0%, #170020 100%);
+  --card-bg: rgba(33, 0, 46, 0.25);
+  --card-border: rgba(255, 0, 127, 0.25);
+  --input-focus-border: var(--text-accent);
+  --form-input-bg: rgba(33, 0, 46, 0.15);
+}
+[data-theme="cyberpunk"][data-mode="light"] {
+  --primary-color: #fff0f6;
+  --secondary-color: #d81b60;
+  --accent-color: #00838f;
+  --text-primary: #4a001f;
+  --text-secondary: #7e5c6d;
+  --text-accent: #d81b60;
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #fce4ec 100%);
+  --card-bg: rgba(252, 228, 236, 0.6);
+  --card-border: rgba(216, 27, 96, 0.15);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Minimalist Mono */
+[data-theme="mono"][data-mode="dark"] {
+  --primary-color: #0f0f0f;
+  --secondary-color: #242424;
+  --accent-color: #888888;
+  --text-primary: #f5f5f5;
+  --text-secondary: #9c9c9c;
+  --text-accent: #ffffff;
+  --bg-gradient: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+  --card-bg: rgba(36, 36, 36, 0.2);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --input-focus-border: var(--text-accent);
+  --form-input-bg: rgba(36, 36, 36, 0.1);
+}
+[data-theme="mono"][data-mode="light"] {
+  --primary-color: #fafafa;
+  --secondary-color: #424242;
+  --accent-color: #616161;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-accent: #000000;
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  --card-bg: rgba(245, 245, 245, 0.8);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --input-focus-border: var(--accent-color);
+  --form-input-bg: rgba(255, 255, 255, 0.85);
+}
