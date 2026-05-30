@@ -1,0 +1,61 @@
+const { body, validationResult } = require('express-validator');
+
+// Contact form validation rules
+const validateContact = [
+  body('name')
+    .trim()
+    .notEmpty().withMessage('Name is required')
+    .isLength({ min: 2, max: 50 }).withMessage('Name must be between 2 and 50 characters'),
+  
+  body('email')
+    .trim()
+    .notEmpty().withMessage('Email is required')
+    .isEmail().withMessage('Please provide a valid email address')
+    .normalizeEmail(),
+  
+  body('subject')
+    .trim()
+    .notEmpty().withMessage('Subject is required')
+    .isLength({ max: 100 }).withMessage('Subject cannot exceed 100 characters'),
+  
+  body('message')
+    .trim()
+    .notEmpty().withMessage('Message is required')
+    .isLength({ min: 10, max: 1000 }).withMessage('Message must be between 10 and 1000 characters'),
+  
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        success: false, 
+        errors: errors.array() 
+      });
+    }
+    next();
+  }
+];
+
+// Newsletter validation
+const validateNewsletter = [
+  body('email')
+    .trim()
+    .notEmpty().withMessage('Email is required')
+    .isEmail().withMessage('Please provide a valid email address')
+    .normalizeEmail(),
+  
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        success: false, 
+        errors: errors.array() 
+      });
+    }
+    next();
+  }
+];
+
+module.exports = {
+  validateContact,
+  validateNewsletter
+};

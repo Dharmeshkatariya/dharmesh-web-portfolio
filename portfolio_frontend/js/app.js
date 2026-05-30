@@ -1,3 +1,9 @@
+/**
+ * ==========================================================================
+ * DHARMESH AHIR PREMIUM ENGINE
+ * Vanilla Javascript showcasing GSAP, Lenis, Custom Canvas, & Synth Audio.
+ * ==========================================================================
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -6,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "helix-care",
       category: "web",
-      placeholderSeed: "project1",
+      imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Helix Care Platform",
       siteUrl: "https://qa.helixdoc.com",
       tags: ["Flutter Web", "Dart", "Video WebRTC", "Stripe payment", "Role Permissions API"],
@@ -15,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "resido-property",
       category: "web",
-      placeholderSeed: "project2",
+      imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Resido Management",
       siteUrl: "https://resido-dev.helixbeat.com",
       tags: ["Flutter Web", "GetX Framework", "API Integration", "UI/UX Optimization"],
@@ -24,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "mtz-infotech",
       category: "web",
-      placeholderSeed: "project3",
+      imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=400&q=80",
       title: "MTZ Corporate Portal",
       siteUrl: "https://mtzinfotech.com/#/",
       tags: ["Flutter Web", "Responsive Architecture", "Custom Animators"],
@@ -33,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "khata-app",
       category: "mobile",
-      placeholderSeed: "project4",
+      imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Khata Digital Ledger",
       siteUrl: "https://play.google.com/store/apps/details?id=com.shree.khata",
       tags: ["Flutter Mobile", "Dart", "Localization", "Offline Syncing"],
@@ -42,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "dhasa-patel",
       category: "mobile",
-      placeholderSeed: "project5",
+      imageUrl: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Samaj Social Hub",
       siteUrl: "https://play.google.com/store/apps/details?id=com.dhasagam.patelsamaj",
       tags: ["Flutter Mobile", "Firebase backend", "Custom directories"],
@@ -51,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "vision-news",
       category: "mobile",
-      placeholderSeed: "project6",
+      imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Vision Media Portal",
       siteUrl: "https://play.google.com/store/apps/details?id=tw.com.gvm.dailynews",
       tags: ["Flutter Mobile", "RESTful parsers", "HTML renderers"],
@@ -60,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "roommatik",
       category: "web",
-      placeholderSeed: "project7",
+      imageUrl: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Roommatik Finder",
       siteUrl: "https://roommatik-eae91.web.app",
       tags: ["Flutter Web", "Cloud Hosting", "QR system API"],
@@ -69,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "viosa",
       category: "mobile",
-      placeholderSeed: "project8",
+      imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&h=400&q=80",
       title: "Viosa AI Prep Platform",
       siteUrl: "https://play.google.com/store/apps/details?id=com.viosa.app",
       tags: ["Flutter Mobile", "AI Model Core", "Native Downloader API"],
@@ -272,6 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
           renderPortfolioSection();
           animateTabSkillFills();
           initOrbitalSphere();
+          initTestimonialsSlider();
         }
       });
     }
@@ -379,7 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 8. HERO PARTICLES CANVAS
+  // 8. HERO PARTICLES CANVAS (Attrat/Repel mechanics)
   let canvas, ctx, particlesArray;
   const maxDistance = 100;
 
@@ -460,6 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const typewriterTarget = document.getElementById("typewriter");
 
   function initTypewriter() {
+    if(!typewriterTarget) return;
     const curWord = words[wordIdx];
     if (isDeleting) {
       typewriterTarget.textContent = curWord.substring(0, charIdx - 1);
@@ -552,7 +560,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeLayout = "grid";
   let activeFilter = "all";
 
- // 12. PORTFOLIO COMPONENT RENDERING
   function renderPortfolioSection() {
     portfolioGrid.innerHTML = "";
     
@@ -563,31 +570,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "project-card tilt-card";
       
-      const badgeList = proj.tags.slice(0, 3).map(t => `<span class="proj-badge">${t}</span>`).join("");
-
       card.innerHTML = `
         <div class="project-media-wrapper">
-          <!-- Actual image element fallback to placeholder if error -->
           <img class="mock-screenshot" 
-               src="https://picsum.photos/seed/${proj.placeholderSeed}/600/400" 
+               src="${proj.imageUrl}" 
                alt="${proj.title}"
                loading="lazy"
                onerror="this.style.display='none';">
           <div class="project-overlay">
-            <button class="btn-icon view-details-trigger magnetic" data-id="${proj.id}" aria-label="Quick View details for ${proj.title}">
+            <button class="btn-icon view-details-trigger magnetic" data-id="${proj.id}">
               <i data-lucide="eye"></i>
             </button>
           </div>
         </div>
         <div class="project-info">
-          <span class="proj-badge" style="width: fit-content; color: var(--text-accent); background: none; border: none; padding: 0;">${proj.category.toUpperCase()}</span>
+          <span class="proj-badge">${proj.category.toUpperCase()}</span>
           <h3>${proj.title}</h3>
-          <p>${proj.description}</p>
+          <p>${proj.description.substring(0, 120)}...</p>
           <div class="proj-badge-row">
-            ${badgeList}
+            ${proj.tags.slice(0, 3).map(t => `<span class="proj-badge">${t}</span>`).join('')}
           </div>
-          <button class="btn-primary-modal view-details-trigger" style="margin-top: 16px; width: fit-content;" data-id="${proj.id}">
-            <span>View Specs</span> <i data-lucide="arrow-right"></i>
+          <button class="btn-primary-modal view-details-trigger" style="margin-top:16px;" data-id="${proj.id}">
+            View Details <i data-lucide="arrow-right"></i>
           </button>
         </div>
       `;
@@ -659,54 +663,82 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModalOverlay(); });
 
 
-  // 14. SECURE CONTACT VERIFICATION
+  // 14. REAL CONTACT FORM BACKEND VIA FORMSPREE
   const contactForm = document.getElementById("contact-form");
   const submitBtn = document.getElementById("form-submit-btn");
   const charCountLabel = document.getElementById("char-count");
   const feedbackMsg = document.getElementById("form-feedback");
   const messageArea = document.getElementById("message");
 
-  messageArea.addEventListener("input", () => {
-    charCountLabel.textContent = messageArea.value.length;
-  });
-
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    feedbackMsg.textContent = "";
-    
-    let invalid = false;
-    document.querySelectorAll("#contact-form .premium-input-field").forEach(input => {
-      if (!input.value.trim()) {
-        invalid = true;
-        input.parentElement.classList.add("shake-error");
-        setTimeout(() => input.parentElement.classList.remove("shake-error"), 400);
-      }
+  if(messageArea) {
+    messageArea.addEventListener("input", () => {
+      charCountLabel.textContent = messageArea.value.length;
     });
+  }
 
-    if (invalid) return;
-
-    submitBtn.querySelector(".btn-text").style.display = "none";
-    submitBtn.querySelector(".btn-premium-send-icon").style.display = "none";
-    submitBtn.querySelector(".btn-loading-spinner").style.display = "inline-block";
-
-    setTimeout(() => {
-      submitBtn.querySelector(".btn-text").style.display = "inline";
-      submitBtn.querySelector(".btn-premium-send-icon").style.display = "inline";
-      submitBtn.querySelector(".btn-loading-spinner").style.display = "none";
-
-      feedbackMsg.textContent = "Your secure message has been delivered successfully!";
-      feedbackMsg.className = "form-feedback success";
+  if(contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      feedbackMsg.textContent = "";
       
-      SoundEngine.playCelebration();
-      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-      
-      contactForm.reset();
-      charCountLabel.textContent = "0";
-    }, 1500);
-  });
+      let invalid = false;
+      document.querySelectorAll("#contact-form .premium-input-field").forEach(input => {
+        if (!input.value.trim() || (input.type === 'email' && !input.value.includes('@'))) {
+          invalid = true;
+          input.parentElement.classList.add("shake-error");
+          setTimeout(() => input.parentElement.classList.remove("shake-error"), 400);
+        }
+      });
+
+      if (invalid) {
+        feedbackMsg.textContent = "Please verify your input fields.";
+        feedbackMsg.className = "form-feedback error";
+        return;
+      }
+
+      submitBtn.querySelector(".btn-text").style.display = "none";
+      submitBtn.querySelector(".btn-premium-send-icon").style.display = "none";
+      submitBtn.querySelector(".btn-loading-spinner").style.display = "inline-block";
+
+      const formData = new FormData(contactForm);
+
+      fetch(contactForm.getAttribute('action'), {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        submitBtn.querySelector(".btn-text").style.display = "inline";
+        submitBtn.querySelector(".btn-premium-send-icon").style.display = "inline";
+        submitBtn.querySelector(".btn-loading-spinner").style.display = "none";
+
+        if (response.ok) {
+          feedbackMsg.textContent = "Your secure message has been delivered successfully via Formspree!";
+          feedbackMsg.className = "form-feedback success";
+          
+          SoundEngine.playCelebration();
+          confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+          
+          contactForm.reset();
+          charCountLabel.textContent = "0";
+        } else {
+          feedbackMsg.textContent = "Delivery error. Please try sending again later.";
+          feedbackMsg.className = "form-feedback error";
+        }
+      }).catch(() => {
+        submitBtn.querySelector(".btn-text").style.display = "inline";
+        submitBtn.querySelector(".btn-premium-send-icon").style.display = "inline";
+        submitBtn.querySelector(".btn-loading-spinner").style.display = "none";
+        
+        feedbackMsg.textContent = "Network error. Please try sending again later.";
+        feedbackMsg.className = "form-feedback error";
+      });
+    });
+  }
 
 
-  // 15. 3D TILT EFFECT
+  // 15. 3D TILT EFFECT FOR PREMIUM CARDS
   function apply3DTiltMechanics() {
     document.querySelectorAll(".tilt-card").forEach(card => {
       card.addEventListener("mousemove", (e) => {
@@ -730,13 +762,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const backToTopBtn = document.getElementById("back-to-top");
   const ringFill = document.getElementById("scroll-progress-ring");
 
+  // Sync scroll indicator directly via Lenis scroller
   lenis.on('scroll', (e) => {
     const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
     const progress = window.scrollY / totalScroll;
     
     const offset = 113.1 - (progress * 113.1);
-    ringFill.style.strokeDashoffset = offset;
+    if(ringFill) ringFill.style.strokeDashoffset = offset;
 
+    // Track scroll active dots updates on scroll
     const secs = document.querySelectorAll("section");
     let currentActive = "hero";
     secs.forEach(sec => {
@@ -755,9 +789,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  backToTopBtn.addEventListener("click", () => {
-    lenis.scrollTo(0, { duration: 1.2 });
-  });
+  if(backToTopBtn) {
+    backToTopBtn.addEventListener("click", () => {
+      lenis.scrollTo(0, { duration: 1.2 });
+    });
+  }
 
 
   // 17. MOBILE NAVIGATION OVERLAY
@@ -765,10 +801,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileOverlay = document.getElementById("mobile-nav-overlay");
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
 
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    mobileOverlay.classList.toggle("open");
-  });
+  if(hamburger) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      mobileOverlay.classList.toggle("open");
+    });
+  }
 
   mobileNavLinks.forEach(link => {
     link.addEventListener("click", () => {
@@ -778,7 +816,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 18. AI COMPANION SYSTEM
+  // 18. AI COMPANION SYSTEM RESPONSE CONTROLS
   const aiBubble = document.getElementById("ai-chat-bubble");
   const aiWindow = document.getElementById("ai-chat-window");
   const aiClose = document.getElementById("ai-chat-close");
@@ -786,8 +824,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const aiInput = document.getElementById("ai-user-input");
   const aiFeed = document.getElementById("ai-chat-messages");
 
-  aiBubble.addEventListener("click", () => aiWindow.classList.toggle("open"));
-  aiClose.addEventListener("click", () => aiWindow.classList.remove("open"));
+  if(aiBubble) aiBubble.addEventListener("click", () => aiWindow.classList.toggle("open"));
+  if(aiClose) aiClose.addEventListener("click", () => aiWindow.classList.remove("open"));
 
   const dispatchAiResponse = () => {
     const txt = aiInput.value.trim();
@@ -817,11 +855,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 450);
   };
 
-  aiSend.addEventListener("click", dispatchAiResponse);
-  aiInput.addEventListener("keydown", (e) => { if (e.key === "Enter") dispatchAiResponse(); });
+  if(aiSend) aiSend.addEventListener("click", dispatchAiResponse);
+  if(aiInput) aiInput.addEventListener("keydown", (e) => { if (e.key === "Enter") dispatchAiResponse(); });
 
 
-  // 19. THREE.JS BACKGROUND PARTICLES
+  // 19. THREE.JS SYSTEM BACKGROUND PARTICLES (Static Ambient canvas)
   let scene, camera, renderer, starGeo, stars;
   const starsCount = 600;
 
@@ -886,68 +924,67 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 21. CV DOWNLOAD FUNCTIONALITY
+
+  // 21. PRINT-READY STRUCTURAL CV GENERATOR & DOWNLOAD
   const cvDownloadBtn = document.getElementById("cv-download-btn");
   if (cvDownloadBtn) {
     cvDownloadBtn.addEventListener("click", () => {
-      const cvContent = `
-        DHARMESH AHIR - SENIOR FLUTTER DEVELOPER
-        =========================================
-        
-        CONTACT
-        -------
-        Email: katariyadharmesh658@gmail.com
-        Phone: +91 6354464371
-        Location: Surat, Gujarat, India
-        
-        PROFESSIONAL SUMMARY
-        --------------------
-        Senior Flutter Developer with 3+ years of experience building robust, 
-        pixel-perfect, and high-performance cross-platform applications. 
-        Specializing in state management architectures, clean layout transitions, 
-        and fluid UI experiences.
-        
-        WORK EXPERIENCE
-        ---------------
-        Senior Flutter Engineer (2024 - Present)
-        • Directing end-to-end multi-platform application execution
-        • Crafting secure WebRTC video structures and role-based controls
-        • Implementing payment models and complex client structures
-        
-        Flutter Developer (2022 - 2024)
-        • Developed and scaled cross-platform mobile apps
-        • Configured reliable data synchronization mechanisms
-        • Built offline-first database systems and localized multi-language apps
-        
-        TECHNICAL SKILLS
-        ----------------
-        • Flutter & Dart Architecture - 95%
-        • State Management (GetX / BLoC / Riverpod) - 90%
-        • Firebase Systems & Cloud Integrations - 88%
-        • REST & WebSockets Protocols - 85%
-        
-        TOOLS
-        -----
-        Android Studio, VS Code, Git, Figma, Postman, CI/CD
-        
-        PORTFOLIO PROJECTS
-        ------------------
-        • Helix Care Platform - Healthcare Portal with WebRTC
-        • Resido Management - Property administration ecosystem
-        • Khata Digital Ledger - Bilingual payment ledger system
-        • Viosa AI Prep Platform - Interview practice platform
+      // Direct high-quality printing via temporary structured frame
+      const printWindow = window.open("", "_blank");
+      const cvMarkup = `
+        <html>
+        <head>
+          <title>Dharmesh Ahir - Flutter Engineer CV</title>
+          <style>
+            body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #333; line-height: 1.6; }
+            h1 { margin-bottom: 5px; color: #0c2340; }
+            h2 { border-bottom: 2px solid #0c2340; padding-bottom: 5px; margin-top: 30px; color: #0d2644; }
+            .meta { color: #555; margin-bottom: 20px; font-weight: 500; }
+            .item { margin-bottom: 20px; }
+            .item h3 { margin: 0 0 5px 0; color: #111; }
+            .item .sub { color: #777; font-size: 0.9rem; margin-bottom: 8px; }
+            ul { padding-left: 20px; margin: 5px 0; }
+          </style>
+        </head>
+        <body>
+          <h1>DHARMESH AHIR</h1>
+          <div class="meta">Surat, Gujarat, India | katariyadharmesh658@gmail.com | +91 6354464371</div>
+          
+          <h2>Professional Summary</h2>
+          <p>Senior Flutter Developer with 3+ years of experience building robust, pixel-perfect, and high-performance cross-platform applications. Specializing in state management architectures, clean layout transitions, and optimized WebRTC structures.</p>
+          
+          <h2>Experience</h2>
+          <div class="item">
+            <h3>Senior Flutter Engineer</h3>
+            <div class="sub">HelixCare Platform | 2024 - Present</div>
+            <ul>
+              <li>Directed end-to-end multi-platform application execution.</li>
+              <li>Engineered zero-latency WebRTC telemedicine consult video platforms.</li>
+              <li>Integrated customized split billing schemas, dynamic lookup tables, and RBAC matrix.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3>Flutter Mobile Developer</h3>
+            <div class="sub">Local Teams / Projects | 2022 - 2024</div>
+            <ul>
+              <li>Published 3+ flagship cross-platform applications to Google Play Store & Apple App Store.</li>
+              <li>Architected offline-first database systems and customized localized engines.</li>
+            </ul>
+          </div>
+          
+          <h2>Technical Expertise</h2>
+          <p><strong>Frameworks:</strong> Flutter SDK, Android Native, iOS Swift (Bridge)</p>
+          <p><strong>Languages:</strong> Dart, JavaScript, Java, Swift, Kotlin</p>
+          <p><strong>State Management:</strong> GetX, BLoC, Provider, Riverpod</p>
+          <p><strong>Databases:</strong> SQLite, Firebase Firestore, Hive, Realm</p>
+          
+          <script>window.onload = function() { window.print(); window.close(); }</script>
+        </body>
+        </html>
       `;
-      
-      const blob = new Blob([cvContent], { type: "text/plain" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Dharmesh_Ahir_Flutter_CV.txt";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      
+      printWindow.document.write(cvMarkup);
+      printWindow.document.close();
+
       SoundEngine.playCelebration();
       confetti({
         particleCount: 100,
@@ -957,7 +994,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 22. NEWSLETTER SUBSCRIBE FUNCTIONALITY
+
+  // 22. NEWSLETTER SUBSCRIPTION CONTROLS
   const newsletterBtn = document.getElementById("newsletter-btn");
   const newsletterEmail = document.getElementById("newsletter-email");
 
@@ -965,42 +1003,22 @@ document.addEventListener("DOMContentLoaded", () => {
     newsletterBtn.addEventListener("click", () => {
       const email = newsletterEmail.value.trim();
       if (!email || !email.includes("@")) {
-        const feedback = document.createElement("div");
-        feedback.textContent = "Please enter a valid email address";
-        feedback.style.color = "#ff3366";
-        feedback.style.fontSize = "0.8rem";
-        feedback.style.marginTop = "8px";
-        newsletterEmail.parentElement.appendChild(feedback);
-        setTimeout(() => feedback.remove(), 3000);
+        alert("Please enter a valid email address.");
         return;
       }
-      
       newsletterBtn.textContent = "Subscribing...";
-      newsletterBtn.disabled = true;
-      
       setTimeout(() => {
         newsletterBtn.textContent = "Subscribed! ✓";
         newsletterEmail.value = "";
-        
         setTimeout(() => {
           newsletterBtn.textContent = "Subscribe";
-          newsletterBtn.disabled = false;
-        }, 2000);
-        
+        }, 3000);
         SoundEngine.playClick();
-        
-        const successMsg = document.createElement("div");
-        successMsg.textContent = "Thanks for subscribing! You'll receive updates soon.";
-        successMsg.style.color = "#00ff00";
-        successMsg.style.fontSize = "0.8rem";
-        successMsg.style.marginTop = "8px";
-        newsletterEmail.parentElement.appendChild(successMsg);
-        setTimeout(() => successMsg.remove(), 4000);
       }, 1000);
     });
   }
 
-  // 23. FIX HAMBURGER CLOSE ON NAVIGATION
+  // 23. MOBILE NAVIGATION LINK INTERCEPTS
   const mobileNavLinksFixed = document.querySelectorAll(".mobile-nav-link");
   mobileNavLinksFixed.forEach(link => {
     link.addEventListener("click", (e) => {
@@ -1012,12 +1030,10 @@ document.addEventListener("DOMContentLoaded", () => {
           lenis.scrollTo(targetElement, { duration: 1.2 });
         }
       }
-      hamburger.classList.remove("active");
-      mobileOverlay.classList.remove("open");
     });
   });
 
-  // 24. FIX SIDE NAVIGATION DOTS CLICK
+  // 24. SIDE INDICATOR PIN-POINT ROUTINES
   const sideDots = document.querySelectorAll(".side-dot");
   sideDots.forEach(dot => {
     dot.addEventListener("click", (e) => {
@@ -1032,13 +1048,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 25. FIX FILTER UNDERLINE INITIAL POSITION
+  // 25. FILTER UNDERLINE PINNING
   if (filterButtons.length > 0 && activeIndicator) {
     const activeBtn = document.querySelector(".filter-tab-btn.active");
     if (activeBtn) {
       positionFilterUnderline(activeBtn);
     }
-    
     window.addEventListener("resize", () => {
       const currentActive = document.querySelector(".filter-tab-btn.active");
       if (currentActive) {
@@ -1047,10 +1062,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 26. FIX PORTFOLIO LAYOUT BUTTONS INITIAL STATE
-  const layoutBtns = document.querySelectorAll(".layout-btn");
+  // 26. PORTFOLIO LAYOUT CONFIG SYNC
   const savedLayout = localStorage.getItem("dh-portfolio-layout") || "grid";
-  layoutBtns.forEach(btn => {
+  document.querySelectorAll(".layout-btn").forEach(btn => {
     if (btn.getAttribute("data-layout-val") === savedLayout) {
       btn.classList.add("active");
     } else {
@@ -1066,25 +1080,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 27. FIX MODAL BUTTON TEXT
-  const modalProjectLink = document.getElementById("modal-project-link");
-  if (modalProjectLink) {
-    modalProjectLink.addEventListener("click", (e) => {
-      const url = modalProjectLink.getAttribute("href");
-      if (!url || url === "#") {
-        e.preventDefault();
-        const feedback = document.createElement("div");
-        feedback.textContent = "Live demo link available upon request";
-        feedback.style.color = "var(--text-accent)";
-        feedback.style.fontSize = "0.8rem";
-        feedback.style.padding = "8px";
-        document.querySelector(".modal-action-bar").appendChild(feedback);
-        setTimeout(() => feedback.remove(), 3000);
-      }
+
+  // 27. PREMIUM TESTIMONIALS SLIDER INSTANCE
+  function initTestimonialsSlider() {
+    const track = document.getElementById("testimonials-track");
+    const slides = document.querySelectorAll(".testimonial-slide");
+    const dots = document.querySelectorAll(".testimonial-dot");
+    let currentSlideIndex = 0;
+
+    if (!track || slides.length === 0) return;
+
+    const transitionToSlide = (index) => {
+      currentSlideIndex = index;
+      
+      // Calculate translateX offset based on the scale of slides
+      track.style.transform = `translateX(-${index * 50}%)`;
+      
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add("active");
+        } else {
+          slide.classList.remove("active");
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === index) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active");
+        }
+      });
+    };
+
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const index = parseInt(dot.getAttribute("data-index"));
+        transitionToSlide(index);
+      });
     });
+
+    // Auto rotater loop
+    setInterval(() => {
+      let nextIndex = (currentSlideIndex + 1) % slides.length;
+      transitionToSlide(nextIndex);
+    }, 6000);
   }
 
-  // 28. ADD SCROLL PROGRESS BAR UPDATE
+
+  // 28. SCROLL PROGRESS UPDATE CONTROLS
   const progressBar = document.getElementById("scroll-progress-bar");
   if (progressBar) {
     window.addEventListener("scroll", () => {
@@ -1095,7 +1139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 29. FIX HEADER SCROLL EFFECT
+  // 29. HEADER SCROLL INTERCEPTORS
   const siteHeader = document.getElementById("site-header");
   if (siteHeader) {
     window.addEventListener("scroll", () => {
@@ -1107,7 +1151,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 30. ADD MISSING THEME RIPPLE STYLE
+  // 30. CLEAN STYLES INJECTIONS (Typo Free)
   const style = document.createElement('style');
   style.textContent = `
     .theme-ripple-overlay {
@@ -1119,7 +1163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       pointer-events: none;
       transform: translate(-50%, -50%) scale(0);
       z-index: 9999;
-    }l̥l̥
+    }
   `;
   document.head.appendChild(style);
 
