@@ -1,7 +1,3 @@
-/* ==========================================================================
-   INTERACTIVE BUTTONS, MORPHING TOGGLES, TIMELINES, MODALS AND BUBBLES
-   ========================================================================== */
-
 /* 1. BRAND-SPECIFIC LUXURY SOCIAL BUTTONS */
 .social-links-row {
   display: flex;
@@ -33,7 +29,7 @@
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Animated tooltip overlay sliding up on hover */
+/* Animated tooltip */
 .social-tooltip {
   position: absolute;
   bottom: -40px;
@@ -61,13 +57,13 @@
   transform: translate3d(-50%, 0, 0);
 }
 
-/* Individual Brand Custom Glow Profiles */
+/* Glow Profiles */
 .premium-github:hover { border-color: #f0f6fc; box-shadow: 0 0 15px var(--github-glow); }
 .premium-linkedin:hover { border-color: #0a66c2; box-shadow: 0 0 15px var(--linkedin-glow); color: #0a66c2; }
 .premium-twitter:hover { border-color: #ffffff; box-shadow: 0 0 15px var(--twitter-glow); }
 .premium-instagram:hover { border-color: #e1306c; box-shadow: 0 0 15px var(--instagram-glow); color: #e1306c; }
 
-/* 2. CORE AUDIO PANEL CONTROLS */
+/* 2. AUDIO PANEL CONTROLS */
 .audio-panel {
   position: fixed;
   bottom: 32px;
@@ -194,7 +190,7 @@
   color: var(--text-accent);
 }
 
-/* Animated Sun/Moon Toggle Layout Switch Container */
+/* Animated Sun/Moon Toggle */
 .icon-morph-container {
   position: relative;
   width: 20px;
@@ -296,7 +292,7 @@
   display: block;
 }
 
-/* Skill bar metrics */
+/* Skill bars */
 .skills-bars-container {
   display: flex;
   flex-direction: column;
@@ -344,7 +340,7 @@
   gap: 8px;
 }
 
-/* 7. SECURE CONTACT FORM SHELL - RESTYLED FOR PERFECT STABILIZATION */
+/* 7. SECURE CONTACT FORM SHELL */
 .contact-form-premium {
   display: flex;
   flex-direction: column;
@@ -406,7 +402,7 @@
   width: 100%;
 }
 
-/* Textarea tweaks */
+/* Textarea details */
 .textarea-premium .input-wrapper {
   align-items: flex-start;
 }
@@ -422,7 +418,7 @@
   color: var(--text-secondary);
 }
 
-/* Secure submit button loader styling */
+/* Secure submit button loading */
 .btn-primary-premium {
   position: relative;
   background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
@@ -551,7 +547,7 @@
   white-space: pre-wrap;
 }
 
-/* 9. PROGRESS BACK TO TOP BUTTON RING */
+/* 9. PROGRESS BACK TO TOP BUTTON */
 .back-to-top-progress-wrap {
   position: relative;
   width: 44px;
@@ -569,7 +565,7 @@
   fill: none;
   stroke: var(--text-accent);
   stroke-width: 3;
-  stroke-dasharray: 113.1; /* 2 * PI * 18 */
+  stroke-dasharray: 113.1;
   stroke-dashoffset: 113.1;
   transition: stroke-dashoffset 0.1s linear;
 }
@@ -582,7 +578,7 @@
   height: 16px;
 }
 
-/* 10. PREMIUM COMPRESSED PRESETS DRAWER */
+/* 10. COLOR SWITCH DRAWER */
 .theme-drawer {
   position: fixed;
   right: -320px;
@@ -631,7 +627,7 @@
   transform: scale(1.02);
 }
 
-/* 11. AI COMPANION BUBBLE & CHAT */
+/* 11. AI COMPANION BUBBLE */
 .ai-bubble {
   position: fixed;
   bottom: 32px;
@@ -712,15 +708,10 @@
   font-family: var(--font-primary);
 }
 
-
-
-/* Add these missing styles at the end of components.css */
-
-/* Filter underline indicator positioning */
+/* UI Structure indicators */
 .filter-tabs-container {
   position: relative;
 }
-
 .active-filter-indicator {
   position: absolute;
   bottom: -4px;
@@ -729,8 +720,6 @@
   transition: left 0.3s ease, width 0.3s ease;
   border-radius: 2px;
 }
-
-/* Proj badge styling */
 .proj-badge {
   display: inline-block;
   font-size: 0.7rem;
@@ -740,28 +729,23 @@
   color: var(--text-accent);
   margin-bottom: 8px;
 }
-
-/* Hero badge animated */
 .badge-animated {
   display: inline-block;
   padding: 6px 14px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 30px;
+  border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 500;
   margin-bottom: 24px;
   backdrop-filter: blur(4px);
 }
-
-/* Hero title and lead */
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 24px;
 }
-
 .hero-lead {
   color: var(--text-secondary);
   font-size: 1.05rem;
@@ -769,38 +753,32 @@
   max-width: 550px;
   margin-bottom: 32px;
 }
-
 .hero-ctas {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 32px;
 }
-
 .btn-primary.large, .btn-outline.large {
   padding: 14px 32px;
   font-size: 1rem;
 }
-
 .text-accent {
   color: var(--text-accent);
 }
-
 .typewriter-container {
   display: inline-block;
 }
-
 .cursor-blink {
   animation: blink 1s step-end infinite;
   color: var(--text-accent);
 }
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
 
-/* Profile card glow */
+/* Interactive Card glows */
 .profile-card-glow {
   position: relative;
   border-radius: 30px;
@@ -809,12 +787,10 @@
   border: 1px solid var(--card-border);
   animation: borderGlow 3s ease infinite;
 }
-
 @keyframes borderGlow {
   0%, 100% { box-shadow: 0 0 5px var(--shadow-color); }
   50% { box-shadow: 0 0 20px var(--text-accent); }
 }
-
 .profile-image-container {
   position: relative;
   width: 280px;
@@ -823,13 +799,11 @@
   overflow: hidden;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
-
 .profile-portrait-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .profile-inner-mesh {
   width: 100%;
   height: 100%;
@@ -837,12 +811,10 @@
   align-items: center;
   justify-content: center;
 }
-
 .flutter-svg-logo {
   width: 80px;
   height: 80px;
 }
-
 .metrics-overlay-card {
   position: absolute;
   background: var(--card-bg);
@@ -855,35 +827,30 @@
   gap: 12px;
   z-index: 5;
 }
-
 .metrics-overlay-card:first-child {
   top: -20px;
   right: -20px;
 }
-
 .bottom-right-metric {
   bottom: -20px;
   left: -20px;
 }
-
 .metric-num {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-accent);
 }
-
 .metric-lbl {
   font-size: 0.7rem;
   color: var(--text-secondary);
 }
-
 .metric-text-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Scroll down indicator */
+/* Scroll wrapper indicator */
 .scroll-down-indicator-wrapper {
   position: absolute;
   bottom: 40px;
@@ -896,7 +863,6 @@
   text-decoration: none;
   z-index: 10;
 }
-
 .mouse-glow-scroll {
   width: 30px;
   height: 50px;
@@ -904,7 +870,6 @@
   border-radius: 20px;
   position: relative;
 }
-
 .wheel-scroller {
   width: 4px;
   height: 10px;
@@ -916,20 +881,18 @@
   border-radius: 2px;
   animation: scrollWheel 1.5s ease infinite;
 }
-
 @keyframes scrollWheel {
   0% { opacity: 1; transform: translateX(-50%) translateY(0); }
   80% { opacity: 0; transform: translateX(-50%) translateY(20px); }
   100% { opacity: 0; transform: translateX(-50%) translateY(0); }
 }
-
 .scroll-ind-text {
   font-size: 0.7rem;
   color: var(--text-secondary);
   letter-spacing: 1px;
 }
 
-/* Quote styling */
+/* Quote configurations */
 .about-quote-container {
   position: relative;
   padding: 20px 30px;
@@ -937,7 +900,6 @@
   border-left: 4px solid var(--text-accent);
   margin: 20px 0;
 }
-
 .pull-quote-mark {
   font-size: 4rem;
   font-family: var(--font-editorial);
@@ -947,7 +909,6 @@
   top: -10px;
   left: 10px;
 }
-
 .about-quote-text {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -955,12 +916,11 @@
   color: var(--text-secondary);
 }
 
-/* Timeline styles */
+/* Timelines structure */
 .vertical-timeline-container {
   position: relative;
   padding-left: 30px;
 }
-
 .timeline-line-filler {
   position: absolute;
   left: 8px;
@@ -969,7 +929,6 @@
   width: 2px;
   background: var(--card-border);
 }
-
 .timeline-node-card {
   position: relative;
   margin-bottom: 40px;
@@ -978,7 +937,6 @@
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius-md);
 }
-
 .node-bullet {
   position: absolute;
   left: -34px;
@@ -989,24 +947,20 @@
   border-radius: 50%;
   border: 2px solid var(--primary-color);
 }
-
 .node-date {
   font-size: 0.8rem;
   color: var(--text-accent);
   font-weight: 600;
 }
-
 .node-title {
   font-size: 1.2rem;
   font-weight: 700;
   margin: 4px 0;
 }
-
 .node-sub {
   font-size: 0.8rem;
   color: var(--text-secondary);
 }
-
 .node-desc {
   margin-top: 12px;
   font-size: 0.9rem;
@@ -1014,7 +968,7 @@
   line-height: 1.5;
 }
 
-/* Service icon box */
+/* Service step elements */
 .service-icon-box {
   width: 60px;
   height: 60px;
@@ -1026,13 +980,11 @@
   justify-content: center;
   margin-bottom: 20px;
 }
-
 .service-icon-box i {
   width: 28px;
   height: 28px;
   color: var(--text-accent);
 }
-
 .service-card {
   padding: 32px;
   background: var(--card-bg);
@@ -1040,18 +992,16 @@
   border-radius: var(--border-radius-md);
   transition: all 0.3s ease;
 }
-
 .service-card h3 {
   font-size: 1.3rem;
   margin-bottom: 16px;
 }
-
 .service-card p {
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Contact info cards */
+/* Info segments */
 .info-card {
   display: flex;
   align-items: flex-start;
@@ -1062,13 +1012,11 @@
   border-radius: var(--border-radius-md);
   margin-bottom: 16px;
 }
-
 .info-card i {
   width: 24px;
   height: 24px;
   color: var(--text-accent);
 }
-
 .card-title {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -1076,46 +1024,38 @@
   color: var(--text-secondary);
   margin-bottom: 4px;
 }
-
 .card-val {
   font-size: 0.9rem;
   color: var(--text-primary);
 }
-
 .card-link {
   text-decoration: none;
   color: var(--text-accent);
 }
-
 .card-link:hover {
   text-decoration: underline;
 }
-
 .address-multiline {
   line-height: 1.5;
 }
 
-/* Form feedback */
+/* Form details */
 .form-feedback {
   margin-top: 16px;
   padding: 12px;
   border-radius: var(--border-radius-sm);
   font-size: 0.85rem;
 }
-
 .form-feedback.success {
   background: rgba(0, 255, 0, 0.1);
   border: 1px solid #00ff00;
   color: #00ff00;
 }
-
 .form-feedback.error {
   background: rgba(255, 0, 0, 0.1);
   border: 1px solid #ff0000;
   color: #ff0000;
 }
-
-/* Form group row */
 .form-group-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

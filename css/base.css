@@ -1,50 +1,35 @@
 /* ==========================================================================
-   GLOBAL VARIABLES, SCROLLBARS, RESETS AND BASE LAYOUT STRUCTURES
+   GLOBAL VARIABLES, RESETS, LENIS & CUSTOM CURSOR INTERACTS
    ========================================================================== */
 :root {
   --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-editorial: 'Playfair Display', Georgia, serif;
-  
   --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-quick: 0.25s ease;
-  
-  --glass-blur: 18px;
+  --glass-blur: 16px;
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
-  --border-radius-lg: 32px;
-  
-  --github-glow: rgba(240, 246, 252, 0.25);
-  --linkedin-glow: rgba(10, 102, 194, 0.45);
-  --twitter-glow: rgba(255, 255, 255, 0.2);
-  --instagram-glow: rgba(225, 48, 108, 0.45);
-  --stackoverflow-glow: rgba(244, 128, 36, 0.45);
-  --medium-glow: rgba(0, 171, 108, 0.45);
-  
-  --gradient-rainbow: linear-gradient(90deg, #00f0ff, #ff007f, #9d00ff, #00f0ff);
-}
-
-/* Lenis smooth scrolling configuration styles */
-html.lenis {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+  --border-radius-lg: 28px;
+  --cursor-color: var(--text-accent);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: none;
+  user-select: none;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis-scrolling {
+  scroll-behavior: auto !important;
 }
 
 html {
-  overflow-x: hidden;
-  background: var(--primary-color);
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -54,124 +39,59 @@ body {
   min-height: 100vh;
   position: relative;
   transition: background var(--transition-smooth), color var(--transition-smooth);
-  overflow-x: hidden;
+  cursor: none;
 }
 
-/* Custom Morphing Cursor Elements */
-#custom-cursor {
+/* Morphing Cursor Elements */
+.custom-cursor {
   width: 8px;
   height: 8px;
-  background-color: var(--text-accent);
+  background-color: var(--cursor-color);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 10000;
   transform: translate3d(-50%, -50%, 0);
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.1s ease-out, background-color var(--transition-smooth);
 }
-#cursor-follower {
-  width: 32px;
-  height: 32px;
-  border: 1.5px solid var(--text-accent);
+.cursor-follower {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--cursor-color);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   transform: translate3d(-50%, -50%, 0);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), border-color var(--transition-smooth);
+  opacity: 0.65;
 }
 
-/* Morphing States dynamically bound in JS */
-body[data-cursor-state="pointer"] #custom-cursor {
-  width: 12px;
-  height: 12px;
-  background-color: transparent;
-}
-body[data-cursor-state="pointer"] #cursor-follower {
-  width: 48px;
-  height: 48px;
+/* Custom Interactive Cursor States */
+body[data-cursor-state="pointer"] .cursor-follower {
+  transform: scale(1.6);
   border-color: var(--text-accent);
-  background-color: rgba(0, 229, 255, 0.08);
+  background: rgba(var(--accent-rgb, 0, 229, 255), 0.1);
 }
-body[data-cursor-state="text"] #custom-cursor {
-  width: 2px;
-  height: 24px;
-  border-radius: 0;
-}
-body[data-cursor-state="text"] #cursor-follower {
-  width: 0px;
-  height: 0px;
-  border-color: transparent;
+body[data-cursor-state="text"] .cursor-follower {
+  transform: scale(0.6) rotate(45deg);
+  border-radius: 2px;
+  border-color: var(--text-accent);
 }
 
-/* Ambient glow blobs */
-.ambient-glow-blobs {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  overflow: hidden;
-  pointer-events: none;
-}
-.glow-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.25;
-  transition: background-color var(--transition-smooth);
-}
-.glow-1 {
-  top: 10%;
-  left: 15%;
-  width: 400px;
-  height: 400px;
-  background: var(--accent-color);
-  animation: floatBlob1 15s infinite alternate ease-in-out;
-}
-.glow-2 {
-  bottom: 20%;
-  right: 10%;
-  width: 500px;
-  height: 500px;
-  background: var(--secondary-color);
-  animation: floatBlob2 18s infinite alternate ease-in-out;
-}
-.glow-3 {
-  top: 50%;
-  left: 50%;
-  width: 350px;
-  height: 350px;
-  background: var(--text-accent);
-  animation: floatBlob1 22s infinite alternate-reverse ease-in-out;
-}
-
-@keyframes floatBlob1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(120px, -80px) scale(1.15); }
-}
-@keyframes floatBlob2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-100px, 90px) scale(0.9); }
-}
-
-/* Webwebkit custom scrollbar definitions */
+/* Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0,0,0,0.15);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--card-border);
-  border-radius: var(--border-radius-sm);
-}
-::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
+  border-radius: 10px;
 }
 
-/* Scroll reading progress bar tracking layer */
+/* Reading Progress Indicator */
 #scroll-progress-container {
   position: fixed;
   top: 0;
@@ -179,62 +99,79 @@ body[data-cursor-state="text"] #cursor-follower {
   width: 100%;
   height: 4px;
   background: rgba(255, 255, 255, 0.04);
-  z-index: 1001;
+  z-index: 2005;
 }
 #scroll-progress-bar {
   height: 100%;
   width: 0%;
-  background: var(--gradient-rainbow);
-  background-size: 400% 100%;
-  animation: shimmerGlow 8s linear infinite;
+  background: linear-gradient(90deg, var(--accent-color), var(--text-accent));
 }
 
-@keyframes shimmerGlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 400% 50%; }
-}
-
-/* Three.js interactive canvas overlay container */
 #three-canvas-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -3;
+  z-index: -1;
   pointer-events: none;
 }
 
-/* Basic structural parameters of page sections */
-section {
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 120px 48px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Backdrop glow blobs */
+.ambient-glow-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glow-blob {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  animation: floatBlobs 20s infinite ease-in-out alternate;
+}
+.glow-1 {
+  background: var(--accent-color);
+  top: -10%;
+  left: -10%;
+}
+.glow-2 {
+  background: var(--secondary-color);
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -5s;
+}
+.glow-3 {
+  background: var(--text-accent);
+  top: 40%;
+  left: 50%;
+  animation-delay: -10s;
 }
 
-/* Keyboard Accessibility indicator fallback defaults */
-*:focus-visible {
-  outline: 2px dashed var(--text-accent);
-  outline-offset: 4px;
+@keyframes floatBlobs {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, -5vw) scale(1.1); }
+  100% { transform: translate(-5vw, 5vw) scale(0.9); }
 }
 
-/* Reduced animation styles */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-delay: -1ms !important;
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    background-attachment: scroll !important;
-    scroll-behavior: auto !important;
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
     transition-duration: 0s !important;
-    transition-delay: 0s !important;
   }
-  #custom-cursor, #cursor-follower {
+  .cursor-follower, .custom-cursor, .ambient-glow-blobs {
     display: none !important;
+  }
+  body {
+    cursor: auto !important;
   }
 }

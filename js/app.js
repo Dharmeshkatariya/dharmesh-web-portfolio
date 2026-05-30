@@ -1,9 +1,3 @@
-/**
- * ==========================================================================
- * DHARMESH AHIR PREMIUM ENGINE
- * Vanilla Javascript showcasing GSAP, Lenis, Custom Canvas, & Synth Audio.
- * ==========================================================================
- */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -385,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 8. HERO PARTICLES CANVAS (Attract/Repel mechanics)
+  // 8. HERO PARTICLES CANVAS
   let canvas, ctx, particlesArray;
   const maxDistance = 100;
 
@@ -532,7 +526,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Trigonometric orbiting initialization logic
   function initOrbitalSphere() {
     const nodes = document.querySelectorAll(".orbital-node");
     const radius = 110; 
@@ -593,7 +586,6 @@ document.addEventListener("DOMContentLoaded", () => {
     bindDetailsModalTriggers();
   }
 
-  // Underline indicators for filter tabs sliding animation
   const filterButtons = document.querySelectorAll(".filter-tab-btn");
   const activeIndicator = document.querySelector(".active-filter-indicator");
 
@@ -700,7 +692,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 15. 3D TILT EFFECT FOR PREMIUM CARDS
+  // 15. 3D TILT EFFECT
   function apply3DTiltMechanics() {
     document.querySelectorAll(".tilt-card").forEach(card => {
       card.addEventListener("mousemove", (e) => {
@@ -724,7 +716,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const backToTopBtn = document.getElementById("back-to-top");
   const ringFill = document.getElementById("scroll-progress-ring");
 
-  // Sync scroll indicator directly via Lenis scroller
   lenis.on('scroll', (e) => {
     const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
     const progress = window.scrollY / totalScroll;
@@ -732,7 +723,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const offset = 113.1 - (progress * 113.1);
     ringFill.style.strokeDashoffset = offset;
 
-    // Track scroll active dots updates on scroll
     const secs = document.querySelectorAll("section");
     let currentActive = "hero";
     secs.forEach(sec => {
@@ -774,7 +764,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 18. AI COMPANION SYSTEM RESPONSE CONTROLS
+  // 18. AI COMPANION SYSTEM
   const aiBubble = document.getElementById("ai-chat-bubble");
   const aiWindow = document.getElementById("ai-chat-window");
   const aiClose = document.getElementById("ai-chat-close");
@@ -817,7 +807,7 @@ document.addEventListener("DOMContentLoaded", () => {
   aiInput.addEventListener("keydown", (e) => { if (e.key === "Enter") dispatchAiResponse(); });
 
 
-  // 19. THREE.JS SYSTEM BACKGROUND PARTICLES (Static Ambient canvas)
+  // 19. THREE.JS BACKGROUND PARTICLES
   let scene, camera, renderer, starGeo, stars;
   const starsCount = 600;
 
@@ -882,250 +872,241 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-});
-
-
-
-// Add this inside the DOMContentLoaded callback, before the closing bracket
-
-// 21. CV DOWNLOAD FUNCTIONALITY
-const cvDownloadBtn = document.getElementById("cv-download-btn");
-if (cvDownloadBtn) {
-  cvDownloadBtn.addEventListener("click", () => {
-    // Create a dummy CV blob
-    const cvContent = `
-      DHARMESH AHIR - SENIOR FLUTTER DEVELOPER
-      =========================================
+  // 21. CV DOWNLOAD FUNCTIONALITY
+  const cvDownloadBtn = document.getElementById("cv-download-btn");
+  if (cvDownloadBtn) {
+    cvDownloadBtn.addEventListener("click", () => {
+      const cvContent = `
+        DHARMESH AHIR - SENIOR FLUTTER DEVELOPER
+        =========================================
+        
+        CONTACT
+        -------
+        Email: katariyadharmesh658@gmail.com
+        Phone: +91 6354464371
+        Location: Surat, Gujarat, India
+        
+        PROFESSIONAL SUMMARY
+        --------------------
+        Senior Flutter Developer with 3+ years of experience building robust, 
+        pixel-perfect, and high-performance cross-platform applications. 
+        Specializing in state management architectures, clean layout transitions, 
+        and fluid UI experiences.
+        
+        WORK EXPERIENCE
+        ---------------
+        Senior Flutter Engineer (2024 - Present)
+        • Directing end-to-end multi-platform application execution
+        • Crafting secure WebRTC video structures and role-based controls
+        • Implementing payment models and complex client structures
+        
+        Flutter Developer (2022 - 2024)
+        • Developed and scaled cross-platform mobile apps
+        • Configured reliable data synchronization mechanisms
+        • Built offline-first database systems and localized multi-language apps
+        
+        TECHNICAL SKILLS
+        ----------------
+        • Flutter & Dart Architecture - 95%
+        • State Management (GetX / BLoC / Riverpod) - 90%
+        • Firebase Systems & Cloud Integrations - 88%
+        • REST & WebSockets Protocols - 85%
+        
+        TOOLS
+        -----
+        Android Studio, VS Code, Git, Figma, Postman, CI/CD
+        
+        PORTFOLIO PROJECTS
+        ------------------
+        • Helix Care Platform - Healthcare Portal with WebRTC
+        • Resido Management - Property administration ecosystem
+        • Khata Digital Ledger - Bilingual payment ledger system
+        • Viosa AI Prep Platform - Interview practice platform
+      `;
       
-      CONTACT
-      -------
-      Email: katariyadharmesh658@gmail.com
-      Phone: +91 6354464371
-      Location: Surat, Gujarat, India
+      const blob = new Blob([cvContent], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Dharmesh_Ahir_Flutter_CV.txt";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
       
-      PROFESSIONAL SUMMARY
-      --------------------
-      Senior Flutter Developer with 3+ years of experience building robust, 
-      pixel-perfect, and high-performance cross-platform applications. 
-      Specializing in state management architectures, clean layout transitions, 
-      and fluid UI experiences.
-      
-      WORK EXPERIENCE
-      ---------------
-      Senior Flutter Engineer (2024 - Present)
-      • Directing end-to-end multi-platform application execution
-      • Crafting secure WebRTC video structures and role-based controls
-      • Implementing payment models and complex client structures
-      
-      Flutter Developer (2022 - 2024)
-      • Developed and scaled cross-platform mobile apps
-      • Configured reliable data synchronization mechanisms
-      • Built offline-first database systems and localized multi-language apps
-      
-      TECHNICAL SKILLS
-      ----------------
-      • Flutter & Dart Architecture - 95%
-      • State Management (GetX / BLoC / Riverpod) - 90%
-      • Firebase Systems & Cloud Integrations - 88%
-      • REST & WebSockets Protocols - 85%
-      
-      TOOLS
-      -----
-      Android Studio, VS Code, Git, Figma, Postman, CI/CD
-      
-      PORTFOLIO PROJECTS
-      ------------------
-      • Helix Care Platform - Healthcare Portal with WebRTC
-      • Resido Management - Property administration ecosystem
-      • Khata Digital Ledger - Bilingual payment ledger system
-      • Viosa AI Prep Platform - Interview practice platform
-    `;
-    
-    const blob = new Blob([cvContent], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Dharmesh_Ahir_Flutter_CV.txt";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    SoundEngine.playCelebration();
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
+      SoundEngine.playCelebration();
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
     });
-  });
-}
+  }
 
-// 22. NEWSLETTER SUBSCRIBE FUNCTIONALITY
-const newsletterBtn = document.getElementById("newsletter-btn");
-const newsletterEmail = document.getElementById("newsletter-email");
+  // 22. NEWSLETTER SUBSCRIBE FUNCTIONALITY
+  const newsletterBtn = document.getElementById("newsletter-btn");
+  const newsletterEmail = document.getElementById("newsletter-email");
 
-if (newsletterBtn && newsletterEmail) {
-  newsletterBtn.addEventListener("click", () => {
-    const email = newsletterEmail.value.trim();
-    if (!email || !email.includes("@")) {
-      // Show error feedback
-      const feedback = document.createElement("div");
-      feedback.textContent = "Please enter a valid email address";
-      feedback.style.color = "#ff3366";
-      feedback.style.fontSize = "0.8rem";
-      feedback.style.marginTop = "8px";
-      newsletterEmail.parentElement.appendChild(feedback);
-      setTimeout(() => feedback.remove(), 3000);
-      return;
-    }
-    
-    // Simulate subscription
-    newsletterBtn.textContent = "Subscribing...";
-    newsletterBtn.disabled = true;
-    
-    setTimeout(() => {
-      newsletterBtn.textContent = "Subscribed! ✓";
-      newsletterEmail.value = "";
+  if (newsletterBtn && newsletterEmail) {
+    newsletterBtn.addEventListener("click", () => {
+      const email = newsletterEmail.value.trim();
+      if (!email || !email.includes("@")) {
+        const feedback = document.createElement("div");
+        feedback.textContent = "Please enter a valid email address";
+        feedback.style.color = "#ff3366";
+        feedback.style.fontSize = "0.8rem";
+        feedback.style.marginTop = "8px";
+        newsletterEmail.parentElement.appendChild(feedback);
+        setTimeout(() => feedback.remove(), 3000);
+        return;
+      }
+      
+      newsletterBtn.textContent = "Subscribing...";
+      newsletterBtn.disabled = true;
       
       setTimeout(() => {
-        newsletterBtn.textContent = "Subscribe";
-        newsletterBtn.disabled = false;
-      }, 2000);
-      
-      SoundEngine.playClick();
-      
-      const successMsg = document.createElement("div");
-      successMsg.textContent = "Thanks for subscribing! You'll receive updates soon.";
-      successMsg.style.color = "#00ff00";
-      successMsg.style.fontSize = "0.8rem";
-      successMsg.style.marginTop = "8px";
-      newsletterEmail.parentElement.appendChild(successMsg);
-      setTimeout(() => successMsg.remove(), 4000);
-    }, 1000);
-  });
-}
-
-// 23. FIX HAMBURGER CLOSE ON NAVIGATION
-const mobileNavLinksFixed = document.querySelectorAll(".mobile-nav-link");
-mobileNavLinksFixed.forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const targetId = link.getAttribute("href");
-    if (targetId && targetId !== "#") {
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        lenis.scrollTo(targetElement, { duration: 1.2 });
-      }
-    }
-    // Close mobile menu
-    hamburger.classList.remove("active");
-    mobileOverlay.classList.remove("open");
-  });
-});
-
-// 24. FIX SIDE NAVIGATION DOTS CLICK
-const sideDots = document.querySelectorAll(".side-dot");
-sideDots.forEach(dot => {
-  dot.addEventListener("click", (e) => {
-    e.preventDefault();
-    const targetId = dot.getAttribute("data-sec");
-    if (targetId) {
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        lenis.scrollTo(targetElement, { duration: 1.2 });
-      }
-    }
-  });
-});
-
-// 25. FIX FILTER UNDERLINE INITIAL POSITION
-if (filterButtons.length > 0 && activeIndicator) {
-  const activeBtn = document.querySelector(".filter-tab-btn.active");
-  if (activeBtn) {
-    positionFilterUnderline(activeBtn);
+        newsletterBtn.textContent = "Subscribed! ✓";
+        newsletterEmail.value = "";
+        
+        setTimeout(() => {
+          newsletterBtn.textContent = "Subscribe";
+          newsletterBtn.disabled = false;
+        }, 2000);
+        
+        SoundEngine.playClick();
+        
+        const successMsg = document.createElement("div");
+        successMsg.textContent = "Thanks for subscribing! You'll receive updates soon.";
+        successMsg.style.color = "#00ff00";
+        successMsg.style.fontSize = "0.8rem";
+        successMsg.style.marginTop = "8px";
+        newsletterEmail.parentElement.appendChild(successMsg);
+        setTimeout(() => successMsg.remove(), 4000);
+      }, 1000);
+    });
   }
-  
-  window.addEventListener("resize", () => {
-    const currentActive = document.querySelector(".filter-tab-btn.active");
-    if (currentActive) {
-      positionFilterUnderline(currentActive);
-    }
-  });
-}
 
-// 26. FIX PORTFOLIO LAYOUT BUTTONS INITIAL STATE
-const layoutBtns = document.querySelectorAll(".layout-btn");
-const savedLayout = localStorage.getItem("dh-portfolio-layout") || "grid";
-layoutBtns.forEach(btn => {
-  if (btn.getAttribute("data-layout-val") === savedLayout) {
-    btn.classList.add("active");
-  } else {
-    btn.classList.remove("active");
-  }
-});
-activeLayout = savedLayout;
-
-// Save layout preference when changed
-document.querySelectorAll(".layout-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const newLayout = btn.getAttribute("data-layout-val");
-    localStorage.setItem("dh-portfolio-layout", newLayout);
-  });
-});
-
-// 27. FIX MODAL BUTTON TEXT
-const modalProjectLink = document.getElementById("modal-project-link");
-if (modalProjectLink) {
-  modalProjectLink.addEventListener("click", (e) => {
-    const url = modalProjectLink.getAttribute("href");
-    if (!url || url === "#") {
+  // 23. FIX HAMBURGER CLOSE ON NAVIGATION
+  const mobileNavLinksFixed = document.querySelectorAll(".mobile-nav-link");
+  mobileNavLinksFixed.forEach(link => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
-      const feedback = document.createElement("div");
-      feedback.textContent = "Live demo link available upon request";
-      feedback.style.color = "var(--text-accent)";
-      feedback.style.fontSize = "0.8rem";
-      feedback.style.padding = "8px";
-      document.querySelector(".modal-action-bar").appendChild(feedback);
-      setTimeout(() => feedback.remove(), 3000);
+      const targetId = link.getAttribute("href");
+      if (targetId && targetId !== "#") {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          lenis.scrollTo(targetElement, { duration: 1.2 });
+        }
+      }
+      hamburger.classList.remove("active");
+      mobileOverlay.classList.remove("open");
+    });
+  });
+
+  // 24. FIX SIDE NAVIGATION DOTS CLICK
+  const sideDots = document.querySelectorAll(".side-dot");
+  sideDots.forEach(dot => {
+    dot.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = dot.getAttribute("data-sec");
+      if (targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          lenis.scrollTo(targetElement, { duration: 1.2 });
+        }
+      }
+    });
+  });
+
+  // 25. FIX FILTER UNDERLINE INITIAL POSITION
+  if (filterButtons.length > 0 && activeIndicator) {
+    const activeBtn = document.querySelector(".filter-tab-btn.active");
+    if (activeBtn) {
+      positionFilterUnderline(activeBtn);
     }
-  });
-}
-
-// 28. ADD SCROLL PROGRESS BAR UPDATE
-const progressBar = document.getElementById("scroll-progress-bar");
-if (progressBar) {
-  window.addEventListener("scroll", () => {
-    const winScroll = document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    progressBar.style.width = scrolled + "%";
-  });
-}
-
-// 29. FIX HEADER SCROLL EFFECT
-const siteHeader = document.getElementById("site-header");
-if (siteHeader) {
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      siteHeader.classList.add("scrolled");
-    } else {
-      siteHeader.classList.remove("scrolled");
-    }
-  });
-}
-
-// 30. ADD MISSING THEME RIPPLE STYLE
-const style = document.createElement('style');
-style.textContent = `
-  .theme-ripple-overlay {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(0);
-    z-index: 9999;
+    
+    window.addEventListener("resize", () => {
+      const currentActive = document.querySelector(".filter-tab-btn.active");
+      if (currentActive) {
+        positionFilterUnderline(currentActive);
+      }
+    });
   }
-`;
-document.head.appendChild(style);
+
+  // 26. FIX PORTFOLIO LAYOUT BUTTONS INITIAL STATE
+  const layoutBtns = document.querySelectorAll(".layout-btn");
+  const savedLayout = localStorage.getItem("dh-portfolio-layout") || "grid";
+  layoutBtns.forEach(btn => {
+    if (btn.getAttribute("data-layout-val") === savedLayout) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+  activeLayout = savedLayout;
+
+  document.querySelectorAll(".layout-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const newLayout = btn.getAttribute("data-layout-val");
+      localStorage.setItem("dh-portfolio-layout", newLayout);
+    });
+  });
+
+  // 27. FIX MODAL BUTTON TEXT
+  const modalProjectLink = document.getElementById("modal-project-link");
+  if (modalProjectLink) {
+    modalProjectLink.addEventListener("click", (e) => {
+      const url = modalProjectLink.getAttribute("href");
+      if (!url || url === "#") {
+        e.preventDefault();
+        const feedback = document.createElement("div");
+        feedback.textContent = "Live demo link available upon request";
+        feedback.style.color = "var(--text-accent)";
+        feedback.style.fontSize = "0.8rem";
+        feedback.style.padding = "8px";
+        document.querySelector(".modal-action-bar").appendChild(feedback);
+        setTimeout(() => feedback.remove(), 3000);
+      }
+    });
+  }
+
+  // 28. ADD SCROLL PROGRESS BAR UPDATE
+  const progressBar = document.getElementById("scroll-progress-bar");
+  if (progressBar) {
+    window.addEventListener("scroll", () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + "%";
+    });
+  }
+
+  // 29. FIX HEADER SCROLL EFFECT
+  const siteHeader = document.getElementById("site-header");
+  if (siteHeader) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        siteHeader.classList.add("scrolled");
+      } else {
+        siteHeader.classList.remove("scrolled");
+      }
+    });
+  }
+
+  // 30. ADD MISSING THEME RIPPLE STYLE
+  const style = document.createElement('style');
+  style.textContent = `
+    .theme-ripple-overlay {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      z-index: 9999;
+    }l̥l̥
+  `;
+  document.head.appendChild(style);
+
+});

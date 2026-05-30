@@ -15,6 +15,10 @@
   --card-border: rgba(0, 229, 255, 0.15);
   --form-input-bg: rgba(6, 21, 42, 0.5);
   --shadow-color: rgba(0, 229, 255, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
 }
 [data-theme="ocean"][data-mode="light"] {
   --primary-color: #f4f8fc;
@@ -28,6 +32,10 @@
   --card-border: rgba(2, 136, 209, 0.18);
   --form-input-bg: rgba(255, 255, 255, 0.9);
   --shadow-color: rgba(2, 136, 209, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
 }
 
 /* 2. Forest Green Theme */
@@ -37,12 +45,16 @@
   --accent-color: #00e676;
   --text-primary: #eefbee;
   --text-secondary: #8da493;
-  --text-accent: #ffd700; /* Rich Gold */
+  --text-accent: #ffd700;
   --bg-gradient: radial-gradient(circle at 50% 50%, #0d2a16 0%, #020703 100%);
   --card-bg: rgba(17, 54, 28, 0.35);
   --card-border: rgba(0, 230, 118, 0.15);
   --form-input-bg: rgba(8, 26, 13, 0.5);
   --shadow-color: rgba(0, 230, 118, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
 }
 [data-theme="forest"][data-mode="light"] {
   --primary-color: #f3f9f4;
@@ -56,6 +68,10 @@
   --card-border: rgba(46, 125, 50, 0.18);
   --form-input-bg: rgba(255, 255, 255, 0.9);
   --shadow-color: rgba(46, 125, 50, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
 }
 
 /* 3. Sunset Orange Theme */
@@ -71,6 +87,10 @@
   --card-border: rgba(255, 87, 34, 0.15);
   --form-input-bg: rgba(25, 8, 2, 0.5);
   --shadow-color: rgba(255, 87, 34, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
 }
 [data-theme="sunset"][data-mode="light"] {
   --primary-color: #fffaf7;
@@ -84,6 +104,10 @@
   --card-border: rgba(244, 81, 30, 0.18);
   --form-input-bg: rgba(255, 255, 255, 0.9);
   --shadow-color: rgba(244, 81, 30, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
 }
 
 /* 4. Royal Purple Theme */
@@ -99,6 +123,10 @@
   --card-border: rgba(224, 64, 251, 0.15);
   --form-input-bg: rgba(20, 2, 33, 0.5);
   --shadow-color: rgba(224, 64, 251, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
 }
 [data-theme="purple"][data-mode="light"] {
   --primary-color: #faf5fc;
@@ -112,6 +140,10 @@
   --card-border: rgba(142, 36, 170, 0.18);
   --form-input-bg: rgba(255, 255, 255, 0.9);
   --shadow-color: rgba(142, 36, 170, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
 }
 
 /* 5. Cyberpunk Neon Theme */
@@ -127,6 +159,10 @@
   --card-border: rgba(255, 0, 127, 0.25);
   --form-input-bg: rgba(15, 0, 21, 0.6);
   --shadow-color: rgba(255, 0, 127, 0.15);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
 }
 [data-theme="cyberpunk"][data-mode="light"] {
   --primary-color: #fff0f6;
@@ -140,6 +176,10 @@
   --card-border: rgba(216, 27, 96, 0.18);
   --form-input-bg: rgba(255, 255, 255, 0.9);
   --shadow-color: rgba(216, 27, 96, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
 }
 
 /* 6. Minimalist Mono Theme */
@@ -155,6 +195,10 @@
   --card-border: rgba(255, 255, 255, 0.1);
   --form-input-bg: rgba(18, 18, 18, 0.5);
   --shadow-color: rgba(255, 255, 255, 0.05);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
 }
 [data-theme="mono"][data-mode="light"] {
   --primary-color: #f7f7f7;
@@ -168,4 +212,22 @@
   --card-border: rgba(0, 0, 0, 0.12);
   --form-input-bg: rgba(255, 255, 255, 0.9);
   --shadow-color: rgba(0, 0, 0, 0.04);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* Dynamic Site Layout Switches */
+[data-site-layout="minimal"] {
+  --font-primary: 'Poppins', sans-serif;
+}
+[data-site-layout="creative"] {
+  --font-primary: 'Poppins', sans-serif;
+}
+[data-site-layout="glass"] {
+  --font-primary: 'Poppins', sans-serif;
+}
+[data-site-layout="editorial"] {
+  --font-primary: var(--font-editorial);
 }

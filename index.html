@@ -15,7 +15,7 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#030f1e">
 
-  <!-- Typography: Poppins for default/modern + Playfair Display for Editorial -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
   <div id="custom-cursor" class="custom-cursor"></div>
   <div id="cursor-follower" class="cursor-follower"></div>
 
-  <!-- Ambient Light Effect Blobs (Backdrop) -->
+  <!-- Ambient Light Effect Blobs -->
   <div class="ambient-glow-blobs">
     <div class="glow-blob glow-1"></div>
     <div class="glow-blob glow-2"></div>
@@ -64,7 +64,6 @@
   <div id="preloader">
     <div class="preloader-content">
       <div class="svg-loader-wrap">
-        <!-- Self-drawing Flutter bird logo -->
         <svg class="flutter-logo-drawing" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="draw-path p1" d="M 64.26,3 L 34.33,33 L 49.3,47.96 L 79.23,18.03 Z" stroke="var(--accent-color)" stroke-width="2" fill="none" />
           <path class="draw-path p2" d="M 79.23,47.96 L 49.3,77.9 L 34.33,62.93 L 64.26,33 Z" stroke="var(--text-accent)" stroke-width="2" fill="none" />
@@ -126,7 +125,7 @@
           </div>
         </button>
 
-        <!-- Dynamic CV Download Button with celebrations -->
+        <!-- Dynamic CV Download Button -->
         <button id="cv-download-btn" class="btn-primary magnetic">
           <span>Get CV</span>
           <i data-lucide="download"></i>
@@ -169,10 +168,10 @@
     </div>
   </div>
 
-  <!-- WebGL/Three.js Background Interactive Particle System Container -->
+  <!-- WebGL Background Particle System -->
   <div id="three-canvas-container"></div>
 
-  <!-- Side Navigation Dots (Scroll Section Indicator) -->
+  <!-- Side Navigation Dots -->
   <div class="side-navigation-indicator">
     <a href="#hero" class="side-dot active" data-sec="hero" aria-label="Scroll back to top hero home block"></a>
     <a href="#about" class="side-dot" data-sec="about" aria-label="Scroll to experience skill profile segment"></a>
@@ -186,7 +185,6 @@
 
     <!-- 1. HERO SECTION -->
     <section id="hero" class="hero-section">
-      <!-- Mouse Responsive Canvas Overlay -->
       <canvas id="hero-particles-canvas"></canvas>
 
       <div class="hero-grid">
@@ -205,7 +203,7 @@
             <a href="#contact" class="btn-outline large magnetic">Let's Create Together</a>
           </div>
 
-          <!-- Luxury Social Media Buttons with Tooltips and Custom Glow Effects -->
+          <!-- Luxury Social Media Buttons -->
           <div class="social-links-row" id="luxury-social-row">
             <a href="https://github.com/katariyadharmesh" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-github magnetic" aria-label="GitHub Developer Profile">
               <i data-lucide="github"></i>
@@ -215,11 +213,11 @@
               <i data-lucide="linkedin"></i>
               <span class="social-tooltip">LinkedIn</span>
             </a>
-            <a href="https://twitter.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-twitter magnetic" aria-label="Twitter X Platform Account">
+            <a href="https://twitter.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-twitter magnetic" aria-label="Twitter X Account">
               <svg viewBox="0 0 24 24" class="svg-icon-twitter" fill="currentColor" style="width:20px;height:20px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               <span class="social-tooltip">Twitter / X</span>
             </a>
-            <a href="https://instagram.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-instagram magnetic" aria-label="Instagram Creator Social Profile">
+            <a href="https://instagram.com/dharmesh_ahir" target="_blank" rel="noopener noreferrer" class="social-btn-premium premium-instagram magnetic" aria-label="Instagram Profile">
               <i data-lucide="instagram"></i>
               <span class="social-tooltip">Instagram</span>
             </a>
@@ -228,7 +226,7 @@
         
         <div class="hero-visual-area">
           <div class="profile-card-glow-wrap">
-            <!-- Rotating code-snippet cards floating behind the image -->
+            <!-- Rotating code-snippet cards -->
             <div class="code-snippet-card cs-1">
               <pre><code><span class="keyword">class</span> <span class="class">Dharmesh</span> <span class="keyword">extends</span> <span class="class">Developer</span> {
   <span class="type">String</span> role = <span class="string">'Flutter Senior'</span>;
@@ -240,10 +238,9 @@
 }</code></pre>
             </div>
 
-            <!-- Profile Frame with animated gradient border (rotating hue) -->
+            <!-- Profile Frame -->
             <div class="profile-card-glow">
               <div class="profile-image-container">
-                <!-- Portrait image using fallback element if missing -->
                 <img src="portrait.jpg" alt="Dharmesh Ahir Profile Portrait" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="profile-portrait-img">
                 <div class="profile-inner-mesh" style="display: none;">
                   <svg class="flutter-svg-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +260,7 @@
                 </div>
               </div>
               
-              <!-- Real-time metrics overlays -->
+              <!-- Real-time metrics -->
               <div class="metrics-overlay-card">
                 <i data-lucide="award"></i>
                 <div class="metric-text-wrap">
@@ -283,7 +280,7 @@
         </div>
       </div>
 
-      <!-- Animated Scroll-Down Indicator with Pulse Glow -->
+      <!-- Animated Scroll-Down Indicator -->
       <a href="#about" class="scroll-down-indicator-wrapper" aria-label="Scroll down to details segment section">
         <div class="mouse-glow-scroll">
           <div class="wheel-scroller"></div>
@@ -304,7 +301,6 @@
 
       <div class="about-grid">
         <div class="about-left-side">
-          <!-- Dynamic Skill Tab Switchers -->
           <div class="about-tab-buttons-row">
             <button class="tab-select-btn active" data-tab-target="exp-timeline">Experience</button>
             <button class="tab-select-btn" data-tab-target="edu-timeline">Education</button>
@@ -312,10 +308,8 @@
             <button class="tab-select-btn" data-tab-target="tools-grid">Tools</button>
           </div>
 
-          <!-- Tab Content Sections -->
           <div class="about-tab-panels">
-            
-            <!-- Tab 1: Experience Interactive Timeline -->
+            <!-- Experience Timeline -->
             <div class="tab-panel active" id="exp-timeline">
               <div class="vertical-timeline-container">
                 <div class="timeline-line-filler"></div>
@@ -342,7 +336,7 @@
               </div>
             </div>
 
-            <!-- Tab 2: Education Interactive Timeline -->
+            <!-- Education Timeline -->
             <div class="tab-panel" id="edu-timeline">
               <div class="vertical-timeline-container">
                 <div class="timeline-line-filler"></div>
@@ -359,7 +353,7 @@
               </div>
             </div>
 
-            <!-- Tab 3: Detailed Technical Skills Progress -->
+            <!-- Technical Skills Progress -->
             <div class="tab-panel" id="skills-grid">
               <div class="skills-bars-container">
                 <div class="skill-item">
@@ -381,7 +375,7 @@
               </div>
             </div>
 
-            <!-- Tab 4: Developer Tools Grid -->
+            <!-- Developer Tools Grid -->
             <div class="tab-panel" id="tools-grid">
               <div class="tools-showcase-grid">
                 <div class="tool-chip"><i data-lucide="terminal"></i> Android Studio</div>
@@ -391,17 +385,15 @@
                 <div class="tool-chip"><i data-lucide="cpu"></i> Postman & APIs</div>
               </div>
             </div>
-
           </div>
         </div>
 
         <div class="about-right-side">
-          <!-- slow orbiting tech stack layout -->
           <div class="orbital-sphere-wrapper">
             <div class="center-core-bird">
               <i data-lucide="layers" class="orbital-core-icon"></i>
             </div>
-            <!-- Orbiting Nodes (Coordinates calculated dynamically in app.js) -->
+            <!-- Orbiting Nodes -->
             <div class="orbital-node node-flutter" data-index="0"><span class="orb-lbl">Flutter</span></div>
             <div class="orbital-node node-dart" data-index="1"><span class="orb-lbl">Dart</span></div>
             <div class="orbital-node node-firebase" data-index="2"><span class="orb-lbl">Firebase</span></div>
@@ -437,7 +429,7 @@
       </div>
     </section>
 
-    <!-- 4. PORTFOLIO SHOWCASE SECTION WITH BENTO & MASONRY OPTIONS -->
+    <!-- 4. PORTFOLIO SHOWCASE SECTION WITH BENTO & MASONRY -->
     <section id="portfolio" class="portfolio-section scroll-reveal">
       <div class="portfolio-header">
         <div>
@@ -461,7 +453,6 @@
               <button class="filter-tab-btn" data-filter="web">Web Services</button>
               <button class="filter-tab-btn" data-filter="mobile">Mobile Apps</button>
             </div>
-            <!-- Sliding underline marker -->
             <div class="active-filter-indicator"></div>
           </div>
         </div>
@@ -578,7 +569,6 @@
       
       <div class="footer-bottom">
         <p>&copy; 2026 Dharmesh Ahir. All rights reserved. Designed and Developed with care [2].</p>
-        <!-- Back To Top button with progress loading ring circle -->
         <button id="back-to-top" class="btn-icon back-to-top-progress-wrap magnetic" aria-label="Scroll Back to Top of Page">
           <svg class="progress-circle" width="44" height="44" viewBox="0 0 44 44">
             <circle class="progress-circle-bg" cx="22" cy="22" r="18"></circle>
@@ -609,7 +599,7 @@
     </div>
   </div>
 
-  <!-- SLIDING GLASS PORTFOLIO MODAL (With Outside triggers & Escape binds) -->
+  <!-- UPGRADED SLIDING GLASS PORTFOLIO MODAL -->
   <div id="project-detail-modal" class="project-modal-overlay">
     <div class="project-modal-content">
       <div class="modal-fixed-header">
