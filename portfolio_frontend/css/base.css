@@ -175,3 +175,31 @@ body[data-cursor-state="text"] .cursor-follower {
     cursor: auto !important;
   }
 }
+
+
+/* Page load animation */
+.page-loaded {
+  animation: pageFadeIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toast notification */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Image loading */
+.mock-screenshot.loading {
+  opacity: 0;
+}
+
+.mock-screenshot.loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
