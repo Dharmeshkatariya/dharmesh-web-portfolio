@@ -1,0 +1,177 @@
+/* ==========================================================================
+   GLOBAL VARIABLES, RESETS, LENIS & CUSTOM CURSOR INTERACTS
+   ========================================================================== */
+:root {
+  --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-quick: 0.25s ease;
+  --glass-blur: 16px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 28px;
+  --cursor-color: var(--text-accent);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis-scrolling {
+  scroll-behavior: auto !important;
+}
+
+html {
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  transition: background var(--transition-smooth), color var(--transition-smooth);
+  cursor: none;
+}
+
+/* Morphing Cursor Elements */
+.custom-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: var(--cursor-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate3d(-50%, -50%, 0);
+  transition: transform 0.1s ease-out, background-color var(--transition-smooth);
+}
+.cursor-follower {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--cursor-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(-50%, -50%, 0);
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), border-color var(--transition-smooth);
+  opacity: 0.65;
+}
+
+/* Custom Interactive Cursor States */
+body[data-cursor-state="pointer"] .cursor-follower {
+  transform: scale(1.6);
+  border-color: var(--text-accent);
+  background: rgba(var(--accent-rgb, 0, 229, 255), 0.1);
+}
+body[data-cursor-state="text"] .cursor-follower {
+  transform: scale(0.6) rotate(45deg);
+  border-radius: 2px;
+  border-color: var(--text-accent);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.15);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+/* Reading Progress Indicator */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  z-index: 2005;
+}
+#scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-color), var(--text-accent));
+}
+
+#three-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Backdrop glow blobs */
+.ambient-glow-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glow-blob {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  animation: floatBlobs 20s infinite ease-in-out alternate;
+}
+.glow-1 {
+  background: var(--accent-color);
+  top: -10%;
+  left: -10%;
+}
+.glow-2 {
+  background: var(--secondary-color);
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -5s;
+}
+.glow-3 {
+  background: var(--text-accent);
+  top: 40%;
+  left: 50%;
+  animation-delay: -10s;
+}
+
+@keyframes floatBlobs {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, -5vw) scale(1.1); }
+  100% { transform: translate(-5vw, 5vw) scale(0.9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+  .cursor-follower, .custom-cursor, .ambient-glow-blobs {
+    display: none !important;
+  }
+  body {
+    cursor: auto !important;
+  }
+}

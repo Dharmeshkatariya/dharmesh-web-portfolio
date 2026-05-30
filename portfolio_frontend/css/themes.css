@@ -1,0 +1,233 @@
+/* ==========================================================================
+   COLOR PALETTES CONFIGURATORS (LIGHT/DARK PRESET MATRIX)
+   ========================================================================== */
+
+/* 1. Default Setup: Ocean Blue Theme */
+[data-theme="ocean"][data-mode="dark"] {
+  --primary-color: #030f1e;
+  --secondary-color: #0c2340;
+  --accent-color: #00e5ff;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b9eb5;
+  --text-accent: #00e5ff;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #06152a 0%, #020914 100%);
+  --card-bg: rgba(12, 35, 64, 0.35);
+  --card-border: rgba(0, 229, 255, 0.15);
+  --form-input-bg: rgba(6, 21, 42, 0.5);
+  --shadow-color: rgba(0, 229, 255, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
+}
+[data-theme="ocean"][data-mode="light"] {
+  --primary-color: #f4f8fc;
+  --secondary-color: #0288d1;
+  --accent-color: #00b0ff;
+  --text-primary: #0a1e36;
+  --text-secondary: #5a6e85;
+  --text-accent: #0288d1;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #e1f5fe 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(2, 136, 209, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(2, 136, 209, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* 2. Forest Green Theme */
+[data-theme="forest"][data-mode="dark"] {
+  --primary-color: #051208;
+  --secondary-color: #11361c;
+  --accent-color: #00e676;
+  --text-primary: #eefbee;
+  --text-secondary: #8da493;
+  --text-accent: #ffd700;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #0d2a16 0%, #020703 100%);
+  --card-bg: rgba(17, 54, 28, 0.35);
+  --card-border: rgba(0, 230, 118, 0.15);
+  --form-input-bg: rgba(8, 26, 13, 0.5);
+  --shadow-color: rgba(0, 230, 118, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
+}
+[data-theme="forest"][data-mode="light"] {
+  --primary-color: #f3f9f4;
+  --secondary-color: #2e7d32;
+  --accent-color: #1b5e20;
+  --text-primary: #081c0c;
+  --text-secondary: #586d5e;
+  --text-accent: #b58d10;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #e8f5e9 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(46, 125, 50, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(46, 125, 50, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* 3. Sunset Orange Theme */
+[data-theme="sunset"][data-mode="dark"] {
+  --primary-color: #170702;
+  --secondary-color: #3e1204;
+  --accent-color: #ff5722;
+  --text-primary: #fff2ed;
+  --text-secondary: #bc9f95;
+  --text-accent: #ffb74d;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #290d03 0%, #080200 100%);
+  --card-bg: rgba(62, 18, 4, 0.35);
+  --card-border: rgba(255, 87, 34, 0.15);
+  --form-input-bg: rgba(25, 8, 2, 0.5);
+  --shadow-color: rgba(255, 87, 34, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
+}
+[data-theme="sunset"][data-mode="light"] {
+  --primary-color: #fffaf7;
+  --secondary-color: #f4511e;
+  --accent-color: #e64a19;
+  --text-primary: #3a1306;
+  --text-secondary: #8c7166;
+  --text-accent: #e64a19;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #fbe9e7 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(244, 81, 30, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(244, 81, 30, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* 4. Royal Purple Theme */
+[data-theme="purple"][data-mode="dark"] {
+  --primary-color: #11021c;
+  --secondary-color: #30064d;
+  --accent-color: #e040fb;
+  --text-primary: #faf2ff;
+  --text-secondary: #b69ebe;
+  --text-accent: #00e5ff;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #210435 0%, #050108 100%);
+  --card-bg: rgba(48, 6, 77, 0.35);
+  --card-border: rgba(224, 64, 251, 0.15);
+  --form-input-bg: rgba(20, 2, 33, 0.5);
+  --shadow-color: rgba(224, 64, 251, 0.1);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
+}
+[data-theme="purple"][data-mode="light"] {
+  --primary-color: #faf5fc;
+  --secondary-color: #8e24aa;
+  --accent-color: #7b1fa2;
+  --text-primary: #2d003b;
+  --text-secondary: #7b5f85;
+  --text-accent: #8e24aa;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #f3e5f5 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(142, 36, 170, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(142, 36, 170, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* 5. Cyberpunk Neon Theme */
+[data-theme="cyberpunk"][data-mode="dark"] {
+  --primary-color: #0a000f;
+  --secondary-color: #21002e;
+  --accent-color: #ff007f;
+  --text-primary: #fff2f8;
+  --text-secondary: #af92a3;
+  --text-accent: #00ffff;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #1a0026 0%, #030005 100%);
+  --card-bg: rgba(33, 0, 46, 0.45);
+  --card-border: rgba(255, 0, 127, 0.25);
+  --form-input-bg: rgba(15, 0, 21, 0.6);
+  --shadow-color: rgba(255, 0, 127, 0.15);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
+}
+[data-theme="cyberpunk"][data-mode="light"] {
+  --primary-color: #fff0f6;
+  --secondary-color: #d81b60;
+  --accent-color: #00a4b4;
+  --text-primary: #380017;
+  --text-secondary: #7f6071;
+  --text-accent: #d81b60;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #fce4ec 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(216, 27, 96, 0.18);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(216, 27, 96, 0.08);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* 6. Minimalist Mono Theme */
+[data-theme="mono"][data-mode="dark"] {
+  --primary-color: #0e0e0e;
+  --secondary-color: #242424;
+  --accent-color: #777777;
+  --text-primary: #f5f5f5;
+  --text-secondary: #909090;
+  --text-accent: #ffffff;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+  --card-bg: rgba(36, 36, 36, 0.35);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --form-input-bg: rgba(18, 18, 18, 0.5);
+  --shadow-color: rgba(255, 255, 255, 0.05);
+  --github-glow: rgba(255, 255, 255, 0.15);
+  --linkedin-glow: rgba(10, 102, 194, 0.3);
+  --twitter-glow: rgba(255, 255, 255, 0.2);
+  --instagram-glow: rgba(225, 48, 108, 0.3);
+}
+[data-theme="mono"][data-mode="light"] {
+  --primary-color: #f7f7f7;
+  --secondary-color: #424242;
+  --accent-color: #616161;
+  --text-primary: #121212;
+  --text-secondary: #6c6c6c;
+  --text-accent: #000000;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #eaeaea 100%);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(0, 0, 0, 0.12);
+  --form-input-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(0, 0, 0, 0.04);
+  --github-glow: rgba(0, 0, 0, 0.1);
+  --linkedin-glow: rgba(10, 102, 194, 0.2);
+  --twitter-glow: rgba(0, 0, 0, 0.1);
+  --instagram-glow: rgba(225, 48, 108, 0.2);
+}
+
+/* Dynamic Site Layout Switches */
+[data-site-layout="minimal"] {
+  --font-primary: 'Poppins', sans-serif;
+}
+[data-site-layout="creative"] {
+  --font-primary: 'Poppins', sans-serif;
+}
+[data-site-layout="glass"] {
+  --font-primary: 'Poppins', sans-serif;
+}
+[data-site-layout="editorial"] {
+  --font-primary: var(--font-editorial);
+}
