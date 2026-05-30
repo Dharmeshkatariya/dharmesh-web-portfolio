@@ -150,20 +150,130 @@ section {
   color: var(--text-accent);
 }
 
-/* 2. CORE DYNAMIC PORTFOLIO LAYOUT TYPES */
-.portfolio-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
-  gap: 24px;
+
+/* ==========================================================================
+   FIX: SAME-ROW ALIGNED PREMIUM HEADER & CONTROL PATTERNS
+   ========================================================================== */
+.portfolio-header-premium {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-bottom: 48px !important;
+  gap: 24px !important;
+  flex-wrap: wrap !important;
 }
-.portfolio-controls {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+
+.portfolio-title-side {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.section-title-premium {
+  font-size: clamp(2rem, 4.5vw, 3rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -1.5px !important;
+  margin: 0 !important;
+  color: var(--text-primary);
+}
+
+.portfolio-count-badge {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  color: var(--text-accent) !important;
+  background: rgba(var(--accent-rgb, 0, 229, 255), 0.1) !important;
+  border: 1px solid var(--card-border) !important;
+  padding: 6px 14px !important;
+  border-radius: 30px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.portfolio-controls-side {
+  display: flex !important;
+  align-items: center !important;
+  gap: 24px !important;
+  flex-wrap: wrap !important;
+}
+
+/* Layout Button SVG Tweaks */
+.svg-layout-icon {
+  width: 18px !important;
+  height: 18px !important;
+  stroke-width: 2 !important;
+}
+
+.svg-social-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Category Filter Layout adjustments */
+.filter-tabs-container-premium {
+  position: relative !important;
+}
+
+.filter-tabs-premium {
+  display: flex !important;
+  gap: 4px !important;
+  background: var(--form-input-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  padding: 4px !important;
+  border-radius: 30px !important;
+}
+
+.layout-btn-group-premium {
+  display: flex !important;
+  background: var(--form-input-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  padding: 4px !important;
+  border-radius: 30px !important;
+  gap: 2px !important;
+}
+
+.layout-btn-group-premium .layout-btn {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.layout-btn-group-premium .layout-btn.active,
+.layout-btn-group-premium .layout-btn:hover {
+  background: var(--text-accent) !important;
+  color: var(--primary-color) !important;
+}
+
+/* Responsive adjustment for clean single row breaks */
+@media (max-width: 900px) {
+  .portfolio-header-premium {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .portfolio-controls-side {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .portfolio-controls-side {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .filter-tabs-premium, 
+  .layout-btn-group-premium {
+    width: 100% !important;
+  }
 }
 
 .filter-tabs-container {
